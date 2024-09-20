@@ -8,7 +8,7 @@
 ///Los callbacks:
 
 //Funcion para el primer ejercicio de la practica
-void ajustar_color_pantalla( GLFWwindow *window, double xoffset, double yoffset );
+void ajustar_color_pantalla( GLFWwindow *window, double xoffset, double yoffset);
 
 // - Esta función callback será llamada cuando GLFW produzca algún error
 void error_callback ( int errno, const char* desc )
@@ -68,7 +68,7 @@ void scroll_callback ( GLFWwindow *window, double xoffset, double yoffset )
             << " Unidades en horizontal y " << yoffset
             << " unidades en vertical" << std::endl;
 
-    ajustar_color_pantalla( window, xoffset, yoffset );
+    ajustar_color_pantalla( window, xoffset, yoffset);
 }
 
 /**
@@ -77,13 +77,33 @@ void scroll_callback ( GLFWwindow *window, double xoffset, double yoffset )
  * @param xoffset El desplazamiento horizontal (No lo usamos)
  * @param yoffset El desplazamiento vertical
  */
-void ajustar_color_pantalla( GLFWwindow *window, double xoffset, double yoffset ){
+void ajustar_color_pantalla( GLFWwindow *window, double xoffset, double yoffset){
     //Si es arriba la ponemos roja, y si vamos abajo la ponemos verde
+    GLfloat color[4]; // El color a poner en la pantalla, glfloat es el tipo de dato usado para almacenar flotantes en OpenGL
+    glGetFloatv(GL_COLOR_CLEAR_VALUE, color); // Esta funcion glGetFloatv, nos pasa el valor localizado en la direccion de memoria del primer parametro, al segundo parametro ;)
+
     if(yoffset > 0){
-        glClearColor(1, 0,0, 0);
+        color[0] += 0.01;
+        color[0] > 1.0 ? color[0] = 1.0 : color[0] = color[0];
+        //color[1] += 0.1;
+        //color[1] > 1.0 ? color[1] = 1.0 : color[1] = color[1];
+        color[2] += 0.01;
+        color[2] > 1.0 ? color[2] = 1.0 : color[2] = color[2];
+        //Para la opacidad
+        //color[3] += 0.1;
+        //color[3] > 1.0 ? color[3] = 1.0 : color[3] = color[3];
     }else{
-        glClearColor(0,1,0,0);
+        color[0] -= 0.01;
+        color[0] < 1.0 ? color[0] = 0.0 : color[0] = color[0];
+        //color[1] -= 0.1;
+        //color[1] < 1.0 ? color[1] = 0.0 : color[1] = color[1];
+        color[2] -= 0.01;
+        color[2] > 1.0 ? color[2] = 0.0 : color[2] = color[2];
+        //color[3] -= 0.1;
+        //color[3] > 1.0 ? color[3] = 0.0 : color[3] = color[3];
     }
+
+    glClearColor(color[0], color[1], color[2], color[3]);
 }
 
 int main()
@@ -106,6 +126,7 @@ int main()
     glfwWindowHint ( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE ); // - Esta y las 2
     glfwWindowHint ( GLFW_CONTEXT_VERSION_MAJOR, 4 ); // siguientes activan un contexto
     glfwWindowHint ( GLFW_CONTEXT_VERSION_MINOR, 1 ); // OpenGL Core Profile 4.1.
+
     // - Definimos el puntero para guardar la dirección de la ventana de la aplicación y
     // la creamos
     GLFWwindow *window;
