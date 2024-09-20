@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug",
-		"source" : "C:/Users/secre/CLionProjects/PAG/Pr1"
+		"build" : "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug",
+		"source" : "C:/Users/secre/CLionProjects/PAG/pr1-PAG"
 	},
 	"version" : 
 	{

@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug"
+			"value" : "c:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -587,7 +587,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -659,7 +659,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/secre/CLionProjects/PAG/Pr1"
+			"value" : "C:/Users/secre/CLionProjects/PAG/pr1-PAG"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1351,7 +1351,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug"
+			"value" : "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug"
 		},
 		{
 			"name" : "Pr1_IS_TOP_LEVEL",
@@ -1375,7 +1375,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/secre/CLionProjects/PAG/Pr1"
+			"value" : "C:/Users/secre/CLionProjects/PAG/pr1-PAG"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
@@ -1426,18 +1426,6 @@
 			"value" : "1"
 		},
 		{
-			"name" : "gl_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "The directory containing a CMake configuration file for gl."
-				}
-			],
-			"type" : "PATH",
-			"value" : "gl_DIR-NOTFOUND"
-		},
-		{
 			"name" : "glad_DIR",
 			"properties" : 
 			[
@@ -1447,7 +1435,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug/conan/build/Debug/generators"
+			"value" : "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/conan/build/Debug/generators"
 		},
 		{
 			"name" : "glfw3_DIR",
@@ -1459,7 +1447,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug/conan/build/Debug/generators"
+			"value" : "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/conan/build/Debug/generators"
 		},
 		{
 			"name" : "opengl_system_DIR",
@@ -1471,7 +1459,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug/conan/build/Debug/generators"
+			"value" : "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/conan/build/Debug/generators"
 		}
 	],
 	"kind" : "cache",

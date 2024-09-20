@@ -7,6 +7,9 @@
 
 ///Los callbacks:
 
+//Funcion para el primer ejercicio de la practica
+void ajustar_color_pantalla( GLFWwindow *window, double xoffset, double yoffset );
+
 // - Esta función callback será llamada cuando GLFW produzca algún error
 void error_callback ( int errno, const char* desc )
 {
@@ -65,9 +68,23 @@ void scroll_callback ( GLFWwindow *window, double xoffset, double yoffset )
             << " Unidades en horizontal y " << yoffset
             << " unidades en vertical" << std::endl;
 
-    //ToDo Agregar funcion que modifique el color de la pantalla...
+    ajustar_color_pantalla( window, xoffset, yoffset );
 }
 
+/**
+ * Funcion para ajustar el color de la pantalla segun el movimiento del raton. Si vamos arriba se vuelve mas roja, y si vamos hacia abajo se vuelve menos rojo
+ * @param window La ventana
+ * @param xoffset El desplazamiento horizontal (No lo usamos)
+ * @param yoffset El desplazamiento vertical
+ */
+void ajustar_color_pantalla( GLFWwindow *window, double xoffset, double yoffset ){
+    //Si es arriba la ponemos roja, y si vamos abajo la ponemos verde
+    if(yoffset > 0){
+        glClearColor(1, 0,0, 0);
+    }else{
+        glClearColor(0,1,0,0);
+    }
+}
 
 int main()
 {

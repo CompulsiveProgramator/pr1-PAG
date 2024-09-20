@@ -19,7 +19,7 @@
                 "CMAKE_BUILD_TYPE": "Debug"
             },
             "toolchainFile": "generators\\conan_toolchain.cmake",
-            "binaryDir": "C:\\Users\\secre\\CLionProjects\\PAG\\Pr1\\cmake-build-debug\\conan\\build\\Debug"
+            "binaryDir": "C:\\Users\\secre\\CLionProjects\\PAG\\pr1-PAG\\cmake-build-debug\\conan\\build\\Debug"
         }
     ],
     "buildPresets": [

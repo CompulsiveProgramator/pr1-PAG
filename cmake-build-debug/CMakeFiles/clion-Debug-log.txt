@@ -1,4 +1,16 @@
-"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/secre/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=conan_provider.cmake -G Ninja -S C:\Users\secre\CLionProjects\PAG\Pr1 -B C:\Users\secre\CLionProjects\PAG\Pr1\cmake-build-debug
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/secre/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=conan_provider.cmake -G Ninja -S C:\Users\secre\CLionProjects\PAG\pr1-PAG -B C:\Users\secre\CLionProjects\PAG\pr1-PAG\cmake-build-debug
+-- The C compiler identification is GNU 13.1.0
+-- The CXX compiler identification is GNU 13.1.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Users/secre/AppData/Local/Programs/CLion/bin/mingw/bin/gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Users/secre/AppData/Local/Programs/CLion/bin/mingw/bin/g++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
 -- CMake-Conan: first find_package() found. Installing dependencies with Conan
 -- CMake-Conan: Checking if a default profile exists
 C:\Users\secre\.conan2\profiles\default
@@ -8,7 +20,11 @@ C:\Users\secre\.conan2\profiles\default
 -- CMake-Conan: CMake compiler version=13.1.0
 -- CMake-Conan: [settings] compiler=gcc
 -- CMake-Conan: [settings] compiler.version=13
--- CMake-Conan: Creating profile C:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug/conan_host_profile
+-- Performing Test _conan_is_gnu_libstdcxx
+-- Performing Test _conan_is_gnu_libstdcxx - Success
+-- Performing Test _conan_gnu_libstdcxx_is_cxx11_abi
+-- Performing Test _conan_gnu_libstdcxx_is_cxx11_abi - Success
+-- CMake-Conan: Creating profile C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/conan_host_profile
 -- CMake-Conan: Profile: 
 [settings]
 arch=x86_64
@@ -23,7 +39,7 @@ tools.cmake.cmaketoolchain:generator=Ninja
 tools.build:compiler_executables={"c":"C:/Users/secre/AppData/Local/Programs/CLion/bin/mingw/bin/gcc.exe","cpp":"C:/Users/secre/AppData/Local/Programs/CLion/bin/mingw/bin/g++.exe","rc":"C:/Users/secre/AppData/Local/Programs/CLion/bin/mingw/bin/windres.exe"}
 
 -- CMake-Conan: Installing single configuration Debug
--- CMake-Conan: conan install C:/Users/secre/CLionProjects/PAG/Pr1 -of=C:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug/conan --profile:host=default;--profile:host=C:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug/conan_host_profile;--profile:build=default;--build=missing
+-- CMake-Conan: conan install C:/Users/secre/CLionProjects/PAG/pr1-PAG -of=C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/conan --profile:host=default;--profile:host=C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/conan_host_profile;--profile:build=default;--build=missing
 
 ======== Input profiles ========
 Profile host:
@@ -52,7 +68,7 @@ os=Windows
 
 ======== Computing dependency graph ========
 Graph root
-    conanfile.py: C:/Users/secre/CLionProjects/PAG/Pr1\conanfile.py
+    conanfile.py: C:/Users/secre/CLionProjects/PAG/pr1-PAG\conanfile.py
 Requirements
     glad/0.1.36#c926453afdd9d5f72cc4ee6a8fff7d73 - Cache
     glfw/3.3.8#eaa2d6de4e064b2c92ad7fc4ac255141 - Cache
@@ -74,7 +90,7 @@ WARN: deprecated:     'cpp_info.names' used in: glfw/3.3.8
 WARN: deprecated:     'cpp_info.build_modules' used in: glfw/3.3.8
 
 ======== Finalizing install (deploy, generators) ========
-conanfile.py: Writing generators to C:\Users\secre\CLionProjects\PAG\Pr1\cmake-build-debug\conan\build\Debug\generators
+conanfile.py: Writing generators to C:\Users\secre\CLionProjects\PAG\pr1-PAG\cmake-build-debug\conan\build\Debug\generators
 conanfile.py: Generator 'CMakeDeps' calling 'generate()'
 conanfile.py: CMakeDeps necessary find_package() and targets for your CMakeLists.txt
     find_package(glfw3)
@@ -82,22 +98,22 @@ conanfile.py: CMakeDeps necessary find_package() and targets for your CMakeLists
     find_package(opengl_system)
     target_link_libraries(... glfw glad::glad opengl::opengl)
 conanfile.py: Calling generate()
-conanfile.py: Generators folder: C:\Users\secre\CLionProjects\PAG\Pr1\cmake-build-debug\conan\build\Debug\generators
+conanfile.py: Generators folder: C:\Users\secre\CLionProjects\PAG\pr1-PAG\cmake-build-debug\conan\build\Debug\generators
 conanfile.py: CMakeToolchain generated: conan_toolchain.cmake
 conanfile.py: CMakeToolchain: Preset 'conan-debug' added to CMakePresets.json.
     (cmake>=3.23) cmake --preset conan-debug
     (cmake<3.23) cmake <path> -G Ninja -DCMAKE_TOOLCHAIN_FILE=generators\conan_toolchain.cmake  -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Debug
-conanfile.py: CMakeToolchain generated: C:\Users\secre\CLionProjects\PAG\Pr1\cmake-build-debug\conan\build\Debug\generators\CMakePresets.json
+conanfile.py: CMakeToolchain generated: C:\Users\secre\CLionProjects\PAG\pr1-PAG\cmake-build-debug\conan\build\Debug\generators\CMakePresets.json
 conanfile.py: Generating aggregated env files
 conanfile.py: Generated aggregated env files: ['conanbuild.bat', 'conanrun.bat']
 Install finished successfully
--- CMake-Conan: CONAN_GENERATORS_FOLDER=C:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug/conan/build/Debug/generators
--- CMake-Conan: CONANFILE=C:/Users/secre/CLionProjects/PAG/Pr1/conanfile.py
+-- CMake-Conan: CONAN_GENERATORS_FOLDER=C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/conan/build/Debug/generators
+-- CMake-Conan: CONANFILE=C:/Users/secre/CLionProjects/PAG/pr1-PAG/conanfile.py
 -- Conan: Target declared 'opengl::opengl'
 -- CMake-Conan: find_package(glad) found, 'conan install' already ran
 -- Conan: Target declared 'glad::glad'
 -- CMake-Conan: find_package(glfw3) found, 'conan install' already ran
 -- Conan: Target declared 'glfw'
--- Configuring done (3.5s)
+-- Configuring done (9.8s)
 -- Generating done (0.1s)
--- Build files have been written to: C:/Users/secre/CLionProjects/PAG/Pr1/cmake-build-debug
+-- Build files have been written to: C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug
