@@ -87,20 +87,20 @@ void ajustar_color_pantalla( GLFWwindow *window, double xoffset, double yoffset)
         color[0] > 1.0 ? color[0] = 1.0 : color[0] = color[0];
         //color[1] += 0.1;
         //color[1] > 1.0 ? color[1] = 1.0 : color[1] = color[1];
-        color[2] += 0.01;
-        color[2] > 1.0 ? color[2] = 1.0 : color[2] = color[2];
+        //color[2] += 0.01;
+        //color[2] > 1.0 ? color[2] = 1.0 : color[2] = color[2];
         //Para la opacidad
         //color[3] += 0.1;
         //color[3] > 1.0 ? color[3] = 1.0 : color[3] = color[3];
     }else{
         color[0] -= 0.01;
-        color[0] < 1.0 ? color[0] = 0.0 : color[0] = color[0];
+        color[0] < 0.0 ? color[0] = 0.0 : color[0] = color[0];
         //color[1] -= 0.1;
-        //color[1] < 1.0 ? color[1] = 0.0 : color[1] = color[1];
-        color[2] -= 0.01;
-        color[2] > 1.0 ? color[2] = 0.0 : color[2] = color[2];
+        //color[1] < 0.0 ? color[1] = 0.0 : color[1] = color[1];
+        //color[2] -= 0.01;
+        //color[2] > 0.0 ? color[2] = 0.0 : color[2] = color[2];
         //color[3] -= 0.1;
-        //color[3] > 1.0 ? color[3] = 0.0 : color[3] = color[3];
+        //color[3] > 0.0 ? color[3] = 0.0 : color[3] = color[3];
     }
 
     glClearColor(color[0], color[1], color[2], color[3]);

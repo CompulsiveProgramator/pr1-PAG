@@ -3,7 +3,8 @@ project(Pr1)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Pr1 main.cpp)
+add_executable(Pr1 main.cpp
+)
 
 # Para que Cmake encuentre los bonitos paquetes:
 find_package(opengl_system)
