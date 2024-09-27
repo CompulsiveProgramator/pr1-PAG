@@ -56,6 +56,13 @@ build CMakeFiles/Pr1.dir/main.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Use
   OBJECT_DIR = CMakeFiles\Pr1.dir
   OBJECT_FILE_DIR = CMakeFiles\Pr1.dir
 
+build CMakeFiles/Pr1.dir/Renderer.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/Renderer.cpp || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\Renderer.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  OBJECT_DIR = CMakeFiles\Pr1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Pr1
@@ -64,7 +71,7 @@ build CMakeFiles/Pr1.dir/main.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Use
 #############################################
 # Link the executable Pr1.exe
 
-build Pr1.exe: CXX_EXECUTABLE_LINKER__Pr1_Debug CMakeFiles/Pr1.dir/main.cpp.obj | C$:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a C$:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a
+build Pr1.exe: CXX_EXECUTABLE_LINKER__Pr1_Debug CMakeFiles/Pr1.dir/main.cpp.obj CMakeFiles/Pr1.dir/Renderer.cpp.obj | C$:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a C$:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a
   FLAGS = -g
   LINK_LIBRARIES = C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a  C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a  -lopengl32  -lgdi32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib   -LC:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib
