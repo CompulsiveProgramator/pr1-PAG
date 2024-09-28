@@ -5,8 +5,11 @@
 #ifndef PR1_RENDERER_H
 #define PR1_RENDERER_H
 
-///El espacio de nombres para las practicas
+///El espacio de nombres para las prácticas de Programación de Aplicaciones Gráficas
 namespace PAG{
+    /**
+     * Clase que sigue el patron SINGLETON para renderizar
+     */
     class Renderer {
     private:
         static Renderer* instancia; //Para el patron Singleton

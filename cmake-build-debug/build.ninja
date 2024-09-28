@@ -52,14 +52,77 @@ build cmake_object_order_depends_target_Pr1: phony || .
 build CMakeFiles/Pr1.dir/main.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/main.cpp || cmake_object_order_depends_target_Pr1
   DEP_FILE = CMakeFiles\Pr1.dir\main.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
   OBJECT_DIR = CMakeFiles\Pr1.dir
   OBJECT_FILE_DIR = CMakeFiles\Pr1.dir
 
 build CMakeFiles/Pr1.dir/Renderer.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/Renderer.cpp || cmake_object_order_depends_target_Pr1
   DEP_FILE = CMakeFiles\Pr1.dir\Renderer.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  OBJECT_DIR = CMakeFiles\Pr1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir
+
+build CMakeFiles/Pr1.dir/glad/src/glad.c.obj: C_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/src/glad.c || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\glad\src\glad.c.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  OBJECT_DIR = CMakeFiles\Pr1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir\glad\src
+
+build CMakeFiles/Pr1.dir/imgui/imgui.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui/imgui.cpp || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\imgui\imgui.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  OBJECT_DIR = CMakeFiles\Pr1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir\imgui
+
+build CMakeFiles/Pr1.dir/imgui/imgui_demo.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui/imgui_demo.cpp || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\imgui\imgui_demo.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  OBJECT_DIR = CMakeFiles\Pr1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir\imgui
+
+build CMakeFiles/Pr1.dir/imgui/imgui_draw.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui/imgui_draw.cpp || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\imgui\imgui_draw.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  OBJECT_DIR = CMakeFiles\Pr1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir\imgui
+
+build CMakeFiles/Pr1.dir/imgui/imgui_impl_glfw.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui/imgui_impl_glfw.cpp || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\imgui\imgui_impl_glfw.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  OBJECT_DIR = CMakeFiles\Pr1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir\imgui
+
+build CMakeFiles/Pr1.dir/imgui/imgui_impl_opengl3.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\imgui\imgui_impl_opengl3.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  OBJECT_DIR = CMakeFiles\Pr1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir\imgui
+
+build CMakeFiles/Pr1.dir/imgui/imgui_tables.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui/imgui_tables.cpp || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\imgui\imgui_tables.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  OBJECT_DIR = CMakeFiles\Pr1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir\imgui
+
+build CMakeFiles/Pr1.dir/imgui/imgui_widgets.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\imgui\imgui_widgets.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
+  OBJECT_DIR = CMakeFiles\Pr1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir\imgui
+
+build CMakeFiles/Pr1.dir/GUI.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/GUI.cpp || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\GUI.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include
   OBJECT_DIR = CMakeFiles\Pr1.dir
   OBJECT_FILE_DIR = CMakeFiles\Pr1.dir
 
@@ -71,7 +134,7 @@ build CMakeFiles/Pr1.dir/Renderer.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:
 #############################################
 # Link the executable Pr1.exe
 
-build Pr1.exe: CXX_EXECUTABLE_LINKER__Pr1_Debug CMakeFiles/Pr1.dir/main.cpp.obj CMakeFiles/Pr1.dir/Renderer.cpp.obj | C$:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a C$:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a
+build Pr1.exe: CXX_EXECUTABLE_LINKER__Pr1_Debug CMakeFiles/Pr1.dir/main.cpp.obj CMakeFiles/Pr1.dir/Renderer.cpp.obj CMakeFiles/Pr1.dir/glad/src/glad.c.obj CMakeFiles/Pr1.dir/imgui/imgui.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_demo.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_draw.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_impl_glfw.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_impl_opengl3.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_tables.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_widgets.cpp.obj CMakeFiles/Pr1.dir/GUI.cpp.obj | C$:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a C$:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a
   FLAGS = -g
   LINK_LIBRARIES = C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a  C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a  -lopengl32  -lgdi32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib   -LC:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib

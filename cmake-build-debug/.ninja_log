@@ -1,5 +1,13 @@
 # ninja log v6
-3	16972	7491509046721947	build.ninja	84e329885e4ff433
-20	1418	7487779804812224	CMakeFiles/Pr1.dir/main.cpp.obj	b20edb6b38918bf9
-1418	2161	7487779818798969	Pr1.exe	4a227b2d04828b47
-35	361	7487779804979108	CMakeFiles/Pr1.dir/Renderer.cpp.obj	9fdb25d58b2e4a4e
+8	27935	7492446822324707	build.ninja	49d6eeb14a5ff4e5
+30	1277	7492446549193274	CMakeFiles/Pr1.dir/main.cpp.obj	1a99b436895a9ce5
+33	2980	7491536438964592	CMakeFiles/Pr1.dir/imgui/imgui_draw.cpp.obj	e9c8eb01a5dba660
+45	1651	7491536439083297	CMakeFiles/Pr1.dir/imgui/imgui_impl_opengl3.cpp.obj	86569209ad872cdd
+1279	2250	7492446561667969	Pr1.exe	80cb27e6be377599
+52	2479	7491536439146680	CMakeFiles/Pr1.dir/imgui/imgui_tables.cpp.obj	7edb1b93a6390986
+13	2356	7491536438768087	CMakeFiles/Pr1.dir/Renderer.cpp.obj	8d516e8201d478d4
+18	2000	7491536438819658	CMakeFiles/Pr1.dir/glad/src/glad.c.obj	c6376cebdd562c3e
+27	2528	7491536438910901	CMakeFiles/Pr1.dir/imgui/imgui_demo.cpp.obj	edabcb4278c40fca
+39	2529	7491536439022439	CMakeFiles/Pr1.dir/imgui/imgui_impl_glfw.cpp.obj	8836eb7be8297816
+58	3377	7491536439214962	CMakeFiles/Pr1.dir/imgui/imgui_widgets.cpp.obj	977e3b8db716da3e
+23	4081	7491536438863084	CMakeFiles/Pr1.dir/imgui/imgui.cpp.obj	318da338efb02377

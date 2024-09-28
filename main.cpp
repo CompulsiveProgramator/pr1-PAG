@@ -4,6 +4,10 @@
 // IMPORTANTE: El include de GLAD debe estar siempre ANTES de el de GLFW
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "Renderer.h"
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
 
 ///Los callbacks:
 
@@ -21,7 +25,8 @@ void error_callback ( int errno, const char* desc )
 // OpenGL deba ser redibujada.
 void window_refresh_callback ( GLFWwindow *window )
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    PAG::Renderer::getInstancia()->refrescar(); ///Para la 2da practica, usamos el Renderer
+
     // - GLFW usa un doble buffer para que no haya parpadeo. Esta orden
     // intercambia el buffer back (que se ha estado dibujando) por el
     // que se mostraba hasta ahora front. Debe ser la última orden de
@@ -108,6 +113,13 @@ void ajustar_color_pantalla( GLFWwindow *window, double xoffset, double yoffset)
 
 int main()
 {
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext ();
+    ImGuiIO& io = ImGui::GetIO();
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+
+
+
     std::cout << "Starting Application PAG - Prueba 01" << std::endl;
 
     // - Este callback hay que registrarlo ANTES de llamar a glfwInit
@@ -179,13 +191,32 @@ int main()
     // No tiene por qué ejecutarse en cada paso por el ciclo de eventos.
     glEnable ( GL_DEPTH_TEST );
 
+    // Aquí "window" es el puntero a la ventana GLFW (GLFWwindow*)
+    ImGui_ImplGlfw_InitForOpenGL ( window, true );
+    ImGui_ImplOpenGL3_Init ();
+
     // - Ciclo de eventos de la aplicación. La condición de parada es que la
     // ventana principal deba cerrarse. Por ejemplo, si el usuario pulsa el
     // botón de cerrar la ventana (la X).
     while ( !glfwWindowShouldClose ( window ) )
     {
-        // - Borra los buffers (color y profundidad)
-        glClear ( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+        // Se dibujan los controles de Dear ImGui
+        // Aquí va el dibujado de la escena con instrucciones OpenGL
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData ( ImGui::GetDrawData() );
+
+        ImGui::SetNextWindowPos( ImVec2 (10, 10), ImGuiCond_Once);
+
+        if ( ImGui::Begin ( "Mensajes" ) )
+        { // La ventana está desplegada
+            ImGui::SetWindowFontScale ( 1.0f ); // Escalamos el texto si fuera necesario
+            // Pintamos los controles
+        }
+        // Si la ventana no está desplegada, Begin devuelve false
+        ImGui::End ();
 
         // - GLFW usa un doble buffer para que no haya parpadeo. Esta orden
         // intercambia el buffer back (en el que se ha estado dibujando) por el
@@ -200,6 +231,12 @@ int main()
 
     // - Una vez terminado el ciclo de eventos, liberar recursos, etc.
     std::cout << "Finishing application pag prueba" << std::endl;
+
+    ///Para Im_Gui se liberan los recursos
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext ();
+
     glfwDestroyWindow ( window ); // - Cerramos y destruimos la ventana de la aplicación.
     window = nullptr;
     glfwTerminate (); // - Liberamos los recursos que ocupaba GLFW.
