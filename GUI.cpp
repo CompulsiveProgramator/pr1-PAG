@@ -4,6 +4,8 @@
 
 #include "GUI.h"
 
+PAG::GUI* PAG::GUI::instancia = nullptr; //Para inicializar la instancia como nula
+
 /**
  * Constructor por defecto de la clase
  */
