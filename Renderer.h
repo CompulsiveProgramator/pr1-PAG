@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <GLFW/glfw3.h>
+#include "GUI.h"
 
 ///El espacio de nombres para las prácticas de Programación de Aplicaciones Gráficas
 namespace PAG{
@@ -18,10 +19,12 @@ namespace PAG{
         static Renderer* instancia; //Para el patron Singleton
         Renderer();
         GLfloat colorFondo[4];
+        GLFWwindow *window;
 
+        Renderer(GLFWwindow *window);
     public:
         virtual ~Renderer();
-        static Renderer* getInstancia(); //Para obtener la instancia desde fuera
+        static Renderer* getInstancia(GLFWwindow *window); //Para obtener la instancia desde fuera
         void refrescar();
         GLfloat *getColorFondo();
         void setColorFondo(const GLfloat color[4]);

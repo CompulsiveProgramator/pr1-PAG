@@ -10,6 +10,10 @@ namespace PAG
 {
     Renderer* PAG::Renderer::instancia = nullptr;
 
+    Renderer::Renderer(GLFWwindow *window) {
+        this->window = window;
+    }
+
     /**
      * Constructor por defecto vacio
      */
@@ -36,9 +40,9 @@ namespace PAG
     * Metodo para obtener la instancia de la clase
     * @return
     */
-    Renderer *PAG::Renderer::getInstancia() {
+    Renderer *PAG::Renderer::getInstancia(GLFWwindow *window) {
         if(!instancia){
-            instancia = new Renderer();
+            instancia = new Renderer(window);
         }
         return instancia;
     }
@@ -69,7 +73,8 @@ namespace PAG
     void Renderer::window_refresh_callback(GLFWwindow *window) {
         instancia->refrescar();
         glfwSwapBuffers(window); //La funcion para intercambiar los buffers, y que no haya parpadeo
-        std::cout << "El callback de refrescar ventana fue llamado" << std::endl;
+
+        PAG::GUI::getInstancia(window)->postEntradaLog("El callback de refrescar ventana fue llamado\n");
     }
 
     /**
@@ -80,7 +85,7 @@ namespace PAG
      */
     void Renderer::framebuffer_size_callback(GLFWwindow *window, int width, int height) {
         glViewport(0, 0, width, height);
-        std::cout << "El callback de escalado de ventana fue llamado";
+        PAG::GUI::getInstancia(window)->postEntradaLog("El callback de escalado de ventana fue llamado\n");
     }
 
     /**
@@ -96,7 +101,7 @@ namespace PAG
         {
             glfwSetWindowShouldClose(window, GLFW_TRUE);
         }
-        std::cout << "Key callback called" << std::endl;
+        PAG::GUI::getInstancia(window)->postEntradaLog("Key callback called\n");
     }
 
     /**
@@ -109,11 +114,15 @@ namespace PAG
     void Renderer::mouse_button_callback(GLFWwindow *window, int button, int action, int mods) {
         if ( action == GLFW_PRESS )
         {
-            std::cout << "Pulsado el boton: " << button << std::endl;
+            std::string cad = "Pulsado el boton: ";
+            cad.push_back(char(button + 48)); //Para hacer la conversion a caracter
+            PAG::GUI::getInstancia(window)->postEntradaLog(cad);
         }
         else if ( action == GLFW_RELEASE )
         {
-            std::cout << "Soltado el boton: " << button << std::endl;
+            std::string cad = "Soltado el boton: ";
+            cad.push_back(char(button + 48)); //Para hacer la conversion a caracter
+            PAG::GUI::getInstancia(window)->postEntradaLog(cad);
         }
     }
 
@@ -124,9 +133,10 @@ namespace PAG
      * @param yoffset
      */
     void Renderer::scroll_callback(GLFWwindow *window, double xoffset, double yoffset) {
-        std::cout << "Movida la rueda del raton " << xoffset
-                  << " Unidades en horizontal y " << yoffset
-                  << " unidades en vertical" << std::endl;
+        std::string cad;
+        //Para convertir de int,float,double a string, usar std::to_string(). Se puede usar desde C++ 11
+        cad = "Movida la rueda del raton" + std::to_string(xoffset) + " unidades en horizontal y " + std::to_string(yoffset) + " unidades en vertical\n";
+        PAG::GUI::getInstancia(window)->postEntradaLog(cad);
     }
 
     /**
@@ -147,7 +157,3 @@ namespace PAG
         }
     }
 }
-
-
-
-

@@ -65,12 +65,15 @@ int main()
     glfwSetMouseButtonCallback ( window, PAG::Renderer::mouse_button_callback );
     glfwSetScrollCallback ( window, PAG::Renderer::scroll_callback );
 
+    //Asociamos la GUI a la ventana ;)
+    PAG::GUI *instanciaGUI = PAG::GUI::getInstancia(window);
+
     // - Ciclo de eventos de la aplicación. La condición de parada es que la
     // ventana principal deba cerrarse. Por ejemplo, si el usuario pulsa el
     // botón de cerrar la ventana (la X).
     while ( !glfwWindowShouldClose ( window ) )
     {
-        PAG::GUI::getInstancia(window)->refrescar();
+        instanciaGUI->refrescar();
 
         // - GLFW usa un doble buffer para que no haya parpadeo. Esta orden
         // intercambia el buffer back (en el que se ha estado dibujando) por el
@@ -85,6 +88,8 @@ int main()
 
     // - Una vez terminado el ciclo de eventos, liberar recursos, etc.
     std::cout << "Finishing application pag prueba" << std::endl;
+
+    delete PAG::GUI::getInstancia(window); /// Para liberar los recursos de GUI
 
     glfwDestroyWindow ( window ); // - Cerramos y destruimos la ventana de la aplicación.
     window = nullptr;

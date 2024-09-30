@@ -13,6 +13,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "Renderer.h"
+#include <vector>
 
 namespace PAG
 {
@@ -23,12 +24,18 @@ namespace PAG
     class GUI {
     private:
         static GUI* instancia;
+        std::vector<std::string> log; //El log de mensajes para la ventana de log
+        GLFWwindow *window; //La ventana de OpenGl
 
         GUI(GLFWwindow *window);
     public:
         virtual ~GUI();
         static GUI* getInstancia(GLFWwindow *window);
         void refrescar();
+
+        void postEntradaLog(std::string cad);
+
+
     };
 }
 
