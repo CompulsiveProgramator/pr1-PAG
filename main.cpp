@@ -5,9 +5,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "Renderer.h"
-#include <imgui.h>
-#include <imgui_impl_glfw.h>
-#include <imgui_impl_opengl3.h>
+#include "GUI.h"
 
 int main()
 {
@@ -72,7 +70,7 @@ int main()
     // botón de cerrar la ventana (la X).
     while ( !glfwWindowShouldClose ( window ) )
     {
-        PAG::Renderer::getInstancia()->refrescar();
+        PAG::GUI::getInstancia(window)->refrescar();
 
         // - GLFW usa un doble buffer para que no haya parpadeo. Esta orden
         // intercambia el buffer back (en el que se ha estado dibujando) por el
@@ -92,39 +90,3 @@ int main()
     window = nullptr;
     glfwTerminate (); // - Liberamos los recursos que ocupaba GLFW.
 }
-
-/*
- *
- *
- * IMGUI_CHECKVERSION();
-    ImGui::CreateContext ();
-    ImGuiIO& io = ImGui::GetIO();
-    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-
-    // Aquí "window" es el puntero a la ventana GLFW (GLFWwindow*)
-    ImGui_ImplGlfw_InitForOpenGL ( window, true );
-    ImGui_ImplOpenGL3_Init ();
-
-
- * ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplGlfw_NewFrame();
-        ImGui::NewFrame();
-        // Se dibujan los controles de Dear ImGui
-        // Aquí va el dibujado de la escena con instrucciones OpenGL
-        ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData ( ImGui::GetDrawData() );
-
-        ImGui::SetNextWindowPos( ImVec2 (10, 10), ImGuiCond_Once);
-
-        if ( ImGui::Begin ( "Mensajes" ) )
-        { // La ventana está desplegada
-            ImGui::SetWindowFontScale ( 1.0f ); // Escalamos el texto si fuera necesario
-            // Pintamos los controles
-        }
-        // Si la ventana no está desplegada, Begin devuelve false
-        ImGui::End ();
-
-        ImGui_ImplOpenGL3_Shutdown();
-        ImGui_ImplGlfw_Shutdown();
-        ImGui::DestroyContext ();
- */

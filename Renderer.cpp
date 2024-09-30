@@ -22,6 +22,10 @@ namespace PAG
                   << glGetString ( GL_VENDOR ) << std::endl
                   << glGetString ( GL_VERSION ) << std::endl
                   << glGetString ( GL_SHADING_LANGUAGE_VERSION ) << std::endl;
+
+        for(int i = 0 ; i < 4; i++){
+            colorFondo[i] = 0.0;
+        }
     }
 
     Renderer::~Renderer() {
@@ -45,7 +49,7 @@ namespace PAG
     void Renderer::refrescar() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glClearColor(1.0, 0.0, 0.0, 1.0);
+        glClearColor(colorFondo[0], colorFondo[1], colorFondo[2], colorFondo[3]);
     }
 
     /**
@@ -123,6 +127,24 @@ namespace PAG
         std::cout << "Movida la rueda del raton " << xoffset
                   << " Unidades en horizontal y " << yoffset
                   << " unidades en vertical" << std::endl;
+    }
+
+    /**
+     * Getter del color de fondo
+     * @return
+     */
+    GLfloat *Renderer::getColorFondo(){
+        return colorFondo;
+    }
+
+    /**
+     * Setter del color de fondo
+     * @param color El color
+     */
+    void Renderer::setColorFondo(const GLfloat color[4]) {
+        for(int i = 0 ; i < 4 ; i++){
+            colorFondo[i] = color[i];
+        }
     }
 }
 

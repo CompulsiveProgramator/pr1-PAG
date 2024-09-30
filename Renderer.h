@@ -17,11 +17,14 @@ namespace PAG{
     private:
         static Renderer* instancia; //Para el patron Singleton
         Renderer();
+        GLfloat colorFondo[4];
 
     public:
         virtual ~Renderer();
         static Renderer* getInstancia(); //Para obtener la instancia desde fuera
         void refrescar();
+        GLfloat *getColorFondo();
+        void setColorFondo(const GLfloat color[4]);
 
         //Todos los metodos del main de la Pr1:
         static void error_callback ( int errno, const char* desc );
