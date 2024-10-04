@@ -167,6 +167,11 @@ namespace PAG
      */
     void Renderer::creaShaderProgram() {
         //Escribimos los shaders en un string:
+
+        /**
+         * El vertex shader no hace ningun procesado a la geometría,
+         * porque ya se la  pasamos procesada
+         */
         std::string miVertexShader =
                 "#version 410\n"
                 "layout (location = 0) in vec3 posicion;\n"
@@ -195,6 +200,32 @@ namespace PAG
         glAttachShader (idSP, idVS); //Y le metemos los shaders!
         glAttachShader ( idSP, idFS);
         glLinkProgram (idSP); //Activamos el programa
+    }
+
+    /**
+     * Metodo para crear el VAO para el modelo a renderizar
+     * @note No se usa ninguna comprobacion de errores todo
+     */
+    void Renderer::creaModelo() {
+        //Los vertices con sus posiciones (x,y,z) en un VBO no entrelazado
+        GLfloat vertices[] = { -.5, -.5, 0,
+                               .5, -.5, 0,
+                               .0, .5, 0};
+
+        GLuint indices[] = {0, 1, 2}; //Los datos del bonito IBO
+
+        glGenVertexArrays ( 1, &idVAO); //Creamos el VAO
+        glBindVertexArray ( idVAO);
+
+        glGenBuffers ( 1, &idVBO); //Creamos el VBO
+        glBindBuffer (GL_ARRAY_BUFFER, idVBO);
+        glBufferData( GL_ARRAY_BUFFER, 9*sizeof(GLfloat), vertices, GL_STATIC_DRAW); //Le indicamos donde estan los datos
+        glVertexAttribPointer (0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), nullptr); //Le decimos como recorrer el VBO
+        glEnableVertexAttribArray(0);
+
+        glGenBuffers (1, &idIBO); //Creamos el IBO
+        glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, idIBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, 3*sizeof(GLuint), indices, GL_STATIC_DRAW); //Le pasamos los datos al IBO
     }
 
 
