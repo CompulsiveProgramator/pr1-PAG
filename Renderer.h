@@ -20,6 +20,12 @@ namespace PAG{
         Renderer();
         GLfloat colorFondo[4];
         GLFWwindow *window;
+        GLuint idVS = 0; //Id del vertex shader
+        GLuint idFS = 0; //Id del fragment shader
+        GLuint idSP = 0; //Id del shader program
+        GLuint idVAO = 0; //Id del Vertex Array Object
+        GLuint idVBO = 0; //Id del Vertex Buffer Object
+        GLuint idIBO = 0; //Id del Index Buffer Object
 
         Renderer(GLFWwindow *window);
     public:

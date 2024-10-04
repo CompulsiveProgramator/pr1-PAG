@@ -10,6 +10,10 @@ namespace PAG
 {
     Renderer* PAG::Renderer::instancia = nullptr;
 
+    /**
+     * Constructor que asocia al objeto Renderer a su ventana
+     * @param window
+     */
     Renderer::Renderer(GLFWwindow *window) {
         this->window = window;
     }
