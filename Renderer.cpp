@@ -160,4 +160,42 @@ namespace PAG
             colorFondo[i] = color[i];
         }
     }
+
+    /**
+     * Métoodo para crear, compilar y enlazar el shader program
+     * @note Sin comprobación de errores todo
+     */
+    void Renderer::creaShaderProgram() {
+        //Escribimos los shaders en un string:
+        std::string miVertexShader =
+                "#version 410\n"
+                "layout (location = 0) in vec3 posicion;\n"
+                "void main ()\n"
+                "{ gl_Position = vec4 ( posicion, 1 );\n"
+                "}\n";
+
+        std::string miFragmentShader =
+                "#version 410\n"
+                "out vec4 colorFragmento;\n"
+                "void main ()\n"
+                "{ colorFragmento = vec4 ( 1.0, .4, .2, 1.0 );\n"
+                "}\n";
+
+        idVS = glCreateShader( GL_VERTEX_SHADER );
+        const GLchar* fuenteVS = miVertexShader.c_str();
+        glShaderSource ( idVS, 1, &fuenteVS, nullptr);
+        glCompileShader( idVS);
+
+        idFS = glCreateShader ( GL_FRAGMENT_SHADER);
+        const GLchar* fuenteFS = miFragmentShader.c_str();
+        glShaderSource (idFS, 1, &fuenteFS, nullptr); //Le decimos donde esta el shader
+        glCompileShader (idFS); //Y lo compilamos ;)
+
+        idSP = glCreateProgram(); //Creamos el shader program
+        glAttachShader (idSP, idVS); //Y le metemos los shaders!
+        glAttachShader ( idSP, idFS);
+        glLinkProgram (idSP); //Activamos el programa
+    }
+
+
 }
