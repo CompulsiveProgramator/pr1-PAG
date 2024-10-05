@@ -7,12 +7,110 @@
 #include "Renderer.h"
 #include "GUI.h"
 
+/*
+ * Los callbacks estan en el main para GLFW, y desde ellos llamamos a Renderer y GUI respectivamente
+ */
+
+/**
+ * Callback llamado si hay un error en GLFW
+ * @param _errno El error
+ * @param desc
+ */
+void error_callback ( int errno, const char* desc ) {
+    std::string aux (desc);
+    std::cout << "Error de GLFW número " << errno << ": " << aux << std::endl;
+}
+
+/**
+ * Callback llamado cuando redimensionamos la pantalla
+ * @param window
+ */
+void window_refresh_callback ( GLFWwindow *window ) {
+    PAG::Renderer::getInstancia().refrescar();
+    glfwSwapBuffers(window); //La funcion para intercambiar los buffers, y que no haya parpadeo
+    std::cout << "Termina el callback de refresco\n";
+}
+
+/**
+ * Callback llamado cuando redimensionamos la pantalla
+ * El framebuffer es un "mapa de bits" que representa los pixeles de la ventana de la app
+ * @param window
+ * @param width
+ * @param height
+ */
+void framebuffer_size_callback ( GLFWwindow *window, int width, int height ) {
+    std::cout << "Framebuffer llamado" << std::endl;
+    glViewport(0, 0, width, height);
+}
+
+/**
+ * Callback llamado cuando pulsamos una tecla del teclado
+ * @param window
+ * @param key
+ * @param scancode
+ * @param action
+ * @param mods
+ */
+void key_callback ( GLFWwindow *window, int key, int scancode, int action, int mods ) {
+    if ( key == GLFW_KEY_ESCAPE && action == GLFW_PRESS )
+    {
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
+    }
+}
+
+/**
+ * Callback llamado cuando pulsamos el clic del raton
+ * @param window
+ * @param button
+ * @param action
+ * @param mods
+ */
+void mouse_button_callback ( GLFWwindow *window, int button, int action, int mods ) {
+    if ( action == GLFW_PRESS )
+    {
+        GLfloat color[4] = {.0, .0, .0, 1.0};
+
+        //En los switchs, no se pueden declarar variables en su interior
+        switch (button) {
+            case 0:
+                std::cout << "Clic izquierdo pulsado" << std::endl;
+                color[0] = 1.0;
+                PAG::Renderer::getInstancia().setColorFondo(color);
+                break;
+            case 1:
+                std::cout << "Clic derecho pulsado" << std::endl;
+                color[1] = 1.0;
+                PAG::Renderer::getInstancia().setColorFondo(color);
+                break;
+            default:
+                break;
+        }
+    }
+    else if ( action == GLFW_RELEASE )
+    {
+        std::string cad = "Soltado el boton: ";
+        cad.push_back(char(button + 48)); //Para hacer la conversion a caracter
+    }
+}
+
+/**
+ * Callback llamado cuando movemos la rueda del raton
+ * @param window
+ * @param xoffset
+ * @param yoffset
+ */
+void scroll_callback ( GLFWwindow *window, double xoffset, double yoffset ) {
+    std::string cad;
+    //Para convertir de int,float,double a string, usar std::to_string(). Se puede usar desde C++ 11
+    cad = "Movida la rueda del raton" + std::to_string(xoffset) + " unidades en horizontal y " + std::to_string(yoffset) + " unidades en vertical\n";
+}
+
 int main()
 {
-    std::cout << "Starting Application PAG - Prueba 01" << std::endl;
+    std::cout << "Starting Application PAG - Prueba 03" << std::endl;
 
     // - Este callback hay que registrarlo ANTES de llamar a glfwInit
-    glfwSetErrorCallback ( (GLFWerrorfun) PAG::Renderer::error_callback);
+    glfwSetErrorCallback ( (GLFWerrorfun) error_callback);
 
     // - Inicializa GLFW. Es un proceso que sólo debe realizarse una vez en la aplicación
     if ( glfwInit () != GLFW_TRUE )
@@ -59,25 +157,18 @@ int main()
     }
 
     // - Registramos los callbacks que responderán a los eventos principales
-    glfwSetWindowRefreshCallback ( window, PAG::Renderer::window_refresh_callback );
-    glfwSetFramebufferSizeCallback ( window, PAG::Renderer::framebuffer_size_callback );
-    glfwSetKeyCallback ( window, PAG::Renderer::key_callback );
-    glfwSetMouseButtonCallback ( window, PAG::Renderer::mouse_button_callback );
-    glfwSetScrollCallback ( window, PAG::Renderer::scroll_callback );
+    glfwSetWindowRefreshCallback ( window, window_refresh_callback );
+    glfwSetFramebufferSizeCallback ( window, framebuffer_size_callback );
+    glfwSetKeyCallback ( window, key_callback );
+    glfwSetMouseButtonCallback ( window, mouse_button_callback );
+    glfwSetScrollCallback ( window, scroll_callback );
 
-    //Asociamos la GUI a la ventana ;)
-    PAG::GUI *instanciaGUI = PAG::GUI::getInstancia(window);
-
-    // - Ciclo de eventos de la aplicación. La condición de parada es que la
-    // ventana principal deba cerrarse. Por ejemplo, si el usuario pulsa el
-    // botón de cerrar la ventana (la X).
+    //Ciclo de eventos
     while ( !glfwWindowShouldClose ( window ) )
     {
-        instanciaGUI->refrescar();
+        PAG::Renderer::getInstancia().refrescar();
 
-        // - GLFW usa un doble buffer para que no haya parpadeo. Esta orden
-        // intercambia el buffer back (en el que se ha estado dibujando) por el
-        // que se mostraba hasta ahora (front).
+        //Para ver lo que se ha pintado en la llamada de justo arriba
         glfwSwapBuffers ( window );
 
         // - Obtiene y organiza los eventos pendientes, tales como pulsaciones de
@@ -88,8 +179,6 @@ int main()
 
     // - Una vez terminado el ciclo de eventos, liberar recursos, etc.
     std::cout << "Finishing application pag prueba" << std::endl;
-
-    delete PAG::GUI::getInstancia(window); /// Para liberar los recursos de GUI
 
     glfwDestroyWindow ( window ); // - Cerramos y destruimos la ventana de la aplicación.
     window = nullptr;
