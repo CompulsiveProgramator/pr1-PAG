@@ -2,8 +2,6 @@
 // Created by secre on 27/09/2024.
 //
 
-#include <glad/glad.h>
-#include <GL/gl.h>
 #include "Renderer.h"
 
 namespace PAG

@@ -5,6 +5,8 @@
 #ifndef PR1_RENDERER_H
 #define PR1_RENDERER_H
 
+#include <glad/glad.h>
+#include <GL/gl.h>
 #include <iostream>
 
 ///El espacio de nombres para las prácticas de Programación de Aplicaciones Gráficas

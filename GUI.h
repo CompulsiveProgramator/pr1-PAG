@@ -10,20 +10,28 @@
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
+#include <vector>
+#include "GL/gl.h" //Solo para el color de fondo de la ventana de color
 
 namespace PAG
 {
     /**
-     * Clase segun patron SINGLETON para gestionar las ventanas de la interfaz grafica
-     * Muy chula para controlar variables de nuestra aplicacion ;)
+     * Clase segun patron SINGLETON para gestionar la interfaz gráfica de usuario (la GUI para los ingleses ;))
      */
     class GUI {
     private:
         static GUI* instancia;
         GUI();
+        GLfloat *color;
+
+        void pintarVentanaColor();
     public:
         virtual ~GUI();
         static GUI& getInstancia();
+        void refrescar(); //Metodo para pintar la ventana
+
+        //Para la ventana de color:
+        void setColor(GLfloat *_color);
     };
 }
 

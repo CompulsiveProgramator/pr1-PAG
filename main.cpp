@@ -11,6 +11,8 @@
  * Los callbacks estan en el main para GLFW, y desde ellos llamamos a Renderer y GUI respectivamente
  */
 
+//ToDo Los callbacks a ImGui
+
 /**
  * Callback llamado si hay un error en GLFW
  * @param _errno El error
@@ -163,10 +165,25 @@ int main()
     glfwSetMouseButtonCallback ( window, mouse_button_callback );
     glfwSetScrollCallback ( window, scroll_callback );
 
+    /// Inicialización  de DearIMGui
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO();
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init();
+
+    ///Asociamos a la instancia de GUI, las ventanas que vamos a crear:
+    PAG::Renderer instanciaRenderer = PAG::Renderer::getInstancia();
+    PAG::GUI instanciaGUI = PAG::GUI::getInstancia();
+
+    instanciaGUI.setColor(instanciaRenderer.getColorFondo());
+
     //Ciclo de eventos
     while ( !glfwWindowShouldClose ( window ) )
     {
-        PAG::Renderer::getInstancia().refrescar();
+        instanciaRenderer.refrescar(); //Primero se dibuja el Renderer
+        instanciaGUI.refrescar(); //La GUI se dibuja lo ultimo, porque es lo que mas arriba está ;)
 
         //Para ver lo que se ha pintado en la llamada de justo arriba
         glfwSwapBuffers ( window );
@@ -179,6 +196,11 @@ int main()
 
     // - Una vez terminado el ciclo de eventos, liberar recursos, etc.
     std::cout << "Finishing application pag prueba" << std::endl;
+
+    /// Liberamos los recursos de ImGui
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext ();
 
     glfwDestroyWindow ( window ); // - Cerramos y destruimos la ventana de la aplicación.
     window = nullptr;

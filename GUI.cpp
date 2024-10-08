@@ -10,8 +10,7 @@ PAG::GUI* PAG::GUI::instancia = nullptr; //Para inicializar la instancia como nu
  * Constructor por defecto de la clase, que inicializa toodo para que ImGui funcione
  * @param window Es la ventana sobre la que se pintará la GUI
  */
-PAG::GUI::GUI() {
-
+PAG::GUI::GUI(){
 }
 
 /**
@@ -31,4 +30,40 @@ PAG::GUI &PAG::GUI::getInstancia() {
     }
 
     return *instancia;
+}
+
+/**
+ * Metodo para refrescar la ventana
+ */
+void PAG::GUI::refrescar() {
+    pintarVentanaColor();
+}
+
+void PAG::GUI::pintarVentanaColor() {
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+
+    // Ventana para pillar el color de fondo:
+    ImGui::SetNextWindowPos ( ImVec2 (10, 10), ImGuiCond_Once );
+
+    ImGui::Begin("Color picker del fondo");
+    float w = (ImGui::GetContentRegionAvail().x - ImGui::GetStyle().ItemSpacing.y) * 0.80f;
+    ImGui::SetNextItemWidth(w);
+
+    ImGui::Text("Selecciona el color de fondo:");
+    ImGui::ColorPicker3("##MyColor##6", (float*) color, ImGuiColorEditFlags_PickerHueWheel | ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoAlpha);
+
+    ImGui::End();
+
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData ( ImGui::GetDrawData() );
+}
+
+/**
+ * Metodo para asignarle a la ventana de color que color modificar
+ * @param _color El color a modificar
+ */
+void PAG::GUI::setColor(GLfloat *_color) {
+    this->color = _color;
 }
