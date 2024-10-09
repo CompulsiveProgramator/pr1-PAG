@@ -40,6 +40,14 @@ namespace PAG{
         void creaShaderProgram();
         void creaModelo();
         void inicializaOpenGL();
+
+        //Para compilar un shader al completo:
+        GLuint crearSP(); //Devuelve el handler
+        std::string leerShaderSource(std::string filename); //Devuelve el string del shader source
+        GLuint creaShaderObject(GLenum shaderType); //Devuelve el shader handler
+        void compilarShaderObject(std::string shaderSourceString, GLuint shaderHandler);
+        void enlazarSP(GLuint handler, GLuint shaderHandler);
+
     };
 }
 
