@@ -183,6 +183,11 @@ int main()
 
     instanciaGUI.setColor(instanciaRenderer.getColorFondo());
 
+    /// Llamamos al shader program y creamos el modelo que se le pasara
+    instanciaRenderer.creaShaderProgram();
+    instanciaRenderer.creaModelo();
+
+    instanciaRenderer.inicializaOpenGL(); //Inicializamos los parametros globales de OpenGL
     //Ciclo de eventos
     while ( !glfwWindowShouldClose ( window ) )
     {

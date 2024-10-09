@@ -47,7 +47,6 @@ namespace PAG
      */
     void Renderer::refrescar() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
         glClearColor(colorFondo[0], colorFondo[1], colorFondo[2], colorFondo[3]);
     }
 
