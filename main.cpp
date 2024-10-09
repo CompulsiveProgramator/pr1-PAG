@@ -11,8 +11,6 @@
  * Los callbacks estan en el main para GLFW, y desde ellos llamamos a Renderer y GUI respectivamente
  */
 
-//ToDo Los callbacks a ImGui
-
 /**
  * Callback llamado si hay un error en GLFW
  * @param _errno El error
@@ -62,6 +60,8 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
     if ( key == GLFW_KEY_ESCAPE && action == GLFW_PRESS )
     {
         glfwSetWindowShouldClose(window, GLFW_TRUE);
+        ImGuiIO& io = ImGui::GetIO();
+        io.AddKeyEvent(ImGuiKey_Escape, true);
     }
 }
 
@@ -79,15 +79,20 @@ void mouse_button_callback ( GLFWwindow *window, int button, int action, int mod
         cad.push_back(char(button + 48));
         cad += "\n";
         PAG::GUI::getInstancia().agregarMensaje(cad);
+        ImGuiIO& io = ImGui::GetIO();
+        io.AddMouseButtonEvent(button, GLFW_PRESS);
     }
     else if ( action == GLFW_RELEASE )
     {
         std::string cad = "Soltado el boton: ";
         cad.push_back(char(button + 48)); //Para hacer la conversion a caracter
         cad += "\n";
-
         PAG::GUI::getInstancia().agregarMensaje(cad);
+        ImGuiIO& io = ImGui::GetIO();
+        io.AddMouseButtonEvent(button, GLFW_RELEASE);
     }
+
+
 }
 
 /**
@@ -101,6 +106,9 @@ void scroll_callback ( GLFWwindow *window, double xoffset, double yoffset ) {
     //Para convertir de int,float,double a string, usar std::to_string(). Se puede usar desde C++ 11
     cad = "Movida la rueda del raton" + std::to_string(xoffset) + " unidades en horizontal y " + std::to_string(yoffset) + " unidades en vertical\n";
     PAG::GUI::getInstancia().agregarMensaje(cad);
+
+    ImGuiIO& io = ImGui::GetIO();
+    io.AddMouseWheelEvent(xoffset, yoffset);
 }
 
 int main()
