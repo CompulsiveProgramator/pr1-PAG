@@ -11,6 +11,7 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 #include <vector>
+#include <iostream>
 #include "GL/gl.h" //Solo para el color de fondo de la ventana de color
 
 namespace PAG
@@ -23,6 +24,7 @@ namespace PAG
         static GUI* instancia;
         GUI();
         GLfloat *color;
+        std::vector<std::string> log;
 
         void pintarVentanaColor();
     public:
@@ -32,6 +34,7 @@ namespace PAG
 
         //Para la ventana de color:
         void setColor(GLfloat *_color);
+        void agregarMensaje(std::string& cad);
     };
 }
 

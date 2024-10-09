@@ -10,7 +10,7 @@ PAG::GUI* PAG::GUI::instancia = nullptr; //Para inicializar la instancia como nu
  * Constructor por defecto de la clase, que inicializa toodo para que ImGui funcione
  * @param window Es la ventana sobre la que se pintará la GUI
  */
-PAG::GUI::GUI(){
+PAG::GUI::GUI(): log(){
 }
 
 /**
@@ -46,14 +46,20 @@ void PAG::GUI::pintarVentanaColor() {
 
     // Ventana para pillar el color de fondo:
     ImGui::SetNextWindowPos ( ImVec2 (10, 10), ImGuiCond_Once );
-
     ImGui::Begin("Color picker del fondo");
     float w = (ImGui::GetContentRegionAvail().x - ImGui::GetStyle().ItemSpacing.y) * 0.80f;
     ImGui::SetNextItemWidth(w);
-
     ImGui::Text("Selecciona el color de fondo:");
     ImGui::ColorPicker3("##MyColor##6", (float*) color, ImGuiColorEditFlags_PickerHueWheel | ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoAlpha);
+    ImGui::End();
 
+    //Ventana del log:
+    ImGui::SetNextWindowPos ( ImVec2 (200, 10), ImGuiCond_Once );
+    ImGui::Begin("Log de mensajes");
+    std::vector<std::string> aux = PAG::GUI::instancia->log;
+    for(int i = 0 ; i < aux.size() ; i++){
+        ImGui::Text(aux[i].c_str());
+    }
     ImGui::End();
 
     ImGui::Render();
@@ -66,4 +72,12 @@ void PAG::GUI::pintarVentanaColor() {
  */
 void PAG::GUI::setColor(GLfloat *_color) {
     this->color = _color;
+}
+
+/**
+ * Metodo para agregar un mensaje al log de la GUI
+ * @param cad El nuevo mensaje
+ */
+void PAG::GUI::agregarMensaje(std::string& cad) {
+    log.push_back(cad);
 }

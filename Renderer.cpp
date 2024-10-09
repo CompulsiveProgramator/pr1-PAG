@@ -144,4 +144,13 @@ namespace PAG
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_MULTISAMPLE);
     }
+
+    /**
+     * Funcion para pasar de coordenadas de mundo virtual, a las de la pantalla tan guay de mi ordenador ( o del tuyo si lo ejecutas en el tuyo)
+     * @param width
+     * @param height
+     */
+    void Renderer::modificarTamañoVentana(int width, int height) {
+        glViewport(0, 0, width, height);
+    }
 }

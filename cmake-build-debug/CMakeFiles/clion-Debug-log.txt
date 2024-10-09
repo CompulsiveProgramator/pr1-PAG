@@ -104,6 +104,6 @@ Install finished successfully
 -- Conan: Target declared 'glad::glad'
 -- CMake-Conan: find_package(glfw3) found, 'conan install' already ran
 -- Conan: Target declared 'glfw'
--- Configuring done (3.5s)
--- Generating done (0.1s)
+-- Configuring done (2.8s)
+-- Generating done (0.0s)
 -- Build files have been written to: C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug

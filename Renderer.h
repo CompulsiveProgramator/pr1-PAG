@@ -33,6 +33,9 @@ namespace PAG{
         GLfloat *getColorFondo();
         void setColorFondo(const GLfloat color[4]);
 
+        //Para los callbacks del main:
+        void modificarTamañoVentana(int width, int height);
+
         //Para la practica 3:
         void creaShaderProgram();
         void creaModelo();

@@ -21,6 +21,8 @@
 void error_callback ( int errno, const char* desc ) {
     std::string aux (desc);
     std::cout << "Error de GLFW número " << errno << ": " << aux << std::endl;
+    std::string cad = "Error de GLFW número " + std::to_string(errno) + ": " + aux + "\n";
+    PAG::GUI::getInstancia().agregarMensaje(cad);
 }
 
 /**
@@ -30,7 +32,8 @@ void error_callback ( int errno, const char* desc ) {
 void window_refresh_callback ( GLFWwindow *window ) {
     PAG::Renderer::getInstancia().refrescar();
     glfwSwapBuffers(window); //La funcion para intercambiar los buffers, y que no haya parpadeo
-    std::cout << "Termina el callback de refresco\n";
+    std::string aux = "Termina el callback de refresco\n";
+    PAG::GUI::getInstancia().agregarMensaje(aux);
 }
 
 /**
@@ -41,8 +44,10 @@ void window_refresh_callback ( GLFWwindow *window ) {
  * @param height
  */
 void framebuffer_size_callback ( GLFWwindow *window, int width, int height ) {
-    std::cout << "Framebuffer llamado" << std::endl;
-    glViewport(0, 0, width, height);
+    std::string aux;
+    aux = "Framebuffer llamado\n";
+    PAG::GUI::getInstancia().agregarMensaje(aux);
+    PAG::Renderer::getInstancia().modificarTamañoVentana(width, height);
 }
 
 /**
@@ -70,28 +75,18 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
 void mouse_button_callback ( GLFWwindow *window, int button, int action, int mods ) {
     if ( action == GLFW_PRESS )
     {
-        GLfloat color[4] = {.0, .0, .0, 1.0};
-
-        //En los switchs, no se pueden declarar variables en su interior
-        switch (button) {
-            case 0:
-                std::cout << "Clic izquierdo pulsado" << std::endl;
-                color[0] = 1.0;
-                PAG::Renderer::getInstancia().setColorFondo(color);
-                break;
-            case 1:
-                std::cout << "Clic derecho pulsado" << std::endl;
-                color[1] = 1.0;
-                PAG::Renderer::getInstancia().setColorFondo(color);
-                break;
-            default:
-                break;
-        }
+        std::string cad = "Pulsado el boton: ";
+        cad.push_back(char(button + 48));
+        cad += "\n";
+        PAG::GUI::getInstancia().agregarMensaje(cad);
     }
     else if ( action == GLFW_RELEASE )
     {
         std::string cad = "Soltado el boton: ";
         cad.push_back(char(button + 48)); //Para hacer la conversion a caracter
+        cad += "\n";
+
+        PAG::GUI::getInstancia().agregarMensaje(cad);
     }
 }
 
@@ -105,6 +100,7 @@ void scroll_callback ( GLFWwindow *window, double xoffset, double yoffset ) {
     std::string cad;
     //Para convertir de int,float,double a string, usar std::to_string(). Se puede usar desde C++ 11
     cad = "Movida la rueda del raton" + std::to_string(xoffset) + " unidades en horizontal y " + std::to_string(yoffset) + " unidades en vertical\n";
+    PAG::GUI::getInstancia().agregarMensaje(cad);
 }
 
 int main()
