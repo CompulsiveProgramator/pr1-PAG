@@ -186,8 +186,8 @@ int main()
     /// Llamamos al shader program y creamos el modelo que se le pasara
     try{
         instanciaRenderer.creaShaderProgram();
-    }catch (std::string message){
-        instanciaGUI.agregarMensaje(message);
+    }catch (std::string &message){
+        std::cout << message;
     }
     instanciaRenderer.creaModelo();
 

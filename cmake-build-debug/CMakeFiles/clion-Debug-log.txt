@@ -56,6 +56,7 @@ Graph root
 Requirements
     glad/0.1.36#c926453afdd9d5f72cc4ee6a8fff7d73 - Cache
     glfw/3.3.8#eaa2d6de4e064b2c92ad7fc4ac255141 - Cache
+    glm/1.0.1#94392c53a527f7d830119b84fe80c754 - Cache
     imgui/1.91.0#4cbf749d98d13c2c0253973b1e0580d8 - Cache
     opengl/system#4df6fecde4084386beded3ed0e56e4ea - Cache
 
@@ -63,15 +64,17 @@ Requirements
 Requirements
     glad/0.1.36#c926453afdd9d5f72cc4ee6a8fff7d73:4288fece81e0215a1bc8330481c6aa713dbdb219#2c90e7623d865815d7fd608024052ac4 - Cache
     glfw/3.3.8#eaa2d6de4e064b2c92ad7fc4ac255141:8017d78d70cd810fbc93ef6c919368c5a0f66568#5d3c45aaa11b48923384614e176910e0 - Cache
+    glm/1.0.1#94392c53a527f7d830119b84fe80c754:da39a3ee5e6b4b0d3255bfef95601890afd80709#2bbcd0ae421fb99e8713dabae8437299 - Cache
     imgui/1.91.0#4cbf749d98d13c2c0253973b1e0580d8:26c25a003bb3b7e4442c6036ea3f34cf49de4264#6a56c566e6a9362823514067fb303d94 - Cache
     opengl/system#4df6fecde4084386beded3ed0e56e4ea:da39a3ee5e6b4b0d3255bfef95601890afd80709#0ba8627bd47edc3a501e8f0eb9a79e5e - Cache
 
 ======== Installing packages ========
-glad/0.1.36: Already installed! (1 of 4)
-imgui/1.91.0: Already installed! (2 of 4)
+glad/0.1.36: Already installed! (1 of 5)
+glm/1.0.1: Already installed! (2 of 5)
+imgui/1.91.0: Already installed! (3 of 5)
 imgui/1.91.0: Appending PATH env var with : C:\Users\secre\.conan2\p\b\imguif996f22b74b0c\p\bin
-opengl/system: Already installed! (3 of 4)
-glfw/3.3.8: Already installed! (4 of 4)
+opengl/system: Already installed! (4 of 5)
+glfw/3.3.8: Already installed! (5 of 5)
 WARN: deprecated: Usage of deprecated Conan 1.X features that will be removed in Conan 2.X:
 WARN: deprecated:     'env_info' used in: imgui/1.91.0
 WARN: deprecated:     'cpp_info.filenames' used in: glfw/3.3.8, opengl/system
@@ -82,11 +85,12 @@ WARN: deprecated:     'cpp_info.build_modules' used in: glfw/3.3.8
 conanfile.py: Writing generators to C:\Users\secre\CLionProjects\PAG\pr1-PAG\cmake-build-debug\conan\build\Debug\generators
 conanfile.py: Generator 'CMakeDeps' calling 'generate()'
 conanfile.py: CMakeDeps necessary find_package() and targets for your CMakeLists.txt
+    find_package(glm)
     find_package(imgui)
     find_package(glfw3)
     find_package(glad)
     find_package(opengl_system)
-    target_link_libraries(... imgui::imgui glfw glad::glad opengl::opengl)
+    target_link_libraries(... glm::glm imgui::imgui glfw glad::glad opengl::opengl)
 conanfile.py: Calling generate()
 conanfile.py: Generators folder: C:\Users\secre\CLionProjects\PAG\pr1-PAG\cmake-build-debug\conan\build\Debug\generators
 conanfile.py: CMakeToolchain generated: conan_toolchain.cmake
@@ -104,6 +108,8 @@ Install finished successfully
 -- Conan: Target declared 'glad::glad'
 -- CMake-Conan: find_package(glfw3) found, 'conan install' already ran
 -- Conan: Target declared 'glfw'
--- Configuring done (2.8s)
+-- CMake-Conan: find_package(glm) found, 'conan install' already ran
+-- Conan: Target declared 'glm::glm'
+-- Configuring done (1.9s)
 -- Generating done (0.0s)
 -- Build files have been written to: C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug

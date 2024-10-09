@@ -10,6 +10,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include "glm/mat4x4.hpp"
 
 ///El espacio de nombres para las prácticas de Programación de Aplicaciones Gráficas
 namespace PAG{
@@ -44,7 +45,7 @@ namespace PAG{
         void inicializaOpenGL();
 
         //Para compilar un shader al completo:
-        void crearSP(GLuint handler);
+        void crearSP(GLuint &handler);
         std::string leerShaderSource(std::string filename);
         GLuint creaShaderObject(GLenum shaderType);
         void compilarShaderObject(std::string shaderSourceString, GLuint shaderHandler, GLenum shaderType);

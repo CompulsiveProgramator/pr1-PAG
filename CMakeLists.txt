@@ -19,9 +19,10 @@ add_executable(Pr1 main.cpp
 find_package(opengl_system)
 find_package(glad)
 find_package(glfw3)
+find_package(glm)
 
 # Para poder agregar directamente al main las librerias con <>
 target_include_directories(${PROJECT_NAME} PUBLIC glad/include imgui)
 
 # Para que Cmake agregue las librerias al proyecto
-target_link_libraries(${PROJECT_NAME} opengl::opengl glad::glad glfw)
+target_link_libraries(${PROJECT_NAME} opengl::opengl glad::glad glfw glm::glm)

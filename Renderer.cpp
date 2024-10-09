@@ -79,7 +79,9 @@ namespace PAG
         glClearColor(colorFondo[0], colorFondo[1], colorFondo[2], colorFondo[3]);
 
         glPolygonMode ( GL_FRONT_AND_BACK, GL_FILL );
+
         glUseProgram ( idSP );
+        ///Hacer esto por cada malla de triangulos jeje
         glBindVertexArray ( idVAO );
         glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, idIBO );
         glDrawElements ( GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr );
@@ -105,28 +107,27 @@ namespace PAG
 
     /**
      * Métoodo para crear, compilar y enlazar el shader program
-     * @note Sin comprobación de errores todo
+     * Con comprobacion de errores
      */
     void Renderer::creaShaderProgram() {
-        GLuint handler = 0;
         std::string contenido;
         GLuint shaderHandler; //Para gestionar cada shader object
         std::string filename;
 
-        crearSP(handler); //Fase 1
+        crearSP(idSP); //Fase 1
 
         //1o El vertex shader
-        filename = "pag03-vs.glsl";
+        filename = "C:\\Users\\secre\\OneDrive\\Escritorio\\pag03-vs.glsl";
         contenido = leerShaderSource(filename); //Fase 2
         shaderHandler = creaShaderObject(GL_VERTEX_SHADER); //Fase 3
         compilarShaderObject(contenido, shaderHandler, GL_VERTEX_SHADER); //Fase 4
-        enlazarSP(handler, shaderHandler, filename);
+        enlazarSP(idSP, shaderHandler, filename);
 
-        filename = "pag03-fs.glsl";
+        filename = "C:\\Users\\secre\\OneDrive\\Escritorio\\pag03-fs.glsl";
         contenido = leerShaderSource(filename); //Fase 2
         shaderHandler = creaShaderObject(GL_FRAGMENT_SHADER); //Fase 3
         compilarShaderObject(contenido, shaderHandler, GL_FRAGMENT_SHADER); //Fase 4
-        enlazarSP(handler, shaderHandler, filename); //Fase 5
+        enlazarSP(idSP, shaderHandler, filename); //Fase 5
     }
 
     /**
@@ -134,7 +135,7 @@ namespace PAG
      * Crear el SP vacio
      * @return
      */
-    void Renderer::crearSP(GLuint handler) {
+    void Renderer::crearSP(GLuint &handler) {
         handler = glCreateProgram();
         if(handler == 0){
             throw std::string("Cannot create shader program\n");
@@ -148,9 +149,9 @@ namespace PAG
      * @return El string con el contenido del archivo
      */
     std::string Renderer::leerShaderSource(std::string filename) {
-        std::ifstream shaderSourceFile;
-        shaderSourceFile.open(filename);
-        if(!shaderSourceFile){
+        std::ifstream shaderSourceFile(filename);
+
+        if(!shaderSourceFile.is_open()){
             throw std::string("Cannot open shader source file\n");
         }
 
@@ -241,7 +242,6 @@ namespace PAG
 
     /**
      * Metodo para crear el VAO para el modelo a renderizar
-     * @note No se usa ninguna comprobacion de errores todo
      */
     void Renderer::creaModelo() {
         //Los vertices con sus posiciones (x,y,z) en un VBO no entrelazado (solo posicion)
@@ -270,7 +270,14 @@ namespace PAG
      */
     void Renderer::inicializaOpenGL(){
         glClearColor(colorFondo[0], colorFondo[1], colorFondo[2], colorFondo[3]);
+
         glEnable(GL_DEPTH_TEST);
+        glDepthFunc(GL_LEQUAL);
+
+        glPrimitiveRestartIndex(0xFFFF);
+        glEnable(GL_PRIMITIVE_RESTART);
+
+        glEnable(GL_PROGRAM_POINT_SIZE);
         glEnable(GL_MULTISAMPLE);
     }
 
