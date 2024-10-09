@@ -8,6 +8,8 @@
 #include <glad/glad.h>
 #include <GL/gl.h>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 ///El espacio de nombres para las prácticas de Programación de Aplicaciones Gráficas
 namespace PAG{
@@ -42,12 +44,11 @@ namespace PAG{
         void inicializaOpenGL();
 
         //Para compilar un shader al completo:
-        GLuint crearSP(); //Devuelve el handler
-        std::string leerShaderSource(std::string filename); //Devuelve el string del shader source
-        GLuint creaShaderObject(GLenum shaderType); //Devuelve el shader handler
-        void compilarShaderObject(std::string shaderSourceString, GLuint shaderHandler);
-        void enlazarSP(GLuint handler, GLuint shaderHandler);
-
+        void crearSP(GLuint handler);
+        std::string leerShaderSource(std::string filename);
+        GLuint creaShaderObject(GLenum shaderType);
+        void compilarShaderObject(std::string shaderSourceString, GLuint shaderHandler, GLenum shaderType);
+        void enlazarSP(GLuint handler, GLuint shaderHandler, std::string filename);
     };
 }
 
