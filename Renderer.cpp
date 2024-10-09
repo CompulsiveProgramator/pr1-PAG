@@ -12,8 +12,6 @@ namespace PAG
      * Constructor por defecto vacio
      */
     Renderer::Renderer() {
-        glEnable ( GL_DEPTH_TEST ); //Para decirle a Open GL que use la profundidad
-
         // - Interrogamos a OpenGL para que nos informe de las propiedades del contexto
         // 3D construido.
         std::cout << glGetString ( GL_RENDERER ) << std::endl
@@ -27,8 +25,39 @@ namespace PAG
         colorFondo[3] = 1.0; //Para que se vea el color completo
     }
 
+    /**
+     * Destructor de la clase
+     */
     Renderer::~Renderer() {
+        if( idVS != 0 )
+        {
+            glDeleteShader(idVS);
+        }
 
+        if( idFS != 0 )
+        {
+            glDeleteShader(idFS);
+        }
+
+        if( idSP != 0 )
+        {
+            glDeleteProgram(idSP);
+        }
+
+        if( idVBO != 0 )
+        {
+            glDeleteBuffers( 1, &idVBO);
+        }
+
+        if( idIBO != 0 )
+        {
+            glDeleteBuffers( 1, &idIBO);
+        }
+
+        if( idVAO != 0 )
+        {
+            glDeleteVertexArrays( 1, &idVAO);
+        }
     }
 
     /**
