@@ -117,13 +117,13 @@ namespace PAG
         crearSP(idSP); //Fase 1
 
         //1o El vertex shader
-        filename = "C:\\Users\\secre\\OneDrive\\Escritorio\\pag03-vs.glsl";
+        filename = "../pag03-vs.glsl";
         contenido = leerShaderSource(filename); //Fase 2
         shaderHandler = creaShaderObject(GL_VERTEX_SHADER); //Fase 3
         compilarShaderObject(contenido, shaderHandler, GL_VERTEX_SHADER); //Fase 4
         enlazarSP(idSP, shaderHandler, filename);
 
-        filename = "C:\\Users\\secre\\OneDrive\\Escritorio\\pag03-fs.glsl";
+        filename = "../ag03-fs.glsl";
         contenido = leerShaderSource(filename); //Fase 2
         shaderHandler = creaShaderObject(GL_FRAGMENT_SHADER); //Fase 3
         compilarShaderObject(contenido, shaderHandler, GL_FRAGMENT_SHADER); //Fase 4

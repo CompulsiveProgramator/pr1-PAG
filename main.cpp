@@ -187,7 +187,7 @@ int main()
     try{
         instanciaRenderer.creaShaderProgram();
     }catch (std::string &message){
-        std::cout << message;
+        instanciaGUI.agregarMensaje(message);
     }
     instanciaRenderer.creaModelo();
 
