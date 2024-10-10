@@ -1,8 +1,9 @@
 #version 410
 
-out vec4 colorFragmento;
+in vec3 colorF;
+out vec3 colorFragmento;
 
 void main()
 {
-    colorFragmento = vec4 ( 1.0, .4, .2, 1.0 );
+    colorFragmento = colorF;
 }

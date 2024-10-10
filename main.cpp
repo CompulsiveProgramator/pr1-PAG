@@ -177,7 +177,7 @@ int main()
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init();
 
-    ///Asociamos a la instancia de GUI, las ventanas que vamos a crear:
+    ///Obtenemos las instancias de los Singletons:
     PAG::Renderer instanciaRenderer = PAG::Renderer::getInstancia();
     PAG::GUI instanciaGUI = PAG::GUI::getInstancia();
 
@@ -187,7 +187,8 @@ int main()
     try{
         instanciaRenderer.creaShaderProgram();
     }catch (std::string &message){
-        instanciaGUI.agregarMensaje(message);
+        PAG::GUI::getInstancia().agregarMensaje(message); //Importantisimo llamar el metodo getInstancia() cada vez que queramos acceder a la instancia del Singleton
+        //instanciaGUI.agregarMensaje() no funciona aqui curiosamente ;3
     }
     instanciaRenderer.creaModelo();
 

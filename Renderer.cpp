@@ -44,9 +44,9 @@ namespace PAG
             glDeleteProgram(idSP);
         }
 
-        if( idVBO != 0 )
+        if( idVBO1 != 0 )
         {
-            glDeleteBuffers( 1, &idVBO);
+            glDeleteBuffers( 1, &idVBO1);
         }
 
         if( idIBO != 0 )
@@ -85,6 +85,7 @@ namespace PAG
         glBindVertexArray ( idVAO );
         glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, idIBO );
         glDrawElements ( GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr );
+
     }
 
     /**
@@ -123,7 +124,7 @@ namespace PAG
         compilarShaderObject(contenido, shaderHandler, GL_VERTEX_SHADER); //Fase 4
         enlazarSP(idSP, shaderHandler, filename);
 
-        filename = "../ag03-fs.glsl";
+        filename = "../pag03-fs.glsl";
         contenido = leerShaderSource(filename); //Fase 2
         shaderHandler = creaShaderObject(GL_FRAGMENT_SHADER); //Fase 3
         compilarShaderObject(contenido, shaderHandler, GL_FRAGMENT_SHADER); //Fase 4
@@ -245,22 +246,46 @@ namespace PAG
      */
     void Renderer::creaModelo() {
         //Los vertices con sus posiciones (x,y,z) en un VBO no entrelazado (solo posicion)
-        GLfloat vertices[] = { -.5, -.5, 0,
-                               .5, -.5, 0,
-                               .0, .5, 0};
+        GLfloat posicionVertices[] = { -0.5, -0.5, 0.0,
+                               0.5, -0.5, 0.0,
+                               0.0, 0.5, 0.0};
 
-        GLuint indices[] = {0, 1, 2}; //Los datos del bonito IBO
+        //Otro vbo pero para el color de cada vertice
+        GLfloat colorVertices[] = { 1.0, 0.0, 0.0,
+                                    0.0, 1.0, 0.0,
+                                    0.0, 0.0, 1.0};
+
+        GLuint indices[] = {0, 1, 2}; //Los datos del IBO, que dice en que orden se procesan los vertices del VBO1
 
         glGenVertexArrays ( 1, &idVAO); //Creamos el VAO
         glBindVertexArray ( idVAO); //Enlazamos el VAO para poder usarlo, a partir de aqui todas las operaciones sobre VAOs seran sobre este VAO
 
-        glGenBuffers ( 1, &idVBO); //Creamos el VBO
-        glBindBuffer (GL_ARRAY_BUFFER, idVBO);
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer (0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), nullptr); //Le decimos como recorrer el VBO
-        glBufferData( GL_ARRAY_BUFFER, 9*sizeof(GLfloat), vertices, GL_STATIC_DRAW); //Le indicamos donde estan los datos
-
+        //Generamos los VBOs y IBOs
+        glGenBuffers ( 1, &idVBO1);
+        glGenBuffers(1, &idVBO2);
         glGenBuffers (1, &idIBO); //Creamos el IBO
+
+        //VBO para posiciones
+        glBindBuffer (GL_ARRAY_BUFFER, idVBO1);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(posicionVertices), posicionVertices, GL_STATIC_DRAW);
+
+        //VBO para colores
+        glBindBuffer(GL_ARRAY_BUFFER, idVBO2);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(colorVertices), colorVertices, GL_STATIC_DRAW);
+
+        //IBO
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, idIBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+        //Configuramos ambos VBOs para que el layout del vertex shader funcione bien:
+        glBindBuffer (GL_ARRAY_BUFFER, idVBO1);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), nullptr);
+        glEnableVertexAttribArray(0); //Habilitamos el layout 0
+
+        glBindBuffer(GL_ARRAY_BUFFER, idVBO2);
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), nullptr);
+        glEnableVertexAttribArray(1); //Habilitamos el layout 1
+
         glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, idIBO);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, 3*sizeof(GLuint), indices, GL_STATIC_DRAW); //Le pasamos los datos al IBO
     }
