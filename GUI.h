@@ -25,6 +25,8 @@ namespace PAG
         GUI();
         GLfloat *color;
         std::vector<std::string> log;
+        std::string nameFile;
+        bool buttonPressed;
 
         void pintarVentanaColor();
     public:
@@ -35,6 +37,8 @@ namespace PAG
         //Para la ventana de color:
         void setColor(GLfloat *_color);
         void agregarMensaje(std::string& cad);
+        std::string getNameFile();
+        bool getButtonPressed();
     };
 }
 

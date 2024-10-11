@@ -10,7 +10,7 @@ PAG::GUI* PAG::GUI::instancia = nullptr; //Para inicializar la instancia como nu
  * Constructor por defecto de la clase, que inicializa toodo para que ImGui funcione
  * @param window Es la ventana sobre la que se pintará la GUI
  */
-PAG::GUI::GUI(): log(){
+PAG::GUI::GUI(): log(), buttonPressed(false), color(nullptr){
 }
 
 /**
@@ -54,12 +54,23 @@ void PAG::GUI::pintarVentanaColor() {
     ImGui::End();
 
     //Ventana del log:
-    ImGui::SetNextWindowPos ( ImVec2 (200, 10), ImGuiCond_Once );
+    ImGui::SetNextWindowPos ( ImVec2 (400, 10), ImGuiCond_Once );
     ImGui::Begin("Log de mensajes");
     std::vector<std::string> aux = PAG::GUI::instancia->log;
     for(int i = 0 ; i < aux.size() ; i++){
         ImGui::Text(aux[i].c_str());
     }
+    ImGui::End();
+
+    ImGui::SetNextWindowPos(ImVec2(10, 300), ImGuiCond_Once);
+    ImGui::Begin("Seleccionar shader program");
+    std::string auxName = nameFile;
+    ImGui::Text("Dime el nombre del shader program, s'il vous plait");
+    ImGui::InputText("##", &auxName[0], ImGuiInputTextFlags_AutoSelectAll);
+    buttonPressed = ImGui::Button("Load");
+    std::cout << buttonPressed;
+    nameFile = auxName;
+    std::cout << nameFile;
     ImGui::End();
 
     ImGui::Render();
@@ -80,4 +91,20 @@ void PAG::GUI::setColor(GLfloat *_color) {
  */
 void PAG::GUI::agregarMensaje(std::string& cad) {
     log.push_back(cad);
+}
+
+/**
+ * Metodo para devolver el nombre del archivo del Shader Program
+ * @return
+ */
+std::string PAG::GUI::getNameFile() {
+    return nameFile;
+}
+
+/**
+ * Metodo para comprobar si se pulsó el boton
+ * @return
+ */
+bool PAG::GUI::getButtonPressed() {
+    return buttonPressed;
 }
