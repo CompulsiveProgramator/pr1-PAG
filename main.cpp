@@ -1,3 +1,9 @@
+/**
+ * Practicas de PAG!
+ *
+ * UML está pensado para todos los lenguajes de programación
+ * @author Adrián González Almansa
+ */
 #include <iostream>
 #include <cstdlib>
 
@@ -184,6 +190,7 @@ int main()
     instanciaGUI.setColor(instanciaRenderer.getColorFondo());
 
     /// Llamamos al shader program y creamos el modelo que se le pasara
+    /*
     try{
         instanciaRenderer.creaShaderProgram();
     }catch (std::string &message){
@@ -191,6 +198,8 @@ int main()
         //instanciaGUI.agregarMensaje() no funciona aqui curiosamente ;3
     }
     instanciaRenderer.creaModelo();
+    */
+
 
     instanciaRenderer.inicializaOpenGL(); //Inicializamos los parametros globales de OpenGL
     //Ciclo de eventos
@@ -198,6 +207,13 @@ int main()
     {
         instanciaRenderer.refrescar(); //Primero se dibuja el Renderer
         instanciaGUI.refrescar(); //La GUI se dibuja lo ultimo, porque es lo que mas arriba está ;)
+        try{
+            if(instanciaGUI.getButtonPressed()){
+                instanciaRenderer.setNombreSP(instanciaGUI.getNameFile());
+            }
+        }catch(std::string &message){
+            PAG::GUI::getInstancia().agregarMensaje(message);
+        }
 
         //Para ver lo que se ha pintado en la llamada de justo arriba
         glfwSwapBuffers ( window );

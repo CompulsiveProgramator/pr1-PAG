@@ -77,7 +77,7 @@ opengl/system: Already installed! (4 of 5)
 glfw/3.3.8: Already installed! (5 of 5)
 WARN: deprecated: Usage of deprecated Conan 1.X features that will be removed in Conan 2.X:
 WARN: deprecated:     'env_info' used in: imgui/1.91.0
-WARN: deprecated:     'cpp_info.filenames' used in: opengl/system, glfw/3.3.8
+WARN: deprecated:     'cpp_info.filenames' used in: glfw/3.3.8, opengl/system
 WARN: deprecated:     'cpp_info.names' used in: glfw/3.3.8
 WARN: deprecated:     'cpp_info.build_modules' used in: glfw/3.3.8
 
@@ -110,6 +110,6 @@ Install finished successfully
 -- Conan: Target declared 'glfw'
 -- CMake-Conan: find_package(glm) found, 'conan install' already ran
 -- Conan: Target declared 'glm::glm'
--- Configuring done (2.0s)
--- Generating done (0.0s)
+-- Configuring done (1.9s)
+-- Generating done (0.1s)
 -- Build files have been written to: C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug

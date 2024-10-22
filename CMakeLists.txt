@@ -13,6 +13,8 @@ add_executable(Pr1 main.cpp
         ${IMGUI_FILES}
         GUI.cpp
         GUI.h
+        ShaderProgram.cpp
+        ShaderProgram.h
 )
 
 # Para que Cmake encuentre los bonitos paquetes:

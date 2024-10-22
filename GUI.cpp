@@ -10,7 +10,7 @@ PAG::GUI* PAG::GUI::instancia = nullptr; //Para inicializar la instancia como nu
  * Constructor por defecto de la clase, que inicializa toodo para que ImGui funcione
  * @param window Es la ventana sobre la que se pintará la GUI
  */
-PAG::GUI::GUI(): log(), buttonPressed(false), color(nullptr){
+PAG::GUI::GUI(): log(), buttonPressed(false), color(nullptr), nameFile(){
 }
 
 /**
@@ -64,13 +64,15 @@ void PAG::GUI::pintarVentanaColor() {
 
     ImGui::SetNextWindowPos(ImVec2(10, 300), ImGuiCond_Once);
     ImGui::Begin("Seleccionar shader program");
-    std::string auxName = nameFile;
     ImGui::Text("Dime el nombre del shader program, s'il vous plait");
-    ImGui::InputText("##", &auxName[0], ImGuiInputTextFlags_AutoSelectAll);
+
+    char text[10] = "";
+    ImGui::InputText("##", text, ImGuiInputTextFlags_AutoSelectAll); //ToDo Trabajar con char y luego pasar a string
     buttonPressed = ImGui::Button("Load");
-    std::cout << buttonPressed;
-    nameFile = auxName;
-    std::cout << nameFile;
+
+    //ToDo
+    nameFile = "pag03";
+
     ImGui::End();
 
     ImGui::Render();

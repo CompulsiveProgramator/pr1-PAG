@@ -1,7 +1,7 @@
 # Prácticas-PAG
 ## Práctica 3
 He realizado bastantes cambios para implementar la practica 3, principalmente dentro de la clase Renderer.
-Agregué toda la funcionalidad con los shader programs, como el vertex/fragment shader, el VAO del triangulo, y su VBO e IBO
+Agregué toda la funcionalidad con los shader programs, como el vertex/fragment shader, el VAO del triangulo, y su VBO e IBO.
 En UML ahora mismo la aplicación funciona así:
 
 <img src="UMLdiagram.png" width=800px>
@@ -17,3 +17,10 @@ y esa traducción se hace siguiendo la siguiente formula:
 <img src="pr3.png" width=400px>
 
 Luego cuanto mayor sea la ventana de la aplicación mayor serán "w" y "h", por lo que mayor serán las coordenadas de cada punto, y por ello más grande será el triángulo.
+
+## Práctica 4
+Para esta práctica solo hemos tenido que desacoplar de la clase Renderer el funcionamiento del Shader Program,
+y para ello he creado una clase llamada ShaderProgram que se encarga de ello. Incluye el funcionamiento del 
+Vertex Shader y del Fragment Shader en su interior, pero en la siguiente práctica desacoplaré esto. El UML con la idea del proyecto actual es el siguiente:
+
+<img src="pr4UML.png" width=900px>
