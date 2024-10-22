@@ -66,12 +66,9 @@ void PAG::GUI::pintarVentanaColor() {
     ImGui::Begin("Seleccionar shader program");
     ImGui::Text("Dime el nombre del shader program, s'il vous plait");
 
-    char text[10] = "";
-    ImGui::InputText("##", text, ImGuiInputTextFlags_AutoSelectAll); //ToDo Trabajar con char y luego pasar a string
-    buttonPressed = ImGui::Button("Load");
 
-    //ToDo
-    nameFile = "pag03";
+    ImGui::InputText("##", &nameFile, ImGuiInputTextFlags_AutoSelectAll);
+    buttonPressed = ImGui::Button("Load");
 
     ImGui::End();
 

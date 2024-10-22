@@ -13,7 +13,7 @@
 #include <vector>
 #include <iostream>
 #include "GL/gl.h" //Solo para el color de fondo de la ventana de color
-
+#include <imgui_stdlib.h>
 namespace PAG
 {
     /**
