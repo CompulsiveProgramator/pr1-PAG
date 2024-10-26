@@ -26,7 +26,7 @@ void error_callback ( int errno, const char* desc ) {
     std::string aux (desc);
     std::cout << "Error de GLFW número " << errno << ": " << aux << std::endl;
     std::string cad = "Error de GLFW número " + std::to_string(errno) + ": " + aux + "\n";
-    PAG::GUI::getInstancia().agregarMensaje(cad);
+    PAG::GUI::getInstancia().agregarMensajeLog(cad);
 }
 
 /**
@@ -37,7 +37,7 @@ void window_refresh_callback ( GLFWwindow *window ) {
     PAG::Renderer::getInstancia().refrescar();
     glfwSwapBuffers(window); //La funcion para intercambiar los buffers, y que no haya parpadeo
     std::string aux = "Termina el callback de refresco\n";
-    PAG::GUI::getInstancia().agregarMensaje(aux);
+    PAG::GUI::getInstancia().agregarMensajeLog(aux);
 }
 
 /**
@@ -50,7 +50,7 @@ void window_refresh_callback ( GLFWwindow *window ) {
 void framebuffer_size_callback ( GLFWwindow *window, int width, int height ) {
     std::string aux;
     aux = "Framebuffer llamado\n";
-    PAG::GUI::getInstancia().agregarMensaje(aux);
+    PAG::GUI::getInstancia().agregarMensajeLog(aux);
     PAG::Renderer::getInstancia().modificarTamañoVentana(width, height);
 }
 
@@ -84,7 +84,7 @@ void mouse_button_callback ( GLFWwindow *window, int button, int action, int mod
         std::string cad = "Pulsado el boton: ";
         cad.push_back(char(button + 48));
         cad += "\n";
-        PAG::GUI::getInstancia().agregarMensaje(cad);
+        PAG::GUI::getInstancia().agregarMensajeLog(cad);
         ImGuiIO& io = ImGui::GetIO();
         io.AddMouseButtonEvent(button, GLFW_PRESS);
     }
@@ -93,7 +93,7 @@ void mouse_button_callback ( GLFWwindow *window, int button, int action, int mod
         std::string cad = "Soltado el boton: ";
         cad.push_back(char(button + 48)); //Para hacer la conversion a caracter
         cad += "\n";
-        PAG::GUI::getInstancia().agregarMensaje(cad);
+        PAG::GUI::getInstancia().agregarMensajeLog(cad);
         ImGuiIO& io = ImGui::GetIO();
         io.AddMouseButtonEvent(button, GLFW_RELEASE);
     }
@@ -111,7 +111,7 @@ void scroll_callback ( GLFWwindow *window, double xoffset, double yoffset ) {
     std::string cad;
     //Para convertir de int,float,double a string, usar std::to_string(). Se puede usar desde C++ 11
     cad = "Movida la rueda del raton" + std::to_string(xoffset) + " unidades en horizontal y " + std::to_string(yoffset) + " unidades en vertical\n";
-    PAG::GUI::getInstancia().agregarMensaje(cad);
+    PAG::GUI::getInstancia().agregarMensajeLog(cad);
 
     ImGuiIO& io = ImGui::GetIO();
     io.AddMouseWheelEvent(xoffset, yoffset);
@@ -195,7 +195,7 @@ int main()
         instanciaRenderer.creaShaderProgram();
     }catch (std::string &message){
         PAG::GUI::getInstancia().agregarMensaje(message); //Importantisimo llamar el metodo getInstancia() cada vez que queramos acceder a la instancia del Singleton
-        //instanciaGUI.agregarMensaje() no funciona aqui curiosamente ;3
+        //instanciaGUI.agregarMensajeLog() no funciona aqui curiosamente ;3
     }
     instanciaRenderer.creaModelo();
     */
@@ -208,11 +208,11 @@ int main()
         instanciaRenderer.refrescar(); //Primero se dibuja el Renderer
         instanciaGUI.refrescar(); //La GUI se dibuja lo ultimo, porque es lo que mas arriba está ;)
         try{
-            if(instanciaGUI.getButtonPressed()){
-                instanciaRenderer.setNombreSP(instanciaGUI.getNameFile());
+            if(instanciaGUI.getBotonPulsado()){
+                instanciaRenderer.setNombreSP(instanciaGUI.getNombreShaderProgram());
             }
         }catch(std::string &message){
-            PAG::GUI::getInstancia().agregarMensaje(message);
+            PAG::GUI::getInstancia().agregarMensajeLog(message);
         }
 
         //Para ver lo que se ha pintado en la llamada de justo arriba

@@ -25,20 +25,18 @@ namespace PAG
         GUI();
         GLfloat *color;
         std::vector<std::string> log;
-        std::string nameFile;
-        bool buttonPressed;
+        std::string nombreShaderProgram;
+        bool botonPulsado;
 
         void pintarVentanaColor();
     public:
         virtual ~GUI();
         static GUI& getInstancia();
         void refrescar(); //Metodo para pintar la ventana
-
-        //Para la ventana de color:
         void setColor(GLfloat *_color);
-        void agregarMensaje(std::string& cad);
-        std::string getNameFile();
-        bool getButtonPressed();
+        void agregarMensajeLog(std::string& cad);
+        std::string getNombreShaderProgram();
+        bool getBotonPulsado();
     };
 }
 

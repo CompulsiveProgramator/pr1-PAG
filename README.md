@@ -1,4 +1,6 @@
 # Prácticas-PAG
+### Autor: Adrián González Almansa
+### Curso 24/25
 ## Práctica 3
 He realizado bastantes cambios para implementar la practica 3, principalmente dentro de la clase Renderer.
 Agregué toda la funcionalidad con los shader programs, como el vertex/fragment shader, el VAO del triangulo, y su VBO e IBO.
@@ -7,7 +9,7 @@ En UML ahora mismo la aplicación funciona así:
 <img src="images/pr2UML.png" width=800px>
 
 Tanto Renderer como GUI son Singletons, Renderer compila y ejecuta el shader program desde creaShaderProgram() y refrescar(), respectivamente.
-GUI pinta la interfaz de usuario con el metodo refrescar(), y tiene los métodos setColor() y agregarMensaje(), para el dibujado de las ventanas de
+GUI pinta la interfaz de usuario con el metodo refrescar(), y tiene los métodos setColor() y agregarMensajeLog(), para el dibujado de las ventanas de
 ImGui.
 
 Respecto a la cuestion planteada al final del 3er guión, del triangulo que se escala al tamaño de la ventana, esto ocurre ya que las coordenadas que damos en el VBO para la posicion
