@@ -4,7 +4,7 @@ He realizado bastantes cambios para implementar la practica 3, principalmente de
 Agregué toda la funcionalidad con los shader programs, como el vertex/fragment shader, el VAO del triangulo, y su VBO e IBO.
 En UML ahora mismo la aplicación funciona así:
 
-<img src="UMLdiagram.png" width=800px>
+<img src="images/pr2UML.png" width=800px>
 
 Tanto Renderer como GUI son Singletons, Renderer compila y ejecuta el shader program desde creaShaderProgram() y refrescar(), respectivamente.
 GUI pinta la interfaz de usuario con el metodo refrescar(), y tiene los métodos setColor() y agregarMensaje(), para el dibujado de las ventanas de
@@ -14,7 +14,7 @@ Respecto a la cuestion planteada al final del 3er guión, del triangulo que se e
 de cada vértice, son después de hacer la tranformación de proyección en el espacio normalizado. Las coordenadas de ese espacio hay que traducirlas al espacio de viewport (nuestra bonita ventana),
 y esa traducción se hace siguiendo la siguiente formula:
 
-<img src="pr3.png" width=400px>
+<img src="images/pr3.png" width=400px>
 
 Luego cuanto mayor sea la ventana de la aplicación mayor serán "w" y "h", por lo que mayor serán las coordenadas de cada punto, y por ello más grande será el triángulo.
 
@@ -23,4 +23,11 @@ Para esta práctica solo hemos tenido que desacoplar de la clase Renderer el fun
 y para ello he creado una clase llamada ShaderProgram que se encarga de ello. Incluye el funcionamiento del 
 Vertex Shader y del Fragment Shader en su interior, pero en la siguiente práctica desacoplaré esto. El UML con la idea del proyecto actual es el siguiente:
 
-<img src="pr4UML.png" width=900px>
+<img src="images/pr4UML.png" width=900px>
+
+## Práctica 5
+Para esta práctica hemos tenido que implementar una camara virtual, que se puede mover con el ratón y con controles
+de ImGui
+
+He movido los archivos de shaders (tanto vertex como fragment) a una carpeta llamada "shader_files", por lo que para usar el programa "pag03" hay que hacer lo siguiente:
+<img src="images/imagen_uso_ventana_ShaderProgram.png" width=1080px>

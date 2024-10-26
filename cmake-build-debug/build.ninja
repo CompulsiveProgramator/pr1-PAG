@@ -150,7 +150,7 @@ build CMakeFiles/Pr1.dir/ShaderProgram.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debu
 
 build Pr1.exe: CXX_EXECUTABLE_LINKER__Pr1_Debug CMakeFiles/Pr1.dir/main.cpp.obj CMakeFiles/Pr1.dir/Renderer.cpp.obj CMakeFiles/Pr1.dir/glad/src/glad.c.obj CMakeFiles/Pr1.dir/imgui/imgui.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_demo.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_draw.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_impl_glfw.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_impl_opengl3.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_stdlib.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_tables.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_widgets.cpp.obj CMakeFiles/Pr1.dir/GUI.cpp.obj CMakeFiles/Pr1.dir/ShaderProgram.cpp.obj | C$:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a C$:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a
   FLAGS = -g
-  LINK_LIBRARIES = C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a  C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a  -lopengl32  -lgdi32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = -static  C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a  C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a  -lopengl32  -lgdi32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib   -LC:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib
   OBJECT_DIR = CMakeFiles\Pr1.dir
   POST_BUILD = cd .

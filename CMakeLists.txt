@@ -27,4 +27,6 @@ find_package(glm)
 target_include_directories(${PROJECT_NAME} PUBLIC glad/include imgui)
 
 # Para que Cmake agregue las librerias "descargadas con Conan" al proyecto
-target_link_libraries(${PROJECT_NAME} opengl::opengl glad::glad glfw glm::glm)
+target_link_libraries(${PROJECT_NAME} opengl::opengl glad::glad glfw glm::glm "-static")
+
+# DLL Dynamic Link Libraries se usa para enlazar en tiempo de ejecucion con las librerias de "fuera del proyecto" ???
