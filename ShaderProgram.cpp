@@ -53,7 +53,7 @@ namespace PAG{
  */
     void ShaderProgram::ejecutarSP() {
         glUseProgram ( idSP );
-        ///Hacer esto por cada malla de triangulos jeje
+        ///Hacer esto por cada malla de triangulos:
         glBindVertexArray ( idVAO );
         glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, idIBO );
         glDrawElements ( GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr );
@@ -200,9 +200,9 @@ namespace PAG{
  * Metodo para crear el VAO para el modelo a renderizar
  */
     void ShaderProgram::creaModelo() {
-        //Los vertices con sus posiciones (x,y,z) en un VBO no entrelazado (solo posicion)
+        //Los vertices con su posicion (x,y,z) y color (r,g,b) , en un VBO entrelazado
         GLfloat posicionVerticeColor[] = { -0.5, -0.5, 0.0,1.0, 0.0, 0.0,
-                                           0.5, -0.5, 0.0, 0.0, 1.0, 0.0,
+                                           0.5, -0.5, 0.0, 1.0, .0, 0.0,
                                            0.0, 0.5, 0.0, 0.0, 0.0, 1.0};
 
         /*

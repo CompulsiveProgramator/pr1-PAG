@@ -96,7 +96,7 @@ namespace PAG
     }
 
     /**
-     * Funcion para pasar de coordenadas de mundo virtual, a las de la pantalla tan guay de mi ordenador ( o del tuyo si lo ejecutas en el tuyo)
+     * Funcion para pasar de coordenadas de mundo virtual, a las de la pantalla de mi ordenador ( o del tuyo si lo ejecutas en el tuyo)
      * @param width
      * @param height
      */
@@ -108,7 +108,7 @@ namespace PAG
      * Funcion para establecer el nombre del Shader Program
      * @param nombreF El nombre del archivo
      */
-    void Renderer::setNombreSP(std::string nombreF) {
+    void Renderer::setNombreShaderProgram(std::string nombreF) {
         nombreSP = nombreF;
         this->shaderProgram = new ShaderProgram(nombreF);
     }

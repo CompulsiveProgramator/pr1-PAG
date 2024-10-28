@@ -30,14 +30,9 @@ namespace PAG{
         void refrescar();
         GLfloat *getColorFondo();
         void setColorFondo(const GLfloat color[4]);
-
-        //Para los callbacks del main:
         void modificarTamañoVentana(int width, int height);
-
         void inicializaOpenGL();
-
-        //Para la practica 4:
-        void setNombreSP(std::string nombreF);
+        void setNombreShaderProgram(std::string nombreF);
     };
 }
 

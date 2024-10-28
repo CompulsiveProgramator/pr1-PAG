@@ -1,7 +1,15 @@
 /**
- * Practicas de PAG!
+ * @brief Prácticas de PAG
  *
- * UML está pensado para todos los lenguajes de programación
+ * Aplicación gráfica que se basa en el proceso de desarrollo de software iterativo:
+ * - Práctica 1 -> Primera versión de la aplicación, con OpenGL para los gráficos y GLFW para la gestión de la ventana,
+ * donde configuramos el gestor de paquetes C/C++ Conan, y agregamos la clase Renderer.
+ * - Práctica 2 -> Agregamos la interfaz gráfica de usuario a la aplicación (GUI) en la clase GUI, y la conectamos con la clase Renderer
+ * - Práctica 3 -> Creamos nuestro primer shader program, para dibujar un triángulo 2D con un gradiente de colores muy guay, y lo hacemos dentro de la clase Renderer
+ * - Práctica 4 -> El funcionamiento del shader program lo "desacoplamos" de la clase Renderer, y lo agregamos a la clase ShaderProgram que interactua con
+ * la clase Renderer
+ * - Práctica 5 -> //ToDo Agregar cámara virtual
+ *
  * @author Adrián González Almansa
  */
 #include <iostream>
@@ -209,7 +217,7 @@ int main()
         instanciaGUI.refrescar(); //La GUI se dibuja lo ultimo, porque es lo que mas arriba está ;)
         try{
             if(instanciaGUI.getBotonPulsado()){
-                instanciaRenderer.setNombreSP(instanciaGUI.getNombreShaderProgram());
+                instanciaRenderer.setNombreShaderProgram(instanciaGUI.getNombreShaderProgram());
             }
         }catch(std::string &message){
             PAG::GUI::getInstancia().agregarMensajeLog(message);
