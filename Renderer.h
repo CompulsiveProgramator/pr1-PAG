@@ -8,7 +8,6 @@
 #include <glad/glad.h>
 #include <GL/gl.h>
 #include <iostream>
-#include "glm/mat4x4.hpp"
 #include "ShaderProgram.h"
 
 ///El espacio de nombres para las prácticas de Programación de Aplicaciones Gráficas

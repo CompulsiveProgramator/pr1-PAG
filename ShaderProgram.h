@@ -5,8 +5,12 @@
 #ifndef PR1_SHADERPROGRAM_H
 #define PR1_SHADERPROGRAM_H
 
+#define GLM_ENABLE_EXPERIMENTAL
+
 #include <glad/glad.h>
 #include "GL/gl.h"
+#include "glm/mat4x4.hpp"
+#include "glm/gtx/transform.hpp"
 #include <iostream>
 #include <fstream>
 #include <sstream>
