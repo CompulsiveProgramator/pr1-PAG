@@ -52,8 +52,18 @@ namespace PAG{
  * Metodo llamado desde Renderer para ejecutar el shader program
  */
     void ShaderProgram::ejecutarSP() {
+        glm::mat4 matrizTraslacion = glm::translate(glm::vec3(0,0.5,0));
         glUseProgram ( idSP );
+
         ///Hacer esto por cada malla de triangulos:
+
+        //Para pasar un uniform al vertex shader
+        std::string nombreUniform("matrizTraslacion");
+        GLint pos = glGetUniformLocation(idSP, nombreUniform.c_str());
+        if(pos != -1){
+            glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizTraslacion[0][0]);
+        }
+
         glBindVertexArray ( idVAO );
         glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, idIBO );
         glDrawElements ( GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr );
