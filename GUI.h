@@ -16,6 +16,8 @@
 #include "ventanas-gui/VentanaSeleccionColor.h"
 #include "ventanas-gui/VentanaLog.h"
 #include "ventanas-gui/VentanaSeleccionShaderProgram.h"
+#include "ventanas-gui/VentanaMovimientoCamara.h"
+#include "Camara.h"
 
 namespace PAG
 {
@@ -29,6 +31,7 @@ namespace PAG
         VentanaSeleccionColor ventanaSeleccionColor;
         VentanaLog ventanaLog;
         VentanaSeleccionShaderProgram ventanaSeleccionShaderProgram;
+        VentanaMovimientoCamara ventanaMovimientoCamara;
 
         void pintarGUI();
     public:
@@ -39,6 +42,7 @@ namespace PAG
         std::string getNombreShaderProgram();
         bool getBotonPulsado();
         void setColor(GLfloat *color);
+        void asociarCamara(Camara *camara);
     };
 }
 

@@ -10,7 +10,7 @@ PAG::GUI* PAG::GUI::instancia = nullptr; //Para inicializar la instancia como nu
  * Constructor por defecto de la clase, que inicializa toodo para que ImGui funcione
  * @param window Es la ventana sobre la que se pintará la GUI
  */
-PAG::GUI::GUI(): ventanaSeleccionColor(), ventanaLog(),ventanaSeleccionShaderProgram(){
+PAG::GUI::GUI(): ventanaSeleccionColor(), ventanaLog(),ventanaSeleccionShaderProgram(), ventanaMovimientoCamara(){
 
 }
 
@@ -54,6 +54,9 @@ void PAG::GUI::pintarGUI() {
     //Ventana para seleccionar el shader program
     ventanaSeleccionShaderProgram.refrescarVentana();
 
+    //Ventana para mover la camara
+    ventanaMovimientoCamara.refrescarVentana();
+
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData ( ImGui::GetDrawData() );
 }
@@ -94,4 +97,12 @@ bool PAG::GUI::getBotonPulsado() {
  */
 void PAG::GUI::setColor(GLfloat *color) {
     this->ventanaSeleccionColor.setColor(color);
+}
+
+/**
+ * Metodo para asociar la camara virtual a la ventana de la GUI
+ * @param camara Puntero a la camara
+ */
+void PAG::GUI::asociarCamara(PAG::Camara *camara) {
+    this->ventanaMovimientoCamara.setCamara(camara);
 }

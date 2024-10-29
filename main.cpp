@@ -22,8 +22,6 @@
 #include "GUI.h"
 #include "Constantes.h"
 
-MovimientoCamara movimientoCamara = MovimientoCamara::Dolly;
-
 /*
  * Los callbacks estan en el main para GLFW, y desde ellos llamamos a Renderer y GUI respectivamente
  */
@@ -234,6 +232,7 @@ int main()
     PAG::GUI instanciaGUI = PAG::GUI::getInstancia();
 
     instanciaGUI.setColor(instanciaRenderer.getColorFondo());
+    instanciaGUI.asociarCamara(instanciaRenderer.getCamara());
 
     instanciaRenderer.inicializaOpenGL(); //Inicializamos los parametros globales de OpenGL
     //Ciclo de eventos
