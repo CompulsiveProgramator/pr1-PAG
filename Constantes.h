@@ -12,8 +12,10 @@
 enum MovimientoCamara {Dolly, Crane, Pan, Tilt, Orbit, Zoom};
 
 /**
- * Variable para
+ * Variable para ver el tipo de movimiento seleccionado
  */
 static MovimientoCamara movimientoCamara = MovimientoCamara::Dolly;
+
+//ToDo el main.cpp y VentanaMovimientoCamara.cpp no comparten la misma variable de arriba
 
 #endif //PR1_CONSTANTES_H

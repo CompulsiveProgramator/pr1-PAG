@@ -16,11 +16,15 @@ void PAG::VentanaMovimientoCamara::refrescarVentana() {
         {
             const bool is_selected = (item_current_idx == n);
             if (ImGui::Selectable(items[n], is_selected))
+            {
                 item_current_idx = n; // Guarda la opción seleccionada
+            }
 
             // Marca el elemento seleccionado para que esté resaltado
             if (is_selected)
+            {
                 ImGui::SetItemDefaultFocus();
+            }
         }
         ImGui::EndCombo();
     }
