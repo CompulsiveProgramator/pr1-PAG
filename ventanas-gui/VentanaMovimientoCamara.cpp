@@ -6,7 +6,7 @@
 
 void PAG::VentanaMovimientoCamara::refrescarVentana() {
     ImGui::Begin("Ventana movimiento camara");
-    const char* items[] = { "Dolly", "Crane", "Pan", "Tilt"};
+    const char* items[] = { "Dolly", "Crane", "Pan", "Tilt", "Orbit"};
     static int item_current_idx = 0; // Índice de la opción seleccionada
 
     ImGui::Text("Opciones de movimiento:");
@@ -51,19 +51,34 @@ void PAG::VentanaMovimientoCamara::refrescarVentana() {
 
     if(items[item_current_idx] == "Pan"){
         if(ImGui::Button("<Left")){
-            camara->rotarSobreEjeY(true);
+            camara->rotarSobreCamaraEjeY(true);
         }
         if(ImGui::Button("Right>")){
-            camara->rotarSobreEjeY(false);
+            camara->rotarSobreCamaraEjeY(false);
         }
     }
 
     if(items[item_current_idx] == "Tilt"){
         if(ImGui::Button("Up")){
-            camara->rotarSobreEjeX(true);
+            camara->rotarSobreCamaraEjeX(true);
         }
         if(ImGui::Button("Down")){
-            camara->rotarSobreEjeX(false);
+            camara->rotarSobreCamaraEjeX(false);
+        }
+    }
+
+    if(items[item_current_idx] == "Orbit"){
+        if(ImGui::Button("North")){
+            camara->rotarSobreLookAtEjeX(false);
+        }
+        if(ImGui::Button("South")){
+            camara->rotarSobreLookAtEjeX(true);
+        }
+        if(ImGui::Button("West")){
+            camara->rotarSobreLookAtEjeY(false);
+        }
+        if(ImGui::Button("East")){
+            camara->rotarSobreLookAtEjeY(true);
         }
     }
 

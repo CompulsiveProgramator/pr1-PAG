@@ -40,7 +40,12 @@ glm::mat4 PAG::Camara::getMatrizPerspectiva() {
     return glm::perspective(fovY, aspect, zNear, zFar); //ToDo Estudiar como usarla correctamente
 }
 
-void PAG::Camara::rotarSobreEjeX(bool positivo) {
+/**
+ * Rotamos en el eje x "de la camara", la posicion del punto al que mira la camara ( lookAt )
+ * Movimiento TILT
+ * @param positivo True si rotamos antihorario, y false si rotamos horario
+ */
+void PAG::Camara::rotarSobreCamaraEjeX(bool positivo) {
     if(positivo){
         glm::mat4 rotacionSobrePosicionCamara = glm::translate(posicion) * glm::rotate(glm::radians(10.0f), glm::vec3(1,0,0)) * glm::translate(-posicion);
         lookAt = rotacionSobrePosicionCamara * glm::vec4(lookAt, 1);
@@ -56,7 +61,7 @@ void PAG::Camara::rotarSobreEjeX(bool positivo) {
  * @param positivo True si rotamos en sentido antihorario visto desde arriba, y false si vamos horario
  * //ToDo El movimiento PAN solo funciona bien si me alejo haciendo un Dolly en el eje z positivo, probablemente tenga que ver con los parametros de la camara y glm::perspective
  */
-void PAG::Camara::rotarSobreEjeY(bool positivo) {
+void PAG::Camara::rotarSobreCamaraEjeY(bool positivo) {
     if(positivo){
         glm::mat4 rotacionSobrePosicionCamara = glm::translate(posicion) * glm::rotate(glm::radians(10.0f), glm::vec3(0,1,0)) * glm::translate(-posicion);
         lookAt = rotacionSobrePosicionCamara * glm::vec4(lookAt, 1);
@@ -64,7 +69,6 @@ void PAG::Camara::rotarSobreEjeY(bool positivo) {
         glm::mat4 rotacionSobrePosicionCamara = glm::translate(posicion) * glm::rotate(glm::radians(-10.0f), glm::vec3(0,1,0)) * glm::translate(-posicion);
         lookAt = rotacionSobrePosicionCamara * glm::vec4(lookAt, 1);
     }
-
 }
 
 /**
@@ -113,4 +117,32 @@ void PAG::Camara::desplazarSobreEjeZ(bool positivo) {
     }
 }
 
+/**
+ * Orbitamos alrededor de LookAt entre norte y sur
+ * Movimiento ORBIT
+ * @param positivo True si es antihorario, y false si es horario
+ */
+void PAG::Camara::rotarSobreLookAtEjeX(bool positivo) {
+    if(positivo){
+        glm::mat4 rotacionSobrePosicionLookAt = glm::translate(lookAt) * glm::rotate(glm::radians(10.0f), glm::vec3(1,0,0)) * glm::translate(-lookAt);
+        posicion = rotacionSobrePosicionLookAt * glm::vec4(posicion, 1);
+    }else{
+        glm::mat4 rotacionSobrePosicionLookAt = glm::translate(lookAt) * glm::rotate(glm::radians(-10.0f), glm::vec3(1,0,0)) * glm::translate(-lookAt);
+        posicion = rotacionSobrePosicionLookAt * glm::vec4(posicion, 1);
+    }
+}
 
+/**
+ * Orbitamos alrededor de LookAt entre este y oeste
+ * Movimiento ORBIT
+ * @param positivo True si es antihorario, y false si es horario
+ */
+void PAG::Camara::rotarSobreLookAtEjeY(bool positivo) {
+    if(positivo){
+        glm::mat4 rotacionSobrePosicionLookAt = glm::translate(lookAt) * glm::rotate(glm::radians(10.0f), glm::vec3(0,1,0)) * glm::translate(-lookAt);
+        posicion = rotacionSobrePosicionLookAt * glm::vec4(posicion, 1);
+    }else{
+        glm::mat4 rotacionSobrePosicionLookAt = glm::translate(lookAt) * glm::rotate(glm::radians(-10.0f), glm::vec3(0,1,0)) * glm::translate(-lookAt);
+        posicion = rotacionSobrePosicionLookAt * glm::vec4(posicion, 1);
+    }
+}
