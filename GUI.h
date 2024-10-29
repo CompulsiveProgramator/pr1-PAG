@@ -36,7 +36,7 @@ namespace PAG
         virtual ~GUI();
         static GUI& getInstancia();
         void refrescar(); //Metodo para pintar la ventana
-        void agregarMensajeLog(std::string cad);
+        void agregarMensajeLog(std::string &cad);
         std::string getNombreShaderProgram();
         bool getBotonPulsado();
         void setColor(GLfloat *color);

@@ -15,7 +15,6 @@ PAG::VentanaLog::VentanaLog():log() {}
 void PAG::VentanaLog::refrescarVentana() {
     ImGui::SetNextWindowPos ( ImVec2 (400, 10), ImGuiCond_Once );
     ImGui::Begin("Log de mensajes");
-    std::cout << log.size();
     for(int i = 0 ; i < log.size() ; i++){
         ImGui::Text(log[i].c_str());
     }

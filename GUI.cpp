@@ -74,7 +74,7 @@ void PAG::GUI::pintarGUI() {
  * Metodo para agregar un mensaje al log de la GUI
  * @param cad El nuevo mensaje
  */
-void PAG::GUI::agregarMensajeLog(std::string cad) {
+void PAG::GUI::agregarMensajeLog(std::string &cad) {
     ventanaLog.agregarMensajeLog(cad);
 }
 

@@ -8,7 +8,7 @@
  * - Práctica 3 -> Creamos nuestro primer shader program, para dibujar un triángulo 2D con un gradiente de colores muy guay, y lo hacemos dentro de la clase Renderer
  * - Práctica 4 -> El funcionamiento del shader program lo "desacoplamos" de la clase Renderer, y lo agregamos a la clase ShaderProgram que interactua con
  * la clase Renderer
- * - Práctica 5 -> //ToDo Agregar cámara virtual gestionble desde ImGui para todos los movimientos (Dolly, Crane,...)
+ * - Práctica 5 ->
  *
  * @author Adrián González Almansa
  */
@@ -130,7 +130,7 @@ void mouse_button_callback ( GLFWwindow *window, int button, int action, int mod
         std::string cad = "Pulsado el boton: ";
         cad.push_back(char(button + 48));
         cad += "\n";
-        PAG::GUI::getInstancia().agregarMensajeLog("hola");
+        PAG::GUI::getInstancia().agregarMensajeLog(cad);
         ImGuiIO& io = ImGui::GetIO();
         io.AddMouseButtonEvent(button, GLFW_PRESS);
     }

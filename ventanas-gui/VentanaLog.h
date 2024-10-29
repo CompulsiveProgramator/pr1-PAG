@@ -16,7 +16,7 @@ namespace PAG{
     public:
         VentanaLog();
         void refrescarVentana() override;
-        void agregarMensajeLog(std::string &cad) {
+        void agregarMensajeLog(std::string &cad) { //ToDo Ver porque no se agregan correctamente los mensajes al log
             log.push_back(cad);
         }
     };
