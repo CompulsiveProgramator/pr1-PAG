@@ -17,6 +17,12 @@ add_executable(Pr1 main.cpp
         ShaderProgram.h
         Camara.cpp
         Camara.h
+        Constantes.h
+        ventanas-gui/VentanaSeleccionColor.cpp
+        ventanas-gui/VentanaSeleccionColor.h
+        ventanas-gui/VentanaLog.cpp
+        ventanas-gui/VentanaLog.h
+        ventanas-gui/Ventana.h
 )
 
 # Para que Cmake encuentre los bonitos paquetes:

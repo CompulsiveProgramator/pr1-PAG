@@ -14,6 +14,9 @@
 #include <iostream>
 #include "GL/gl.h" //Solo para el color de fondo de la ventana de color
 #include <imgui_stdlib.h>
+#include "ventanas-gui/VentanaSeleccionColor.h"
+#include "ventanas-gui/VentanaLog.h"
+
 namespace PAG
 {
     /**
@@ -23,20 +26,20 @@ namespace PAG
     private:
         static GUI* instancia;
         GUI();
-        GLfloat *color;
-        std::vector<std::string> log;
         std::string nombreShaderProgram;
         bool botonPulsado;
+        VentanaSeleccionColor ventanaSeleccionColor;
+        VentanaLog ventanaLog;
 
-        void pintarVentanaColor();
+        void pintarGUI();
     public:
         virtual ~GUI();
         static GUI& getInstancia();
         void refrescar(); //Metodo para pintar la ventana
-        void setColor(GLfloat *_color);
-        void agregarMensajeLog(std::string& cad);
+        void agregarMensajeLog(std::string cad);
         std::string getNombreShaderProgram();
         bool getBotonPulsado();
+        void setColor(GLfloat *color);
     };
 }
 

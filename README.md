@@ -28,8 +28,15 @@ Vertex Shader y del Fragment Shader en su interior, pero en la siguiente prácti
 <img src="images/pr4UML.png" width=900px>
 
 ## Práctica 5
-Para esta práctica hemos tenido que implementar una camara virtual, que se puede mover con el ratón y con controles
+Para esta práctica hemos tenido que implementar una camara virtual, que se puede mover con el ratón, teclado y con controles
 de ImGui
 
 He movido los archivos de shaders (tanto vertex como fragment) a una carpeta llamada "shader_files", por lo que para usar el programa "pag03" hay que hacer lo siguiente:
 <img src="images/imagen_como_usar_ventana_shader_program.png" width=1080px>
+
+Una vez hecho lo anterior, he creado la clase PAG::Camara que alberga todo el funcionamiento de la camara, y esta clase se comunica con la clase ShaderProgram para 
+poder hacer las transformaciones necesarias de visión y perspectiva, en el modelo que se va a dibujar. Desde los callbacks del main se comunica a la cámara de 
+la aplicación el movimiento que ha de hacer (dolly, crane, ...)
+Esto lo hago ya que así cuando ocurra un evento se notifica automaticamente a la cámara, que es como debe ser
+
+Para las ventanas de ImGui, simplemente haré un selector de ventanas con un botón ........

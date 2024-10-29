@@ -130,7 +130,7 @@ void mouse_button_callback ( GLFWwindow *window, int button, int action, int mod
         std::string cad = "Pulsado el boton: ";
         cad.push_back(char(button + 48));
         cad += "\n";
-        PAG::GUI::getInstancia().agregarMensajeLog(cad);
+        PAG::GUI::getInstancia().agregarMensajeLog("hola");
         ImGuiIO& io = ImGui::GetIO();
         io.AddMouseButtonEvent(button, GLFW_PRESS);
     }
@@ -234,18 +234,6 @@ int main()
     PAG::GUI instanciaGUI = PAG::GUI::getInstancia();
 
     instanciaGUI.setColor(instanciaRenderer.getColorFondo());
-
-    /// Llamamos al shader program y creamos el modelo que se le pasara
-    /*
-    try{
-        instanciaRenderer.creaShaderProgram();
-    }catch (std::string &message){
-        PAG::GUI::getInstancia().agregarMensaje(message); //Importantisimo llamar el metodo getInstancia() cada vez que queramos acceder a la instancia del Singleton
-        //instanciaGUI.agregarMensajeLog() no funciona aqui curiosamente ;3
-    }
-    instanciaRenderer.creaModelo();
-    */
-
 
     instanciaRenderer.inicializaOpenGL(); //Inicializamos los parametros globales de OpenGL
     //Ciclo de eventos
