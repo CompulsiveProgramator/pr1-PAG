@@ -5,7 +5,8 @@
 #include "VentanaMovimientoCamara.h"
 
 void PAG::VentanaMovimientoCamara::refrescarVentana() {
-    const char* items[] = { "Dolly", "Crane"};
+    ImGui::Begin("Ventana movimiento camara");
+    const char* items[] = { "Dolly", "Crane", "Pan"};
     static int item_current_idx = 0; // Índice de la opción seleccionada
 
     ImGui::Text("Opciones de movimiento:");
@@ -47,6 +48,14 @@ void PAG::VentanaMovimientoCamara::refrescarVentana() {
             camara->desplazarSobreEjeY(false);
         }
     }
+
+    if(items[item_current_idx] == "Pan"){
+        if(ImGui::Button("giramosss")){
+            camara->rotarSobreEjeY();
+        }
+    }
+
+    ImGui::End();
 }
 
 void PAG::VentanaMovimientoCamara::setCamara(PAG::Camara *_camara) {

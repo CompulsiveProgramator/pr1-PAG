@@ -41,13 +41,13 @@ glm::mat4 PAG::Camara::getMatrizPerspectiva() {
 }
 
 /**
- * Rotamos en el eje y, la posicion del punto al que mira la camara ( lookAt )
+ * Rotamos en el eje y "de la camara", la posicion del punto al que mira la camara ( lookAt )
  * Movimiento PAN
  */
 void PAG::Camara::rotarSobreEjeY() {
-    glm::mat4 rotacionY = glm::rotate(glm::radians(1.0f) ,glm::vec3(0,1,0));
+    glm::mat4 rotacionSobrePosicionCamara = glm::translate(posicion) * glm::rotate(glm::radians(10.0f), glm::vec3(0,1,0)) * glm::translate(-posicion);
 
-    lookAt = rotacionY * glm::vec4(lookAt, 1);
+    lookAt = rotacionSobrePosicionCamara * glm::vec4(lookAt, 1);
 }
 
 /**
