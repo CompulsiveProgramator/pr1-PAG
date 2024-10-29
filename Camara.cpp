@@ -37,23 +37,30 @@ glm::mat4 PAG::Camara::getMatrizVision() {
  * @return
  */
 glm::mat4 PAG::Camara::getMatrizPerspectiva() {
-    return glm::perspective(fovY, aspect, zNear, zFar);
+    return glm::perspective(fovY, aspect, zNear, zFar); //ToDo Estudiar como usarla correctamente
 }
 
 /**
  * Rotamos en el eje y "de la camara", la posicion del punto al que mira la camara ( lookAt )
  * Movimiento PAN
+ * @param positivo True si rotamos en sentido antihorario visto desde arriba, y false si vamos horario
+ * //ToDo El movimiento PAN solo funciona bien si me alejo haciendo un Dolly en el eje z positivo, probablemente tenga que ver con los parametros de la camara y glm::perspective
  */
-void PAG::Camara::rotarSobreEjeY() {
-    glm::mat4 rotacionSobrePosicionCamara = glm::translate(posicion) * glm::rotate(glm::radians(10.0f), glm::vec3(0,1,0)) * glm::translate(-posicion);
+void PAG::Camara::rotarSobreEjeY(bool positivo) {
+    if(positivo){
+        glm::mat4 rotacionSobrePosicionCamara = glm::translate(posicion) * glm::rotate(glm::radians(10.0f), glm::vec3(0,1,0)) * glm::translate(-posicion);
+        lookAt = rotacionSobrePosicionCamara * glm::vec4(lookAt, 1);
+    }else{
+        glm::mat4 rotacionSobrePosicionCamara = glm::translate(posicion) * glm::rotate(glm::radians(-10.0f), glm::vec3(0,1,0)) * glm::translate(-posicion);
+        lookAt = rotacionSobrePosicionCamara * glm::vec4(lookAt, 1);
+    }
 
-    lookAt = rotacionSobrePosicionCamara * glm::vec4(lookAt, 1);
 }
 
 /**
  * Desplazamos la posicion de la camara y el punto de mira en el ejeX
  * Movimiento DOLLY
- * @param positivo True si la camara se mueve en el eje X positivo, y false si se mueve
+ * @param positivo True si la camara se mueve en el eje X positivo, y false si se mueve en el eje x negativo
  */
 void PAG::Camara::desplazarSobreEjeX(bool positivo) {
     if(!positivo){
@@ -69,7 +76,7 @@ void PAG::Camara::desplazarSobreEjeX(bool positivo) {
 /**
  * Desplazamos la posición de la camara y el punto de mira en el ejeY
  * Movimiento CRANE
- * @param positivo
+ * @param positivo True si la camara se mueve en el eje y positivo, y false si se mueve en el eje y negativo
  */
 void PAG::Camara::desplazarSobreEjeY(bool positivo) {
     if(!positivo){
@@ -81,6 +88,11 @@ void PAG::Camara::desplazarSobreEjeY(bool positivo) {
     }
 }
 
+/**
+ * Desplazamos la posicion de la camara y el punto de mira en el ejeZ
+ * Movimiento DOLLY
+ * @param positivo True si vamos a la z positiva, false si vamos a la z negativa
+ */
 void PAG::Camara::desplazarSobreEjeZ(bool positivo) {
     if(!positivo){
         posicion = glm::translate(glm::vec3(0, 0, -0.1)) * glm::vec4(posicion, 1);

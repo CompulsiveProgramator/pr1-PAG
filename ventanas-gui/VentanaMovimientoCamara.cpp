@@ -50,8 +50,11 @@ void PAG::VentanaMovimientoCamara::refrescarVentana() {
     }
 
     if(items[item_current_idx] == "Pan"){
-        if(ImGui::Button("giramosss")){
-            camara->rotarSobreEjeY();
+        if(ImGui::Button("<Left")){
+            camara->rotarSobreEjeY(true);
+        }
+        if(ImGui::Button("Right>")){
+            camara->rotarSobreEjeY(false);
         }
     }
 
