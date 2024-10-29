@@ -10,7 +10,7 @@ PAG::GUI* PAG::GUI::instancia = nullptr; //Para inicializar la instancia como nu
  * Constructor por defecto de la clase, que inicializa toodo para que ImGui funcione
  * @param window Es la ventana sobre la que se pintará la GUI
  */
-PAG::GUI::GUI(): botonPulsado(false), nombreShaderProgram(), ventanaSeleccionColor(), ventanaLog(){
+PAG::GUI::GUI(): ventanaSeleccionColor(), ventanaLog(),ventanaSeleccionShaderProgram(){
 
 }
 
@@ -52,13 +52,7 @@ void PAG::GUI::pintarGUI() {
     ventanaLog.refrescarVentana();
 
     //Ventana para seleccionar el shader program
-    ImGui::SetNextWindowPos(ImVec2(10, 300), ImGuiCond_Once);
-    ImGui::Begin("Seleccionar shader program");
-    ImGui::Text("Dime el nombre del shader program:");
-    ImGui::Text("Formato 'pag0x'");
-    ImGui::InputText("##", &nombreShaderProgram, ImGuiInputTextFlags_AutoSelectAll);
-    botonPulsado = ImGui::Button("Load");
-    ImGui::End();
+    ventanaSeleccionShaderProgram.refrescarVentana();
 
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData ( ImGui::GetDrawData() );
@@ -83,7 +77,7 @@ void PAG::GUI::agregarMensajeLog(std::string &cad) {
  * @return
  */
 std::string PAG::GUI::getNombreShaderProgram() {
-    return nombreShaderProgram;
+    return ventanaSeleccionShaderProgram.getNombreShaderProgram();
 }
 
 /**
@@ -91,7 +85,7 @@ std::string PAG::GUI::getNombreShaderProgram() {
  * @return
  */
 bool PAG::GUI::getBotonPulsado() {
-    return botonPulsado;
+    return ventanaSeleccionShaderProgram.isBotonPulsado();
 }
 
 /**

@@ -23,6 +23,8 @@ add_executable(Pr1 main.cpp
         ventanas-gui/VentanaLog.cpp
         ventanas-gui/VentanaLog.h
         ventanas-gui/Ventana.h
+        ventanas-gui/VentanaSeleccionShaderProgram.cpp
+        ventanas-gui/VentanaSeleccionShaderProgram.h
 )
 
 # Para que Cmake encuentre los bonitos paquetes:

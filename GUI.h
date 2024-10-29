@@ -13,9 +13,9 @@
 #include <vector>
 #include <iostream>
 #include "GL/gl.h" //Solo para el color de fondo de la ventana de color
-#include <imgui_stdlib.h>
 #include "ventanas-gui/VentanaSeleccionColor.h"
 #include "ventanas-gui/VentanaLog.h"
+#include "ventanas-gui/VentanaSeleccionShaderProgram.h"
 
 namespace PAG
 {
@@ -26,10 +26,9 @@ namespace PAG
     private:
         static GUI* instancia;
         GUI();
-        std::string nombreShaderProgram;
-        bool botonPulsado;
         VentanaSeleccionColor ventanaSeleccionColor;
         VentanaLog ventanaLog;
+        VentanaSeleccionShaderProgram ventanaSeleccionShaderProgram;
 
         void pintarGUI();
     public:
