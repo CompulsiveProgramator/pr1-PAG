@@ -40,6 +40,16 @@ glm::mat4 PAG::Camara::getMatrizPerspectiva() {
     return glm::perspective(fovY, aspect, zNear, zFar); //ToDo Estudiar como usarla correctamente
 }
 
+void PAG::Camara::rotarSobreEjeX(bool positivo) {
+    if(positivo){
+        glm::mat4 rotacionSobrePosicionCamara = glm::translate(posicion) * glm::rotate(glm::radians(10.0f), glm::vec3(1,0,0)) * glm::translate(-posicion);
+        lookAt = rotacionSobrePosicionCamara * glm::vec4(lookAt, 1);
+    }else{
+        glm::mat4 rotacionSobrePosicionCamara = glm::translate(posicion) * glm::rotate(glm::radians(-10.0f), glm::vec3(1,0,0)) * glm::translate(-posicion);
+        lookAt = rotacionSobrePosicionCamara * glm::vec4(lookAt, 1);
+    }
+}
+
 /**
  * Rotamos en el eje y "de la camara", la posicion del punto al que mira la camara ( lookAt )
  * Movimiento PAN
@@ -102,3 +112,5 @@ void PAG::Camara::desplazarSobreEjeZ(bool positivo) {
         lookAt = glm::translate(glm::vec3(0, 0, 0.1)) * glm::vec4(lookAt, 1);
     }
 }
+
+

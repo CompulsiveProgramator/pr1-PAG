@@ -84,3 +84,17 @@
 1635	3225	7519344899029368	Pr1.exe	a3a5bcede2a204d7
 27	1480	7519345318234210	CMakeFiles/Pr1.dir/ventanas-gui/VentanaMovimientoCamara.cpp.obj	ff9d06a1b02444e2
 1481	3104	7519345332775794	Pr1.exe	a3a5bcede2a204d7
+63	1801	7519352635271921	CMakeFiles/Pr1.dir/ventanas-gui/VentanaMovimientoCamara.cpp.obj	ff9d06a1b02444e2
+54	1916	7519352635181989	CMakeFiles/Pr1.dir/Camara.cpp.obj	1c50978684bcdda6
+32	2713	7519352634961978	CMakeFiles/Pr1.dir/Renderer.cpp.obj	670cd63da129e748
+47	2925	7519352635108563	CMakeFiles/Pr1.dir/ShaderProgram.cpp.obj	5b1ee3dfb96bf311
+24	3191	7519352634883140	CMakeFiles/Pr1.dir/main.cpp.obj	20680737bc3995e9
+39	6515	7519352635037930	CMakeFiles/Pr1.dir/GUI.cpp.obj	340943688118eb0f
+6515	8145	7519352699798722	Pr1.exe	a3a5bcede2a204d7
+61	1667	7519354288518234	CMakeFiles/Pr1.dir/ventanas-gui/VentanaMovimientoCamara.cpp.obj	ff9d06a1b02444e2
+53	1767	7519354288429775	CMakeFiles/Pr1.dir/Camara.cpp.obj	1c50978684bcdda6
+32	2639	7519354288223821	CMakeFiles/Pr1.dir/Renderer.cpp.obj	670cd63da129e748
+45	2948	7519354288360254	CMakeFiles/Pr1.dir/ShaderProgram.cpp.obj	5b1ee3dfb96bf311
+24	3137	7519354288146759	CMakeFiles/Pr1.dir/main.cpp.obj	20680737bc3995e9
+39	5956	7519354288295588	CMakeFiles/Pr1.dir/GUI.cpp.obj	340943688118eb0f
+5956	7544	7519354347463201	Pr1.exe	a3a5bcede2a204d7

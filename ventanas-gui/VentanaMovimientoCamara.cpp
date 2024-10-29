@@ -6,7 +6,7 @@
 
 void PAG::VentanaMovimientoCamara::refrescarVentana() {
     ImGui::Begin("Ventana movimiento camara");
-    const char* items[] = { "Dolly", "Crane", "Pan"};
+    const char* items[] = { "Dolly", "Crane", "Pan", "Tilt"};
     static int item_current_idx = 0; // Índice de la opción seleccionada
 
     ImGui::Text("Opciones de movimiento:");
@@ -55,6 +55,15 @@ void PAG::VentanaMovimientoCamara::refrescarVentana() {
         }
         if(ImGui::Button("Right>")){
             camara->rotarSobreEjeY(false);
+        }
+    }
+
+    if(items[item_current_idx] == "Tilt"){
+        if(ImGui::Button("Up")){
+            camara->rotarSobreEjeX(true);
+        }
+        if(ImGui::Button("Down")){
+            camara->rotarSobreEjeX(false);
         }
     }
 
