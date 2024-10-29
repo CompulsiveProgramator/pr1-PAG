@@ -146,3 +146,17 @@ void PAG::Camara::rotarSobreLookAtEjeY(bool positivo) {
         posicion = rotacionSobrePosicionLookAt * glm::vec4(posicion, 1);
     }
 }
+
+/**
+ * Hacemos zoom con la camara
+ * @param positivo True si aumentamos el fovY y false si lo disminuimos
+ */
+void PAG::Camara::zoom(bool positivo) {
+    if(positivo){
+        fovY += glm::radians(1.0f);
+    }else{
+        if(fovY > 0){
+            fovY -= glm::radians(1.0f);
+        }
+    }
+}

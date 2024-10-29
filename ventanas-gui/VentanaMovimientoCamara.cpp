@@ -6,7 +6,7 @@
 
 void PAG::VentanaMovimientoCamara::refrescarVentana() {
     ImGui::Begin("Ventana movimiento camara");
-    const char* items[] = { "Dolly", "Crane", "Pan", "Tilt", "Orbit"};
+    const char* items[] = { "Dolly", "Crane", "Pan", "Tilt", "Orbit", "Zoom"};
     static int item_current_idx = 0; // Índice de la opción seleccionada
 
     ImGui::Text("Opciones de movimiento:");
@@ -82,7 +82,16 @@ void PAG::VentanaMovimientoCamara::refrescarVentana() {
         }
     }
 
-    ImGui::End();
+    if(items[item_current_idx] == "Zoom") {
+        if(ImGui::Button("Zoom in")){
+            camara->zoom(false);
+        }
+        if(ImGui::Button("Zoom out")){
+            camara->zoom(true);
+        }
+    }
+
+        ImGui::End();
 }
 
 void PAG::VentanaMovimientoCamara::setCamara(PAG::Camara *_camara) {

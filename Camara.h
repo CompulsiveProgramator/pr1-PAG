@@ -30,6 +30,7 @@ namespace PAG{
         void desplazarSobreEjeZ(bool positivo);
         void rotarSobreLookAtEjeX(bool positivo);
         void rotarSobreLookAtEjeY(bool positivo);
+        void zoom(bool positivo);
     };
 }
 
