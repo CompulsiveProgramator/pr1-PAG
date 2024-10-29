@@ -65,7 +65,7 @@ void PAG::GUI::pintarVentanaColor() {
     ImGui::SetNextWindowPos(ImVec2(10, 300), ImGuiCond_Once);
     ImGui::Begin("Seleccionar shader program");
     ImGui::Text("Dime el nombre del shader program:");
-    ImGui::Text("Formato 'shader_files/pag0x'");
+    ImGui::Text("Formato 'pag0x'");
 
 
     ImGui::InputText("##", &nombreShaderProgram, ImGuiInputTextFlags_AutoSelectAll);

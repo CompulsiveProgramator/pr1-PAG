@@ -9,8 +9,9 @@ namespace PAG{
      * Constructor de la clase
      * @param nombreFicheros
      */
-    ShaderProgram::ShaderProgram(std::string &nombreFicheros) {
+    ShaderProgram::ShaderProgram(std::string &nombreFicheros, Camara *camara) {
         this->nombreFicheros = nombreFicheros;
+        this->camara = camara;
         creaShaderProgram();
     }
 
@@ -52,7 +53,7 @@ namespace PAG{
  * Metodo llamado desde Renderer para ejecutar el shader program
  */
     void ShaderProgram::ejecutarSP() {
-        glm::mat4 matrizTraslacion = glm::translate(glm::vec3(0,0.5,0));
+        glm::mat4 matrizTraslacion = camara->getMatrizVision();
         glUseProgram ( idSP );
 
         ///Hacer esto por cada malla de triangulos:
@@ -81,13 +82,13 @@ namespace PAG{
         crearSP(idSP); //Fase 1
 
         //1o El vertex shader
-        filename = "../"+nombreFicheros+"-vs.glsl";
+        filename = "../shader_files/"+nombreFicheros+"-vs.glsl";
         contenido = leerShaderSource(filename); //Fase 2
         shaderHandler = creaShaderObject(GL_VERTEX_SHADER); //Fase 3
         compilarShaderObject(contenido, shaderHandler, GL_VERTEX_SHADER); //Fase 4
         enlazarSP(idSP, shaderHandler, filename);
 
-        filename = "../"+nombreFicheros+"-fs.glsl";
+        filename = "../shader_files/"+nombreFicheros+"-fs.glsl";
         contenido = leerShaderSource(filename); //Fase 2
         shaderHandler = creaShaderObject(GL_FRAGMENT_SHADER); //Fase 3
         compilarShaderObject(contenido, shaderHandler, GL_FRAGMENT_SHADER); //Fase 4

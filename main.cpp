@@ -77,6 +77,11 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         ImGuiIO& io = ImGui::GetIO();
         io.AddKeyEvent(ImGuiKey_Escape, true);
     }
+
+    if( key == GLFW_KEY_LEFT && action == GLFW_PRESS)
+    {
+        PAG::Renderer::getInstancia().getCamara()->rotarSobreEjeY();
+    }
 }
 
 /**

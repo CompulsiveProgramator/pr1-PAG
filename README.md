@@ -32,4 +32,4 @@ Para esta práctica hemos tenido que implementar una camara virtual, que se pued
 de ImGui
 
 He movido los archivos de shaders (tanto vertex como fragment) a una carpeta llamada "shader_files", por lo que para usar el programa "pag03" hay que hacer lo siguiente:
-<img src="images/imagen_uso_ventana_ShaderProgram.png" width=1080px>
+<img src="images/imagen_como_usar_ventana_shader_program.png" width=1080px>

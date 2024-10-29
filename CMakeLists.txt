@@ -15,6 +15,8 @@ add_executable(Pr1 main.cpp
         GUI.h
         ShaderProgram.cpp
         ShaderProgram.h
+        Camara.cpp
+        Camara.h
 )
 
 # Para que Cmake encuentre los bonitos paquetes:

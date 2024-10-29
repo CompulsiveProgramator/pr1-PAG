@@ -14,6 +14,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include "Camara.h"
 
 namespace PAG{
     class ShaderProgram {
@@ -26,9 +27,10 @@ namespace PAG{
         GLuint idVBO2 = 0;
         GLuint idIBO = 0; //Id del Index Buffer Object
         std::string nombreFicheros; /// El nombre de los ficheros ( solo parte inicial, EJ: pag03 , y asi sacamos el pag03-vs.glsl y el pag03-fs.glsl ;) )
+        Camara *camara = nullptr; /// El puntero para la camara virtual de la ventana
 
     public:
-        ShaderProgram(std::string &nombreFicheros);
+        ShaderProgram(std::string &nombreFicheros, Camara *camara);
         ~ShaderProgram();
         void ejecutarSP();
         void creaShaderProgram(); ///Este es el que hay que llamar desde fuera

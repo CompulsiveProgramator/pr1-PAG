@@ -23,6 +23,8 @@ namespace PAG
             colorFondo[i] = 0.0; //El color inicial es negro
         }
         colorFondo[3] = 1.0; //Para que se vea el color completo
+
+        this->camara = new Camara(glm::vec3(0,0,1), glm::vec3(0,0,-1), glm::float32 (M_PI/2), glm::float32(2), glm::float32(1), glm::float32(3));
     }
 
     /**
@@ -31,6 +33,10 @@ namespace PAG
     Renderer::~Renderer() {
         if(shaderProgram){
             delete shaderProgram;
+        }
+
+        if(camara){
+            delete camara;
         }
     }
 
@@ -110,6 +116,14 @@ namespace PAG
      */
     void Renderer::setNombreShaderProgram(std::string nombreF) {
         nombreSP = nombreF;
-        this->shaderProgram = new ShaderProgram(nombreF);
+        this->shaderProgram = new ShaderProgram(nombreF, camara);
+    }
+
+    /**
+     * Getter de la camara
+     * @return
+     */
+    Camara *Renderer::getCamara() {
+        return camara;
     }
 }

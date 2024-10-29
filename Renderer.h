@@ -9,6 +9,7 @@
 #include <GL/gl.h>
 #include <iostream>
 #include "ShaderProgram.h"
+#include "Camara.h"
 
 ///El espacio de nombres para las prácticas de Programación de Aplicaciones Gráficas
 namespace PAG{
@@ -22,6 +23,7 @@ namespace PAG{
         GLfloat colorFondo[4];
         std::string nombreSP; //El nombre del shader program
         ShaderProgram *shaderProgram = nullptr;
+        Camara *camara = nullptr;
 
     public:
         virtual ~Renderer();
@@ -32,6 +34,7 @@ namespace PAG{
         void modificarTamañoVentana(int width, int height);
         void inicializaOpenGL();
         void setNombreShaderProgram(std::string nombreF);
+        Camara* getCamara();
     };
 }
 
