@@ -7,6 +7,8 @@
 void PAG::VentanaMovimientoCamara::refrescarVentana() {
     const char* items[] = { "Dolly", "Crane"};
     static int item_current_idx = 0; // Índice de la opción seleccionada
+
+    ImGui::Text("Opciones de movimiento:");
     if (ImGui::BeginCombo("##", items[item_current_idx])) // Etiqueta del combo
     {
         for (int n = 0; n < IM_ARRAYSIZE(items); n++)
@@ -20,6 +22,21 @@ void PAG::VentanaMovimientoCamara::refrescarVentana() {
                 ImGui::SetItemDefaultFocus();
         }
         ImGui::EndCombo();
+    }
+
+    if(items[item_current_idx] == "Dolly"){
+        if(ImGui::Button("^Back^")){
+            camara->desplazarSobreEjeZ(false);
+        }
+        if(ImGui::Button("Right>")){
+            camara->desplazarSobreEjeX(true);
+        }
+        if(ImGui::Button("<Left")){
+            camara->desplazarSobreEjeX(false);
+        }
+        if(ImGui::Button("Front")){
+            camara->desplazarSobreEjeZ(true);
+        }
     }
 }
 
