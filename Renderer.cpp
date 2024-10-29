@@ -24,6 +24,7 @@ namespace PAG
         }
         colorFondo[3] = 1.0; //Para que se vea el color completo
 
+        ///Creamos una camara por defecto:
         this->camara = new Camara(glm::vec3(0,0,1), glm::vec3(0,0,-1), glm::float32 (M_PI/2), glm::float32(2), glm::float32(1), glm::float32(3));
     }
 

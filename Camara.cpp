@@ -23,15 +23,44 @@ PAG::Camara::Camara(glm::vec3 posicion, glm::vec3 lookAt, glm::float32 fovY, glm
     this->zFar = zFar;
 }
 
+/**
+ * Función que devuelve la transformación de visión con los parámetros de la cámara
+ * Nos llevamos la cámara al origen de coordenadas
+ * @return
+ */
 glm::mat4 PAG::Camara::getMatrizVision() {
     return glm::lookAt(posicion, lookAt, glm::vec3(0,1,0));
 }
 
 /**
- * Rotamos la posicion de la camara respecto al eje y
+ * Función que devuelve la transformación de perspectiva con los parámetros de la cámara
+ * @return
+ */
+glm::mat4 PAG::Camara::getMatrizPerspectiva() {
+    return glm::perspective(fovY, aspect, zNear, zFar);
+}
+
+/**
+ * Rotamos en el eje y, la posicion del punto al que mira la camara ( lookAt )
+ * Movimiento PAN
  */
 void PAG::Camara::rotarSobreEjeY() {
-    glm::mat4 rotacionY = glm::rotate(0.1f ,glm::vec3(0,1,0));
+    glm::mat4 rotacionY = glm::rotate(glm::radians(1.0f) ,glm::vec3(0,1,0));
 
-    posicion = rotacionY * glm::vec4(posicion, 1);
+    lookAt = rotacionY * glm::vec4(lookAt, 1);
+}
+
+/**
+ * Desplazamos la posicion de la camara y el punto de mira en el ejeX
+ * @param positivo True si la camara se mueve en el eje X positivo, y false si se mueve
+ */
+void PAG::Camara::desplazarSobreEjeX(bool positivo) {
+    if(!positivo){
+        posicion = glm::translate(glm::vec3(-0.1, 0, 0)) * glm::vec4(posicion, 1 );
+        lookAt = glm::translate(glm::vec3(-0.1, 0, 0)) * glm::vec4(lookAt, 1 );
+    }else{
+        posicion = glm::translate(glm::vec3(0.1, 0, 0)) * glm::vec4(posicion, 1 );
+        lookAt = glm::translate(glm::vec3(0.1, 0, 0)) * glm::vec4(lookAt, 1 );
+    }
+
 }

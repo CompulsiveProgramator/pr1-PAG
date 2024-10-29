@@ -53,16 +53,24 @@ namespace PAG{
  * Metodo llamado desde Renderer para ejecutar el shader program
  */
     void ShaderProgram::ejecutarSP() {
-        glm::mat4 matrizTraslacion = camara->getMatrizVision();
+        glm::mat4 matrizModelado = glm::translate(glm::vec3(0, 0, 0)); ///El triangulo no se mueve del origen de coordenadas
+        glm::mat4 matrizModeladoVision = camara->getMatrizVision() * matrizModelado;
+        glm::mat4 matrizModeladoVisionPerspectiva = camara->getMatrizPerspectiva() * matrizModeladoVision;
         glUseProgram ( idSP );
 
         ///Hacer esto por cada malla de triangulos:
 
         //Para pasar un uniform al vertex shader
-        std::string nombreUniform("matrizTraslacion");
-        GLint pos = glGetUniformLocation(idSP, nombreUniform.c_str());
+        std::string matrizMV("matrizModeladoVision"); ///La matriz con la transformacion de modelado del objeto, y la de vision
+        GLint pos = glGetUniformLocation(idSP, matrizMV.c_str());
         if(pos != -1){
-            glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizTraslacion[0][0]);
+            glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVision[0][0]);
+        }
+
+        std::string matrizMVP("matrizModeladoVisionPerspectiva");
+        pos = glGetUniformLocation(idSP, matrizMVP.c_str());
+        if(pos != -1){
+            glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVisionPerspectiva[0][0]);
         }
 
         glBindVertexArray ( idVAO );
@@ -212,8 +220,9 @@ namespace PAG{
  */
     void ShaderProgram::creaModelo() {
         //Los vertices con su posicion (x,y,z) y color (r,g,b) , en un VBO entrelazado
+        //Aquí las coordenadas vienen dadas en el sistema local del triángulo, por lo que todavía se le tienen que aplicar las transformaciones de MVP
         GLfloat posicionVerticeColor[] = { -0.5, -0.5, 0.0,1.0, 0.0, 0.0,
-                                           0.5, -0.5, 0.0, 1.0, .0, 0.0,
+                                           0.5, -0.5, 0.0, 1.0, 0.0, 0.0,
                                            0.0, 0.5, 0.0, 0.0, 0.0, 1.0};
 
         /*
@@ -223,6 +232,7 @@ namespace PAG{
                                     0.0, 0.0, 1.0};
         */
 
+        //Solo hay 3 indices porque solo tenemos un triangulo ;)
         GLuint indices[] = {0, 1, 2}; //Los datos del IBO, que dice en que orden se procesan los vertices del VBO1
 
         glGenVertexArrays ( 1, &idVAO); //Creamos el VAO

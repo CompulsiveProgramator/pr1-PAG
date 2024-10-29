@@ -78,9 +78,14 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         io.AddKeyEvent(ImGuiKey_Escape, true);
     }
 
-    if( key == GLFW_KEY_LEFT && action == GLFW_PRESS)
+    if( key == GLFW_KEY_LEFT && action == GLFW_REPEAT)
     {
-        PAG::Renderer::getInstancia().getCamara()->rotarSobreEjeY();
+        PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeX(false);
+    }
+
+    if( key == GLFW_KEY_RIGHT && action == GLFW_REPEAT)
+    {
+        PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeX(true);
     }
 }
 
