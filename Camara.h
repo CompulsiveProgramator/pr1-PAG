@@ -25,6 +25,8 @@ namespace PAG{
         glm::mat4 getMatrizPerspectiva();
         void rotarSobreEjeY();
         void desplazarSobreEjeX(bool positivo);
+        void desplazarSobreEjeY(bool positivo);
+        void desplazarSobreEjeZ(bool positivo);
     };
 }
 

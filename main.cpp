@@ -8,7 +8,7 @@
  * - Práctica 3 -> Creamos nuestro primer shader program, para dibujar un triángulo 2D con un gradiente de colores muy guay, y lo hacemos dentro de la clase Renderer
  * - Práctica 4 -> El funcionamiento del shader program lo "desacoplamos" de la clase Renderer, y lo agregamos a la clase ShaderProgram que interactua con
  * la clase Renderer
- * - Práctica 5 -> //ToDo Agregar cámara virtual
+ * - Práctica 5 -> //ToDo Agregar cámara virtual gestionble desde ImGui para todos los movimientos (Dolly, Crane,...)
  *
  * @author Adrián González Almansa
  */
@@ -20,6 +20,9 @@
 #include <GLFW/glfw3.h>
 #include "Renderer.h"
 #include "GUI.h"
+#include "Constantes.h"
+
+MovimientoCamara movimientoCamara = MovimientoCamara::Dolly;
 
 /*
  * Los callbacks estan en el main para GLFW, y desde ellos llamamos a Renderer y GUI respectivamente
@@ -78,14 +81,39 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         io.AddKeyEvent(ImGuiKey_Escape, true);
     }
 
-    if( key == GLFW_KEY_LEFT && action == GLFW_REPEAT)
-    {
-        PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeX(false);
+    if(movimientoCamara == MovimientoCamara::Dolly){
+        if( key == GLFW_KEY_LEFT && action == GLFW_REPEAT)
+        {
+            PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeX(false);
+        }
+
+        if( key == GLFW_KEY_RIGHT && action == GLFW_REPEAT)
+        {
+            PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeX(true);
+        }
+
+        if( key == GLFW_KEY_UP && action == GLFW_REPEAT)
+        {
+            PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeZ(false);
+        }
+
+        if( key == GLFW_KEY_DOWN && action == GLFW_REPEAT)
+        {
+            PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeZ(true);
+        }
     }
 
-    if( key == GLFW_KEY_RIGHT && action == GLFW_REPEAT)
+    if(movimientoCamara == MovimientoCamara::Crane)
     {
-        PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeX(true);
+        if( key == GLFW_KEY_UP && action == GLFW_REPEAT)
+        {
+            PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeY(true);
+        }
+
+        if( key == GLFW_KEY_DOWN && action == GLFW_REPEAT)
+        {
+            PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeY(false);
+        }
     }
 }
 

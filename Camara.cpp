@@ -52,6 +52,7 @@ void PAG::Camara::rotarSobreEjeY() {
 
 /**
  * Desplazamos la posicion de la camara y el punto de mira en el ejeX
+ * Movimiento DOLLY
  * @param positivo True si la camara se mueve en el eje X positivo, y false si se mueve
  */
 void PAG::Camara::desplazarSobreEjeX(bool positivo) {
@@ -63,4 +64,29 @@ void PAG::Camara::desplazarSobreEjeX(bool positivo) {
         lookAt = glm::translate(glm::vec3(0.1, 0, 0)) * glm::vec4(lookAt, 1 );
     }
 
+}
+
+/**
+ * Desplazamos la posición de la camara y el punto de mira en el ejeY
+ * Movimiento CRANE
+ * @param positivo
+ */
+void PAG::Camara::desplazarSobreEjeY(bool positivo) {
+    if(!positivo){
+        posicion = glm::translate(glm::vec3(0, -.1, 0)) * glm::vec4(posicion, 1);
+        lookAt = glm::translate(glm::vec3(0, -.1, 0)) * glm::vec4(lookAt, 1);
+    }else{
+        posicion = glm::translate(glm::vec3(0, .1, 0)) * glm::vec4(posicion, 1);
+        lookAt = glm::translate(glm::vec3(0, .1, 0)) * glm::vec4(lookAt, 1);
+    }
+}
+
+void PAG::Camara::desplazarSobreEjeZ(bool positivo) {
+    if(!positivo){
+        posicion = glm::translate(glm::vec3(0, 0, -0.1)) * glm::vec4(posicion, 1);
+        lookAt = glm::translate(glm::vec3(0, 0, -0.1)) * glm::vec4(lookAt, 1);
+    }else{
+        posicion = glm::translate(glm::vec3(0, 0, 0.1)) * glm::vec4(posicion, 1);
+        lookAt = glm::translate(glm::vec3(0, 0, 0.1)) * glm::vec4(lookAt, 1);
+    }
 }
