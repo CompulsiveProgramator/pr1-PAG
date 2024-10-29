@@ -38,6 +38,15 @@ void PAG::VentanaMovimientoCamara::refrescarVentana() {
             camara->desplazarSobreEjeZ(true);
         }
     }
+
+    if(items[item_current_idx] == "Crane"){
+        if(ImGui::Button("Up")){
+            camara->desplazarSobreEjeY(true);
+        }
+        if(ImGui::Button("Down")){
+            camara->desplazarSobreEjeY(false);
+        }
+    }
 }
 
 void PAG::VentanaMovimientoCamara::setCamara(PAG::Camara *_camara) {
