@@ -18,6 +18,7 @@ void PAG::VentanaMovimientoCamara::refrescarVentana() {
             if (ImGui::Selectable(items[n], is_selected))
             {
                 item_current_idx = n; // Guarda la opción seleccionada
+                MovimientoCamara::getInstancia().setTipoMovimiento(tipoMovimiento(n)); ///< Establecemos el tipo de movimiento de la camara, que se puede consultar desede el main tambien
             }
 
             // Marca el elemento seleccionado para que esté resaltado

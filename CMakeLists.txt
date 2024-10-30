@@ -27,6 +27,7 @@ add_executable(Pr1 main.cpp
         ventanas-gui/VentanaSeleccionShaderProgram.h
         ventanas-gui/VentanaMovimientoCamara.cpp
         ventanas-gui/VentanaMovimientoCamara.h
+        Constantes.cpp
 )
 
 # Para que Cmake encuentre los bonitos paquetes:

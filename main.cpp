@@ -79,7 +79,7 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         io.AddKeyEvent(ImGuiKey_Escape, true);
     }
 
-    if(movimientoCamara == MovimientoCamara::Dolly){
+    if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Dolly){
         if( key == GLFW_KEY_LEFT && action == GLFW_REPEAT)
         {
             PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeX(false);
@@ -101,7 +101,7 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         }
     }
 
-    if(movimientoCamara == MovimientoCamara::Crane)
+    if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Crane)
     {
         if( key == GLFW_KEY_UP && action == GLFW_REPEAT)
         {
