@@ -79,7 +79,7 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         io.AddKeyEvent(ImGuiKey_Escape, true);
     }
 
-    //ToDo Implementar por teclado, movimiento Orbit y Zoom
+    //ToDo Implementar por teclado, movimiento Zoom
 
     if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Dolly){
         if( key == GLFW_KEY_LEFT && action == GLFW_REPEAT)
@@ -165,6 +165,16 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         }
     }
 
+    if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Zoom)
+    {
+        if( key == GLFW_KEY_UP && action == GLFW_PRESS){
+            PAG::Renderer::getInstancia().getCamara()->zoom(false);
+        }
+
+        if( key == GLFW_KEY_DOWN && action == GLFW_PRESS){
+            PAG::Renderer::getInstancia().getCamara()->zoom(true);
+        }
+    }
 }
 
 /**
