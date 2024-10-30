@@ -79,7 +79,7 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         io.AddKeyEvent(ImGuiKey_Escape, true);
     }
 
-    //ToDo Implementar por teclado, movimiento Tilt, Orbit y Zoom
+    //ToDo Implementar por teclado, movimiento Orbit y Zoom
 
     if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Dolly){
         if( key == GLFW_KEY_LEFT && action == GLFW_REPEAT)
@@ -139,6 +139,29 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         if( key == GLFW_KEY_DOWN && action == GLFW_PRESS)
         {
             PAG::Renderer::getInstancia().getCamara()->rotarSobreCamaraEjeX(false);
+        }
+    }
+
+    if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Orbit)
+    {
+        if( key == GLFW_KEY_LEFT && action == GLFW_PRESS)
+        {
+            PAG::Renderer::getInstancia().getCamara()->rotarSobreLookAtEjeY(false);
+        }
+
+        if( key == GLFW_KEY_RIGHT && action == GLFW_PRESS)
+        {
+            PAG::Renderer::getInstancia().getCamara()->rotarSobreLookAtEjeY(true);
+        }
+
+        if( key == GLFW_KEY_UP && action == GLFW_PRESS)
+        {
+            PAG::Renderer::getInstancia().getCamara()->rotarSobreLookAtEjeX(false);
+        }
+
+        if( key == GLFW_KEY_DOWN && action == GLFW_PRESS)
+        {
+            PAG::Renderer::getInstancia().getCamara()->rotarSobreLookAtEjeX(true);
         }
     }
 
