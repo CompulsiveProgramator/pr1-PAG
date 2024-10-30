@@ -79,6 +79,8 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         io.AddKeyEvent(ImGuiKey_Escape, true);
     }
 
+    //ToDo Implementar por teclado, movimiento Tilt, Orbit y Zoom
+
     if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Dolly){
         if( key == GLFW_KEY_LEFT && action == GLFW_REPEAT)
         {
@@ -113,6 +115,33 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
             PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeY(false);
         }
     }
+
+    if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Pan)
+    {
+        if( key == GLFW_KEY_LEFT && action == GLFW_PRESS)
+        {
+            PAG::Renderer::getInstancia().getCamara()->rotarSobreCamaraEjeY(true);
+        }
+
+        if( key == GLFW_KEY_RIGHT && action == GLFW_PRESS)
+        {
+            PAG::Renderer::getInstancia().getCamara()->rotarSobreCamaraEjeY(false);
+        }
+    }
+
+    if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Tilt)
+    {
+        if( key == GLFW_KEY_UP && action == GLFW_PRESS)
+        {
+            PAG::Renderer::getInstancia().getCamara()->rotarSobreCamaraEjeX(true);
+        }
+
+        if( key == GLFW_KEY_DOWN && action == GLFW_PRESS)
+        {
+            PAG::Renderer::getInstancia().getCamara()->rotarSobreCamaraEjeX(false);
+        }
+    }
+
 }
 
 /**
