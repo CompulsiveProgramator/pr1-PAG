@@ -62,6 +62,10 @@ void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
                  PAG::Renderer::getInstancia().getCamara()->rotarSobreCamaraEjeX(difY < 0);
              }
 
+             if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Zoom){
+                 PAG::Renderer::getInstancia().getCamara()->zoom(difY > 0);
+             }
+
              lastYpos = ypos;
          }
      }
