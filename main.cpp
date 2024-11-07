@@ -47,6 +47,10 @@ void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
                  PAG::Renderer::getInstancia().getCamara()->rotarSobreCamaraEjeY(difX < 0);
              }
 
+             if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Orbit){
+                 PAG::Renderer::getInstancia().getCamara()->rotarSobreLookAtEjeY(difX > 0);
+             }
+
              lastXpos = xpos;
          }
          if(abs(difY) > 100){
@@ -64,6 +68,10 @@ void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
 
              if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Zoom){
                  PAG::Renderer::getInstancia().getCamara()->zoom(difY > 0);
+             }
+
+             if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Orbit){
+                 PAG::Renderer::getInstancia().getCamara()->rotarSobreLookAtEjeX(difY > 0);
              }
 
              lastYpos = ypos;
