@@ -49,4 +49,4 @@ la de gestion de movimiento de cámara, con un simple selector de tipo de movimi
 
 La version actual en un diagrama de clases UML de la aplicación, es la siguiente:
 
-<img src="">
+<img src="images/pr5UML.png">
