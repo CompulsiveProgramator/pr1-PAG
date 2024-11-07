@@ -48,6 +48,10 @@ void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
          }
          if(abs(difY) > 100){
              if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Dolly){
+                 PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeZ(difY < 0);
+             }
+
+             if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Crane){
                  PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeY(difY < 0);
              }
 
