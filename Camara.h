@@ -23,13 +23,13 @@ namespace PAG{
         Camara(glm::vec3 posicion, glm::vec3 lookAt, glm::float32 fovY, glm::float32 aspect, glm::float32 zNear, glm::float32 zFar);
         glm::mat4 getMatrizVision();
         glm::mat4 getMatrizPerspectiva();
-        void rotarSobreCamaraEjeX(bool positivo);
-        void rotarSobreCamaraEjeY(bool positivo);
+        void rotarSobreCamaraEjeX(bool antihorario);
+        void rotarSobreCamaraEjeY(bool antihorario);
         void desplazarSobreEjeX(bool positivo);
         void desplazarSobreEjeY(bool positivo);
         void desplazarSobreEjeZ(bool positivo);
-        void rotarSobreLookAtEjeX(bool positivo);
-        void rotarSobreLookAtEjeY(bool positivo);
+        void rotarSobreLookAtEjeX(bool antihorario);
+        void rotarSobreLookAtEjeY(bool antihorario);
         void zoom(bool positivo);
     };
 }

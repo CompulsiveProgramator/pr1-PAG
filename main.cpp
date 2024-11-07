@@ -34,7 +34,6 @@ void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
      * 3o. Guardo la posicion del raton de nuevo
      */
 
-    //ToDo Primera version, solo para Dolly
      double difX, difY;
      if(pulsado){
          difX = xpos - lastXpos;
@@ -57,6 +56,10 @@ void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
 
              if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Crane){
                  PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeY(difY < 0);
+             }
+
+             if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Tilt){
+                 PAG::Renderer::getInstancia().getCamara()->rotarSobreCamaraEjeX(difY < 0);
              }
 
              lastYpos = ypos;
