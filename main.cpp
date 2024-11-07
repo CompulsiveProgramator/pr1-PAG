@@ -8,7 +8,8 @@
  * - Práctica 3 -> Creamos nuestro primer shader program, para dibujar un triángulo 2D con un gradiente de colores muy guay, y lo hacemos dentro de la clase Renderer
  * - Práctica 4 -> El funcionamiento del shader program lo "desacoplamos" de la clase Renderer, y lo agregamos a la clase ShaderProgram que interactua con
  * la clase Renderer
- * - Práctica 5 ->
+ * - Práctica 5 -> Crear camara virtual, que se pueda mover con el raton, el teclado, y con botones de la GUI
+ * - Práctica 6 ->
  *
  * @author Adrián González Almansa
  */
@@ -21,6 +22,39 @@
 #include "Renderer.h"
 #include "GUI.h"
 #include "Constantes.h"
+
+//Para mover la camara con el movimiento del raton
+double lastXpos = 0, lastYpos = 0; //Empezamos a contar desde arriba a la izquierda de la pantalla en glfw, pero en open gl es de la esquina inferior derecha ;)
+bool pulsado = false;
+
+void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
+    /**
+     * 1o. Guardo la posicion inicial del raton
+     * 2o. Si mantengo el raton pulsado, y lo muevo, miro cuanto se ha movido en vertical y horizontal, y si son al menos 100 pixeles actualizamos la posicion de la camara
+     * 3o. Guardo la posicion del raton de nuevo
+     */
+
+    //ToDo Primera version, solo para Dolly
+     double difX, difY;
+     if(pulsado){
+         difX = xpos - lastXpos;
+         difY = ypos - lastYpos;
+         if(abs(difX) > 100){
+             if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Dolly){
+                 PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeX(difX > 0);
+             }
+
+             lastXpos = xpos;
+         }
+         if(abs(difY) > 100){
+             if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Dolly){
+                 PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeY(difY < 0);
+             }
+
+             lastYpos = ypos;
+         }
+     }
+}
 
 /*
  * Los callbacks estan en el main para GLFW, y desde ellos llamamos a Renderer y GUI respectivamente
@@ -78,8 +112,6 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         ImGuiIO& io = ImGui::GetIO();
         io.AddKeyEvent(ImGuiKey_Escape, true);
     }
-
-    //ToDo Implementar por teclado, movimiento Zoom
 
     if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Dolly){
         if( key == GLFW_KEY_LEFT && action == GLFW_REPEAT)
@@ -193,6 +225,8 @@ void mouse_button_callback ( GLFWwindow *window, int button, int action, int mod
         PAG::GUI::getInstancia().agregarMensajeLog(cad);
         ImGuiIO& io = ImGui::GetIO();
         io.AddMouseButtonEvent(button, GLFW_PRESS);
+
+        pulsado = true;
     }
     else if ( action == GLFW_RELEASE )
     {
@@ -202,9 +236,9 @@ void mouse_button_callback ( GLFWwindow *window, int button, int action, int mod
         PAG::GUI::getInstancia().agregarMensajeLog(cad);
         ImGuiIO& io = ImGui::GetIO();
         io.AddMouseButtonEvent(button, GLFW_RELEASE);
+
+        pulsado = false;
     }
-
-
 }
 
 /**
@@ -280,6 +314,7 @@ int main()
     glfwSetKeyCallback ( window, key_callback );
     glfwSetMouseButtonCallback ( window, mouse_button_callback );
     glfwSetScrollCallback ( window, scroll_callback );
+    glfwSetCursorPosCallback(window, cursorPosition_callback);
 
     /// Inicialización  de DearIMGui
     IMGUI_CHECKVERSION();
