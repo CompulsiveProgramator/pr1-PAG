@@ -44,6 +44,10 @@ void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
                  PAG::Renderer::getInstancia().getCamara()->desplazarSobreEjeX(difX > 0);
              }
 
+             if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Pan){
+                 PAG::Renderer::getInstancia().getCamara()->rotarSobreCamaraEjeY(difX < 0);
+             }
+
              lastXpos = xpos;
          }
          if(abs(difY) > 100){
