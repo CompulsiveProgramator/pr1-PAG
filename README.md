@@ -36,7 +36,17 @@ He movido los archivos de shaders (tanto vertex como fragment) a una carpeta lla
 
 Una vez hecho lo anterior, he creado la clase PAG::Camara que alberga todo el funcionamiento de la camara, y esta clase se comunica con la clase ShaderProgram para 
 poder hacer las transformaciones necesarias de visión y perspectiva, en el modelo que se va a dibujar. Desde los callbacks del main se comunica a la cámara de 
-la aplicación el movimiento que ha de hacer (dolly, crane, ...)
+la aplicación el movimiento que ha de hacer (dolly, crane, ...), concretamente desde los callbacks para desplazamiento del raton, y para pulsar una tecla, que son
+cursorPosition_callback() y key_callback() respectivamente.
 Esto lo hago ya que así cuando ocurra un evento se notifica automaticamente a la cámara, que es como debe ser
 
-Para las ventanas de ImGui, simplemente haré un selector de ventanas con un botón ........
+La idea de comunicar los movimientos a la cámara directamente desde el main, lo veo lo más sencillo de entender y más simple posible
+
+Para las ventanas de la aplicación, he creado una clase abstracta llamada "Ventana", y de esta heredan todas las ventanas que he creado con ImGui, siendo la última
+la de gestion de movimiento de cámara, con un simple selector de tipo de movimiento, y botones para actualizarla:
+
+<img src="images/ventana_movimiento_camara.png">
+
+La version actual en un diagrama de clases UML de la aplicación, es la siguiente:
+
+<img src="">
