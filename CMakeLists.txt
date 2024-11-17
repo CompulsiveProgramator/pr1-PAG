@@ -28,6 +28,8 @@ add_executable(Pr1 main.cpp
         ventanas-gui/VentanaMovimientoCamara.cpp
         ventanas-gui/VentanaMovimientoCamara.h
         Constantes.cpp
+        Modelo.cpp
+        Modelo.h
 )
 
 # Para que Cmake encuentre los bonitos paquetes:

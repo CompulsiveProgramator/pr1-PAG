@@ -50,3 +50,8 @@ la de gestion de movimiento de cámara, con un simple selector de tipo de movimi
 La version actual en un diagrama de clases UML de la aplicación, es la siguiente:
 
 <img src="images/pr5UML.png">
+
+
+## Práctica 6
+Vamos a por esta práctica, que consiste en desacoplar del Shader Program el funcionamiento del modelo. Para ello, voy a empezar haciendo una clase PAG::Modelo
+que contenga por supuesto, los datos como vertices, normales, y matriz de modelado que definen al modelo.

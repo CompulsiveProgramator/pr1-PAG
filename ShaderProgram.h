@@ -15,6 +15,7 @@
 #include <fstream>
 #include <sstream>
 #include "Camara.h"
+#include "Modelo.h"
 
 namespace PAG{
     class ShaderProgram {
@@ -22,12 +23,9 @@ namespace PAG{
         GLuint idVS = 0; //Id del vertex shader
         GLuint idFS = 0; //Id del fragment shader
         GLuint idSP = 0; //Id del shader program
-        GLuint idVAO = 0; //Id del Vertex Array Object
-        GLuint idVBO1 = 0; //Id del Vertex Buffer Object
-        GLuint idVBO2 = 0;
-        GLuint idIBO = 0; //Id del Index Buffer Object
         std::string nombreFicheros; /// El nombre de los ficheros ( solo parte inicial, EJ: pag03 , y asi sacamos el pag03-vs.glsl y el pag03-fs.glsl ;) )
         Camara *camara = nullptr; /// El puntero para la camara virtual de la ventana
+        Modelo *modelo = nullptr;
 
     public:
         ShaderProgram(std::string &nombreFicheros, Camara *camara);
