@@ -32,7 +32,6 @@ namespace PAG{
         ~ShaderProgram();
         void ejecutarSP();
         void creaShaderProgram(); ///Este es el que hay que llamar desde fuera
-        void creaModelo();
 
         //Para compilar un shader al completo:
         void crearSP(GLuint &handler);

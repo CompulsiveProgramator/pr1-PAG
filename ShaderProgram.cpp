@@ -39,7 +39,7 @@ namespace PAG{
  * Metodo llamado desde Renderer para ejecutar el shader program
  */
     void ShaderProgram::ejecutarSP() {
-        glm::mat4 matrizModelado = glm::translate(glm::vec3(0, 0, 0)); ///El triangulo no se mueve del origen de coordenadas
+        glm::mat4 matrizModelado = modelo->getMatrizModelado(); ///El triangulo no se mueve del origen de coordenadas
         glm::mat4 matrizModeladoVision = camara->getMatrizVision() * matrizModelado;
         glm::mat4 matrizModeladoVisionPerspectiva = camara->getMatrizPerspectiva() * matrizModeladoVision;
         glUseProgram ( idSP );
@@ -199,13 +199,6 @@ namespace PAG{
                 throw std::string("Cannot link shader" + filename + "\n" + logString + "\n");
             }
         }
-    }
-
-/**
- * Metodo para crear el VAO para el modelo a renderizar
- */
-    void ShaderProgram::creaModelo() {
-
     }
 }
 
