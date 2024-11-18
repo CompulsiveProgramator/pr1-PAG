@@ -37,11 +37,17 @@ find_package(opengl_system)
 find_package(glad)
 find_package(glfw3)
 find_package(glm)
+find_package(assimp)
 
 # Para poder agregar directamente al main las librerias con <>
 target_include_directories(${PROJECT_NAME} PUBLIC glad/include imgui)
 
 # Para que Cmake agregue las librerias "descargadas con Conan" al proyecto
-target_link_libraries(${PROJECT_NAME} opengl::opengl glad::glad glfw glm::glm "-static")
+target_link_libraries(${PROJECT_NAME} opengl::opengl glad::glad glfw glm::glm assimp::assimp "-static")
 
-# DLL Dynamic Link Libraries se usa para enlazar en tiempo de ejecucion con las librerias de "fuera del proyecto" ???
+# -static Hacemos que se enlace de forma estatica toodo en el proyecto
+
+# DLL Dynamic Link Libraries se usa para enlazar en tiempo de ejecucion con las bibliotecas del proyecto
+# asi el ejecutable del programa es más chikito
+# Ya que si compilamos y enlazamos toodas las bibliotecas de una aplicación en un solo ejecutable, este puede ser enormeeeeee
+# Para mas info : https://es.wikipedia.org/wiki/Biblioteca_de_enlace_din%C3%A1mico
