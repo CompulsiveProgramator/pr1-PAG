@@ -7,8 +7,8 @@ file( GLOB GLAD_FILES glad/src/*.c ) # Para agregar como un nombre al add execut
 file( GLOB IMGUI_FILES imgui/*.cpp)
 
 add_executable(Pr1 main.cpp
-        Renderer.cpp
-        Renderer.h
+        Renderer/Renderer.cpp
+        Renderer/Renderer.h
         ${GLAD_FILES}
         ${IMGUI_FILES}
         GUI.cpp
@@ -28,8 +28,8 @@ add_executable(Pr1 main.cpp
         ventanas-gui/VentanaMovimientoCamara.cpp
         ventanas-gui/VentanaMovimientoCamara.h
         Constantes.cpp
-        Modelo.cpp
-        Modelo.h
+        Malla.cpp
+        Malla.h
 )
 
 # Para que Cmake encuentre los bonitos paquetes:

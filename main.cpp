@@ -19,7 +19,7 @@
 // IMPORTANTE: El include de GLAD debe estar siempre ANTES de el de GLFW
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "Renderer.h"
+#include "Renderer/Renderer.h"
 #include "GUI.h"
 #include "Constantes.h"
 

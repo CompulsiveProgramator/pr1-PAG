@@ -2,19 +2,19 @@
 // Created by secre on 17/11/2024.
 //
 
-#include "Modelo.h"
+#include "Malla.h"
 
 /**
  * El constructor de la clase
  */
-PAG::Modelo::Modelo() {
+PAG::Malla::Malla() {
     matrizModelado = glm::rotate(glm::radians(90.0f), glm::vec3(0,0,1));
 }
 
 /**
  * El destructor del modelo, que libera los recursos ;)
  */
-PAG::Modelo::~Modelo() {
+PAG::Malla::~Malla() {
     if( idVBO1 != 0 )
     {
         glDeleteBuffers( 1, &idVBO1);
@@ -35,7 +35,7 @@ PAG::Modelo::~Modelo() {
  * Metodo que crea el modelo
  * Con el VAO, VBO e IBO
  */
-void PAG::Modelo::creaModelo() {
+void PAG::Malla::creaModelo() {
     //Para un modelo sencillo, tenemos un VAO, un VBO entrelazado para posicion/color, y un solo IBO para recorrerlo
     //Podemos tener multiples IBOs, uno para ver el modelo como malla de triangulos, otro para verlo como puntos, otro para lineas ...
 
@@ -90,18 +90,18 @@ void PAG::Modelo::creaModelo() {
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * iboIndicesTriangulo.size(), iboIndicesTriangulo.data(), GL_STATIC_DRAW);
 }
 
-GLuint PAG::Modelo::getIdVao() const {
+GLuint PAG::Malla::getIdVao() const {
     return idVAO;
 }
 
-GLuint PAG::Modelo::getIdVbo1() const {
+GLuint PAG::Malla::getIdVbo1() const {
     return idVBO1;
 }
 
-GLuint PAG::Modelo::getIdIbo() const {
+GLuint PAG::Malla::getIdIbo() const {
     return idIBO;
 }
 
-const glm::mat4 &PAG::Modelo::getMatrizModelado() {
+const glm::mat4 &PAG::Malla::getMatrizModelado() {
     return matrizModelado;
 }

@@ -2,8 +2,8 @@
 // Created by secre on 17/11/2024.
 //
 
-#ifndef PR1_MODELO_H
-#define PR1_MODELO_H
+#ifndef PR1_MALLA_H
+#define PR1_MALLA_H
 
 #define GLM_ENABLE_EXPERIMENTAL
 
@@ -14,7 +14,7 @@
 #include <vector>
 
 namespace PAG{
-    class Modelo {
+    class Malla {
     private:
         ///Los ids del VAO, VBO y IBO del modelo
         GLuint idVAO = 0; //Id del Vertex Array Object
@@ -23,8 +23,8 @@ namespace PAG{
 
         glm::mat4 matrizModelado; //La matriz de modelado, que coloca en escena al objeto ;)
     public:
-        Modelo();
-        ~Modelo();
+        Malla();
+        ~Malla();
         void creaModelo();
         GLuint getIdVao() const;
         GLuint getIdVbo1() const;
@@ -34,4 +34,4 @@ namespace PAG{
 }
 
 
-#endif //PR1_MODELO_H
+#endif //PR1_MALLA_H

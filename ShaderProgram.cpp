@@ -12,7 +12,7 @@ namespace PAG{
     ShaderProgram::ShaderProgram(std::string &nombreFicheros, Camara *camara) {
         this->nombreFicheros = nombreFicheros;
         this->camara = camara;
-        this->modelo = new Modelo();
+        this->modelo = new Malla();
         creaShaderProgram();
     }
 

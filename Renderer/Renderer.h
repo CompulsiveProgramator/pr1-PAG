@@ -5,11 +5,11 @@
 #ifndef PR1_RENDERER_H
 #define PR1_RENDERER_H
 
-#include <glad/glad.h>
+#include "glad/glad.h"
 #include <GL/gl.h>
 #include <iostream>
-#include "ShaderProgram.h"
-#include "Camara.h"
+#include "../ShaderProgram.h"
+#include "../Camara.h"
 
 ///El espacio de nombres para las prácticas de Programación de Aplicaciones Gráficas
 namespace PAG{
