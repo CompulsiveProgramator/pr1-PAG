@@ -1,12 +1,13 @@
 # ninja log v6
 21	2109	7500417031462825	CMakeFiles/Pr1.dir/ColorPicker.cpp.obj	4d8652febdf566fa
-10	5296	7537227365981163	build.ninja	49d6eeb14a5ff4e5
-42	4312	7537226501668084	CMakeFiles/Pr1.dir/main.cpp.obj	e5f8614b30f64914
+10	5296	7537228377608935	build.ninja	49d6eeb14a5ff4e5
+44	3173	7537227372030610	CMakeFiles/Pr1.dir/main.cpp.obj	e5f8614b30f64914
+77	2238	7537227372362888	CMakeFiles/Pr1.dir/Malla.cpp.obj	ec1167e61a678438
 80	5378	7536471503425138	CMakeFiles/Pr1.dir/imgui/imgui_draw.cpp.obj	8aa903a682e27e1e
 93	4420	7536471503547968	CMakeFiles/Pr1.dir/imgui/imgui_impl_opengl3.cpp.obj	6380f322aea10f42
-4312	6954	7537226544369950	Pr1.exe	76857a5106845ed1
-106	4407	7536471503681873	CMakeFiles/Pr1.dir/imgui/imgui_tables.cpp.obj	23a6c8142344ae6a
+3173	5821	7537227403324313	Pr1.exe	7fc2ea21206213fb
 22	957	7536510634683362	CMakeFiles/Pr1.dir/Renderer.cpp.obj	d18951096b2ed86a
+106	4407	7536471503681873	CMakeFiles/Pr1.dir/imgui/imgui_tables.cpp.obj	23a6c8142344ae6a
 60	5003	7536471503216449	CMakeFiles/Pr1.dir/glad/src/glad.c.obj	14d7ac1ad9c877b4
 74	2446	7536471503353967	CMakeFiles/Pr1.dir/imgui/imgui_demo.cpp.obj	35da7afd7d62bab
 86	6379	7536471503482833	CMakeFiles/Pr1.dir/imgui/imgui_impl_glfw.cpp.obj	4df84f263d93abb5
@@ -18,7 +19,7 @@
 28	95	7503517567191187	CMakeFiles/Pr1.dir/VertexShader.cpp.obj	6ad3d853e90c42f5
 33	98	7503517567251198	CMakeFiles/Pr1.dir/FragmentShader.cpp.obj	ffca901f6bc4425a
 88	2040	7537199505469693	CMakeFiles/Pr1.dir/Modelo.cpp.obj	e0bd5a62bef78202
-35	1020	7536510634814564	CMakeFiles/Pr1.dir/ShaderProgram.cpp.obj	d8322e72bc3d0100
+67	2964	7537227372256464	CMakeFiles/Pr1.dir/ShaderProgram.cpp.obj	d8322e72bc3d0100
 101	1128	7536471503620093	CMakeFiles/Pr1.dir/imgui/imgui_stdlib.cpp.obj	cb2455a9c18f8b1a
 132	1240	7536471503947352	CMakeFiles/Pr1.dir/Camara.cpp.obj	f4bc15dd42d644f
 29	1777	7536471619034677	CMakeFiles/Pr1.dir/ventanas-gui/VentanaSeleccionColor.cpp.obj	f28d6f425a2cc7bf
@@ -26,9 +27,4 @@
 38	857	7536471619114554	CMakeFiles/Pr1.dir/ventanas-gui/VentanaSeleccionShaderProgram.cpp.obj	11ea2aa4fe1ec3c8
 43	856	7536471619168312	CMakeFiles/Pr1.dir/ventanas-gui/VentanaMovimientoCamara.cpp.obj	c2b8e39d55e1206c
 49	135	7536471619222186	CMakeFiles/Pr1.dir/Constantes.cpp.obj	c7e9e8192edbfcfd
-55	3845	7537226501796548	CMakeFiles/Pr1.dir/Renderer/Renderer.cpp.obj	b49d0cd37eff538f
-77	2238	7537227372362888	CMakeFiles/Pr1.dir/Malla.cpp.obj	ec1167e61a678438
 57	2749	7537227372150136	CMakeFiles/Pr1.dir/Renderer/Renderer.cpp.obj	b49d0cd37eff538f
-67	2964	7537227372256464	CMakeFiles/Pr1.dir/ShaderProgram.cpp.obj	d8322e72bc3d0100
-44	3173	7537227372030610	CMakeFiles/Pr1.dir/main.cpp.obj	e5f8614b30f64914
-3173	5821	7537227403324313	Pr1.exe	7fc2ea21206213fb

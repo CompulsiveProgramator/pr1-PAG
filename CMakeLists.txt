@@ -30,6 +30,8 @@ add_executable(Pr1 main.cpp
         Constantes.cpp
         Malla.cpp
         Malla.h
+        Modelo.cpp
+        Modelo.h
 )
 
 # Para que Cmake encuentre los bonitos paquetes:
