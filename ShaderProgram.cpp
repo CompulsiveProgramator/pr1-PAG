@@ -12,7 +12,7 @@ namespace PAG{
     ShaderProgram::ShaderProgram(std::string &nombreFicheros, Camara *camara) {
         this->nombreFicheros = nombreFicheros;
         this->camara = camara;
-        this->modelo = new Malla();
+        this->modelo = new Modelo("../Modelos3D/dado.obj");
         creaShaderProgram();
     }
 
@@ -39,7 +39,7 @@ namespace PAG{
  * Metodo llamado desde Renderer para ejecutar el shader program
  */
     void ShaderProgram::ejecutarSP() {
-        glm::mat4 matrizModelado = modelo->getMatrizModelado(); ///El triangulo no se mueve del origen de coordenadas
+        glm::mat4 matrizModelado = modelo->getMalla()->getMatrizModelado();
         glm::mat4 matrizModeladoVision = camara->getMatrizVision() * matrizModelado;
         glm::mat4 matrizModeladoVisionPerspectiva = camara->getMatrizPerspectiva() * matrizModeladoVision;
         glUseProgram ( idSP );
@@ -59,8 +59,9 @@ namespace PAG{
             glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVisionPerspectiva[0][0]);
         }
 
-        glBindVertexArray ( modelo->getIdVao() );
-        glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, modelo->getIdIbo() );
+
+        glBindVertexArray ( modelo->getMalla()->getIdVao() );
+        glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, modelo->getMalla()->getIdIbo() );
         glDrawElements ( GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr );
     }
 
@@ -87,8 +88,6 @@ namespace PAG{
         shaderHandler = creaShaderObject(GL_FRAGMENT_SHADER); //Fase 3
         compilarShaderObject(contenido, shaderHandler, GL_FRAGMENT_SHADER); //Fase 4
         enlazarSP(idSP, shaderHandler, filename); //Fase 5
-
-        modelo->creaModelo();
     }
 
 /**

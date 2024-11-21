@@ -639,3 +639,164 @@ events:
         
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "assimp/assimp-master/contrib/zlib/CMakeLists.txt:35 (check_include_file)"
+    checks:
+      - "Looking for sys/types.h"
+    directories:
+      source: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-d6t1vi"
+      binary: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-d6t1vi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "cmake-modules"
+    buildResult:
+      variable: "HAVE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-d6t1vi'
+        
+        Run Build Command(s): C:/Users/secre/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe -v cmTC_1189d
+        [1/2] C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe   -fno-strict-aliasing -fPIC   -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_1189d.dir/CheckIncludeFile.c.obj -c C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-d6t1vi/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe -fno-strict-aliasing -fPIC  CMakeFiles/cmTC_1189d.dir/CheckIncludeFile.c.obj -o cmTC_1189d.exe -Wl,--out-implib,libcmTC_1189d.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "assimp/assimp-master/contrib/zlib/CMakeLists.txt:36 (check_include_file)"
+    checks:
+      - "Looking for stdint.h"
+    directories:
+      source: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-tvbtjs"
+      binary: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-tvbtjs"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "cmake-modules"
+    buildResult:
+      variable: "HAVE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-tvbtjs'
+        
+        Run Build Command(s): C:/Users/secre/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe -v cmTC_bef4a
+        [1/2] C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe   -fno-strict-aliasing -fPIC   -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_bef4a.dir/CheckIncludeFile.c.obj -c C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-tvbtjs/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe -fno-strict-aliasing -fPIC  CMakeFiles/cmTC_bef4a.dir/CheckIncludeFile.c.obj -o cmTC_bef4a.exe -Wl,--out-implib,libcmTC_bef4a.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "assimp/assimp-master/contrib/zlib/CMakeLists.txt:37 (check_include_file)"
+    checks:
+      - "Looking for stddef.h"
+    directories:
+      source: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pmw725"
+      binary: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pmw725"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "cmake-modules"
+    buildResult:
+      variable: "HAVE_STDDEF_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pmw725'
+        
+        Run Build Command(s): C:/Users/secre/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe -v cmTC_0d60a
+        [1/2] C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe   -fno-strict-aliasing -fPIC   -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_0d60a.dir/CheckIncludeFile.c.obj -c C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pmw725/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe -fno-strict-aliasing -fPIC  CMakeFiles/cmTC_0d60a.dir/CheckIncludeFile.c.obj -o cmTC_0d60a.exe -Wl,--out-implib,libcmTC_0d60a.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "assimp/assimp-master/contrib/zlib/CMakeLists.txt:55 (check_type_size)"
+    checks:
+      - "Check size of off64_t"
+    directories:
+      source: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hw2yh3"
+      binary: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hw2yh3"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "cmake-modules"
+    buildResult:
+      variable: "HAVE_OFF64_T"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hw2yh3'
+        
+        Run Build Command(s): C:/Users/secre/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe -v cmTC_2ab56
+        [1/2] C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe -DHAVE_STDDEF_H -DHAVE_STDINT_H -DHAVE_SYS_TYPES_H -D_LARGEFILE64_SOURCE=1  -fno-strict-aliasing -fPIC   -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_2ab56.dir/OFF64_T.c.obj -c C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hw2yh3/OFF64_T.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe -fno-strict-aliasing -fPIC  CMakeFiles/cmTC_2ab56.dir/OFF64_T.c.obj -o cmTC_2ab56.exe -Wl,--out-implib,libcmTC_2ab56.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "assimp/assimp-master/contrib/zlib/CMakeLists.txt:64 (check_function_exists)"
+    checks:
+      - "Looking for fseeko"
+    directories:
+      source: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fdjfqb"
+      binary: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fdjfqb"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "cmake-modules"
+    buildResult:
+      variable: "HAVE_FSEEKO"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fdjfqb'
+        
+        Run Build Command(s): C:/Users/secre/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe -v cmTC_8f1c5
+        [1/2] C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe   -fno-strict-aliasing -fPIC  -DCHECK_FUNCTION_EXISTS=fseeko -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_8f1c5.dir/CheckFunctionExists.c.obj -c C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fdjfqb/CheckFunctionExists.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe -fno-strict-aliasing -fPIC  -DCHECK_FUNCTION_EXISTS=fseeko  CMakeFiles/cmTC_8f1c5.dir/CheckFunctionExists.c.obj -o cmTC_8f1c5.exe -Wl,--out-implib,libcmTC_8f1c5.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "assimp/assimp-master/contrib/zlib/CMakeLists.txt:72 (check_include_file)"
+    checks:
+      - "Looking for unistd.h"
+    directories:
+      source: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6ro92q"
+      binary: "C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6ro92q"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "cmake-modules"
+    buildResult:
+      variable: "Z_HAVE_UNISTD_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6ro92q'
+        
+        Run Build Command(s): C:/Users/secre/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe -v cmTC_6914a
+        [1/2] C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe   -fno-strict-aliasing -fPIC   -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_6914a.dir/CheckIncludeFile.c.obj -c C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6ro92q/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Users\\secre\\AppData\\Local\\Programs\\CLion\\bin\\mingw\\bin\\gcc.exe -fno-strict-aliasing -fPIC  CMakeFiles/cmTC_6914a.dir/CheckIncludeFile.c.obj -o cmTC_6914a.exe -Wl,--out-implib,libcmTC_6914a.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+...

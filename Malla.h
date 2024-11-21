@@ -25,7 +25,8 @@ namespace PAG{
     public:
         Malla();
         ~Malla();
-        void creaModelo();
+        void creaModeloPrueba();
+        void creaModelo(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> coloresVertices, std::vector<GLuint> indices);
         GLuint getIdVao() const;
         GLuint getIdVbo1() const;
         GLuint getIdIbo() const;

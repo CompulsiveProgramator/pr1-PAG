@@ -9,6 +9,7 @@
  */
 PAG::Malla::Malla() {
     matrizModelado = glm::rotate(glm::radians(90.0f), glm::vec3(0,0,1));
+    creaModeloPrueba();
 }
 
 /**
@@ -35,7 +36,7 @@ PAG::Malla::~Malla() {
  * Metodo que crea el modelo
  * Con el VAO, VBO e IBO
  */
-void PAG::Malla::creaModelo() {
+void PAG::Malla::creaModeloPrueba() {
     //Para un modelo sencillo, tenemos un VAO, un VBO entrelazado para posicion/color, y un solo IBO para recorrerlo
     //Podemos tener multiples IBOs, uno para ver el modelo como malla de triangulos, otro para verlo como puntos, otro para lineas ...
 
@@ -88,6 +89,17 @@ void PAG::Malla::creaModelo() {
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, idIBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * iboIndicesTriangulo.size(), iboIndicesTriangulo.data(), GL_STATIC_DRAW);
+}
+
+
+/**
+ * Metodo que crea el VAO, VBO e IBO para los datos dados
+ * @param posicionVertices Un array con las posiciones x,y,z de cada vertice
+ * @param coloresVertices Un array con los colores R,G,B de cada vertice
+ * @param indices Un array con los indices para dibujar triangulos      Ej:  0,1,2 == Triangulo con los vertices 0, 1, 2 del array "posicionVertices"
+ */
+void PAG::Malla::creaModelo(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> coloresVertices, std::vector<GLuint> indices){
+//ToDo
 }
 
 GLuint PAG::Malla::getIdVao() const {
