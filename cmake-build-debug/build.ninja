@@ -56,12 +56,12 @@ build CMakeFiles/Pr1.dir/main.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Use
   OBJECT_DIR = CMakeFiles\Pr1.dir
   OBJECT_FILE_DIR = CMakeFiles\Pr1.dir
 
-build CMakeFiles/Pr1.dir/Renderer/Renderer.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/Renderer/Renderer.cpp || cmake_object_order_depends_target_Pr1
-  DEP_FILE = CMakeFiles\Pr1.dir\Renderer\Renderer.cpp.obj.d
+build CMakeFiles/Pr1.dir/Renderer.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/Renderer.cpp || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\Renderer.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include -isystem C:/Users/secre/.conan2/p/glmc7261f667dea4/p/include
   OBJECT_DIR = CMakeFiles\Pr1.dir
-  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir\Renderer
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir
 
 build CMakeFiles/Pr1.dir/glad/src/glad.c.obj: C_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/src/glad.c || cmake_object_order_depends_target_Pr1
   DEP_FILE = CMakeFiles\Pr1.dir\glad\src\glad.c.obj.d
@@ -196,6 +196,13 @@ build CMakeFiles/Pr1.dir/Modelo.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/U
   OBJECT_DIR = CMakeFiles\Pr1.dir
   OBJECT_FILE_DIR = CMakeFiles\Pr1.dir
 
+build CMakeFiles/Pr1.dir/ventanas-gui/VentanaSelectorModelo.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/Users/secre/CLionProjects/PAG/pr1-PAG/ventanas-gui/VentanaSelectorModelo.cpp || cmake_object_order_depends_target_Pr1
+  DEP_FILE = CMakeFiles\Pr1.dir\ventanas-gui\VentanaSelectorModelo.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/glad/include -IC:/Users/secre/CLionProjects/PAG/pr1-PAG/imgui -isystem C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include -isystem C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include -isystem C:/Users/secre/.conan2/p/glmc7261f667dea4/p/include
+  OBJECT_DIR = CMakeFiles\Pr1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pr1.dir\ventanas-gui
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Pr1
@@ -204,7 +211,7 @@ build CMakeFiles/Pr1.dir/Modelo.cpp.obj: CXX_COMPILER__Pr1_unscanned_Debug C$:/U
 #############################################
 # Link the executable Pr1.exe
 
-build Pr1.exe: CXX_EXECUTABLE_LINKER__Pr1_Debug CMakeFiles/Pr1.dir/main.cpp.obj CMakeFiles/Pr1.dir/Renderer/Renderer.cpp.obj CMakeFiles/Pr1.dir/glad/src/glad.c.obj CMakeFiles/Pr1.dir/imgui/imgui.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_demo.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_draw.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_impl_glfw.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_impl_opengl3.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_stdlib.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_tables.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_widgets.cpp.obj CMakeFiles/Pr1.dir/GUI.cpp.obj CMakeFiles/Pr1.dir/ShaderProgram.cpp.obj CMakeFiles/Pr1.dir/Camara.cpp.obj CMakeFiles/Pr1.dir/ventanas-gui/VentanaSeleccionColor.cpp.obj CMakeFiles/Pr1.dir/ventanas-gui/VentanaLog.cpp.obj CMakeFiles/Pr1.dir/ventanas-gui/VentanaSeleccionShaderProgram.cpp.obj CMakeFiles/Pr1.dir/ventanas-gui/VentanaMovimientoCamara.cpp.obj CMakeFiles/Pr1.dir/Constantes.cpp.obj CMakeFiles/Pr1.dir/Malla.cpp.obj CMakeFiles/Pr1.dir/Modelo.cpp.obj | C$:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a C$:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a
+build Pr1.exe: CXX_EXECUTABLE_LINKER__Pr1_Debug CMakeFiles/Pr1.dir/main.cpp.obj CMakeFiles/Pr1.dir/Renderer.cpp.obj CMakeFiles/Pr1.dir/glad/src/glad.c.obj CMakeFiles/Pr1.dir/imgui/imgui.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_demo.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_draw.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_impl_glfw.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_impl_opengl3.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_stdlib.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_tables.cpp.obj CMakeFiles/Pr1.dir/imgui/imgui_widgets.cpp.obj CMakeFiles/Pr1.dir/GUI.cpp.obj CMakeFiles/Pr1.dir/ShaderProgram.cpp.obj CMakeFiles/Pr1.dir/Camara.cpp.obj CMakeFiles/Pr1.dir/ventanas-gui/VentanaSeleccionColor.cpp.obj CMakeFiles/Pr1.dir/ventanas-gui/VentanaLog.cpp.obj CMakeFiles/Pr1.dir/ventanas-gui/VentanaSeleccionShaderProgram.cpp.obj CMakeFiles/Pr1.dir/ventanas-gui/VentanaMovimientoCamara.cpp.obj CMakeFiles/Pr1.dir/Constantes.cpp.obj CMakeFiles/Pr1.dir/Malla.cpp.obj CMakeFiles/Pr1.dir/Modelo.cpp.obj CMakeFiles/Pr1.dir/ventanas-gui/VentanaSelectorModelo.cpp.obj | C$:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a C$:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a
   FLAGS = -g
   LINK_LIBRARIES = C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib/libglad.a  C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib/libglfw3.a  -lopengl32  -lgdi32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib   -LC:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib

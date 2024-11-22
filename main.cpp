@@ -1,3 +1,4 @@
+//ToDo Completar UML actual de la pr6
 /**
  * @brief Prácticas de PAG
  *
@@ -9,7 +10,7 @@
  * - Práctica 4 -> El funcionamiento del shader program lo "desacoplamos" de la clase Renderer, y lo agregamos a la clase ShaderProgram que interactua con
  * la clase Renderer
  * - Práctica 5 -> Crear camara virtual, que se pueda mover con el raton, el teclado, y con botones de la GUI
- * - Práctica 6 ->
+ * - Práctica 6 -> //ToDo
  *
  * @author Adrián González Almansa
  */
@@ -19,7 +20,7 @@
 // IMPORTANTE: El include de GLAD debe estar siempre ANTES de el de GLFW
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "Renderer/Renderer.h"
+#include "Renderer.h"
 #include "GUI.h"
 #include "Constantes.h"
 
@@ -355,7 +356,8 @@ int main()
     instanciaGUI.asociarCamara(instanciaRenderer.getCamara());
 
     instanciaRenderer.inicializaOpenGL(); //Inicializamos los parametros globales de OpenGL
-    //Ciclo de eventos
+
+    /// CICLO DE EVENTOS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     while ( !glfwWindowShouldClose ( window ) )
     {
         instanciaRenderer.refrescar(); //Primero se dibuja el Renderer
@@ -363,6 +365,9 @@ int main()
         try{
             if(instanciaGUI.getBotonPulsado()){
                 instanciaRenderer.setNombreShaderProgram(instanciaGUI.getNombreShaderProgram());
+            }
+            if(instanciaGUI.getLocalizacionArchivo() != ""){
+                instanciaRenderer.seleccionarModelo(instanciaGUI.getLocalizacionArchivo());
             }
         }catch(std::string &message){
             PAG::GUI::getInstancia().agregarMensajeLog(message);

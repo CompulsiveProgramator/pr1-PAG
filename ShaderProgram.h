@@ -20,8 +20,6 @@
 namespace PAG{
     class ShaderProgram {
     private:
-        GLuint idVS = 0; //Id del vertex shader
-        GLuint idFS = 0; //Id del fragment shader
         GLuint idSP = 0; //Id del shader program
         std::string nombreFicheros; /// El nombre de los ficheros ( solo parte inicial, EJ: pag03 , y asi sacamos el pag03-vs.glsl y el pag03-fs.glsl ;) )
         Camara *camara = nullptr; /// El puntero para la camara virtual de la ventana
@@ -39,6 +37,8 @@ namespace PAG{
         GLuint creaShaderObject(GLenum shaderType);
         void compilarShaderObject(std::string shaderSourceString, GLuint shaderHandler, GLenum shaderType);
         void enlazarSP(GLuint handler, GLuint shaderHandler, std::string filename);
+
+        void setModelo(std::string localizacion);
     };
 }
 

@@ -12,21 +12,10 @@ namespace PAG{
     ShaderProgram::ShaderProgram(std::string &nombreFicheros, Camara *camara) {
         this->nombreFicheros = nombreFicheros;
         this->camara = camara;
-        this->modelo = new Modelo("../Modelos3D/triangulo.obj");
         creaShaderProgram();
     }
 
     ShaderProgram::~ShaderProgram() {
-        if( idVS != 0 )
-        {
-            glDeleteShader(idVS);
-        }
-
-        if( idFS != 0 )
-        {
-            glDeleteShader(idFS);
-        }
-
         if( idSP != 0 )
         {
             glDeleteProgram(idSP);
@@ -39,6 +28,10 @@ namespace PAG{
  * Metodo llamado desde Renderer para ejecutar el shader program
  */
     void ShaderProgram::ejecutarSP() {
+        if(modelo == nullptr){
+            return;
+        }
+
         glm::mat4 matrizModelado = modelo->getMalla()->getMatrizModelado();
         glm::mat4 matrizModeladoVision = camara->getMatrizVision() * matrizModelado;
         glm::mat4 matrizModeladoVisionPerspectiva = camara->getMatrizPerspectiva() * matrizModeladoVision;
@@ -197,6 +190,15 @@ namespace PAG{
                 throw std::string("Cannot link shader" + filename + "\n" + logString + "\n");
             }
         }
+    }
+
+    /**
+     * Metodo para pasarle el nombre del modelo al shader program
+     * @param localizacion
+     */
+    void ShaderProgram::setModelo(std::string localizacion) {
+        delete modelo;
+        modelo = new Modelo(localizacion);
     }
 }
 

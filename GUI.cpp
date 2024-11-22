@@ -10,7 +10,7 @@ PAG::GUI* PAG::GUI::instancia = nullptr; //Para inicializar la instancia como nu
  * Constructor por defecto de la clase, que inicializa toodo para que ImGui funcione
  * @param window Es la ventana sobre la que se pintará la GUI
  */
-PAG::GUI::GUI(): ventanaSeleccionColor(), ventanaLog(),ventanaSeleccionShaderProgram(), ventanaMovimientoCamara(){
+PAG::GUI::GUI(): ventanaSeleccionColor(), ventanaLog(),ventanaSeleccionShaderProgram(), ventanaMovimientoCamara(), ventanaSelectorModelo(){
 
 }
 
@@ -56,6 +56,9 @@ void PAG::GUI::pintarGUI() {
 
     //Ventana para mover la camara
     ventanaMovimientoCamara.refrescarVentana();
+
+    //Ventana para seleccionar un modelo
+    ventanaSelectorModelo.refrescarVentana();
 
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData ( ImGui::GetDrawData() );
@@ -105,4 +108,12 @@ void PAG::GUI::setColor(GLfloat *color) {
  */
 void PAG::GUI::asociarCamara(PAG::Camara *camara) {
     this->ventanaMovimientoCamara.setCamara(camara);
+}
+
+/**
+ * Metodo que devuelve la ruta relativa del fichero de modelo seleccionado
+ * @return
+ */
+std::string PAG::GUI::getLocalizacionArchivo() {
+    return ventanaSelectorModelo.getLocalizacionFichero();
 }

@@ -110,6 +110,6 @@ Install finished successfully
 -- Conan: Target declared 'glfw'
 -- CMake-Conan: find_package(glm) found, 'conan install' already ran
 -- Conan: Target declared 'glm::glm'
--- Configuring done (2.5s)
--- Generating done (0.1s)
+-- Configuring done (4.4s)
+-- Generating done (0.2s)
 -- Build files have been written to: C:/Users/secre/CLionProjects/PAG/pr1-PAG/cmake-build-debug
