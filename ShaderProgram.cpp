@@ -12,7 +12,7 @@ namespace PAG{
     ShaderProgram::ShaderProgram(std::string &nombreFicheros, Camara *camara) {
         this->nombreFicheros = nombreFicheros;
         this->camara = camara;
-        this->modelo = new Modelo("../Modelos3D/dado.obj");
+        this->modelo = new Modelo("../Modelos3D/triangulo.obj");
         creaShaderProgram();
     }
 
@@ -59,10 +59,9 @@ namespace PAG{
             glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVisionPerspectiva[0][0]);
         }
 
-
         glBindVertexArray ( modelo->getMalla()->getIdVao() );
         glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, modelo->getMalla()->getIdIbo() );
-        glDrawElements ( GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr );
+        glDrawElements ( GL_TRIANGLES, modelo->getMalla()->getNumIndices(), GL_UNSIGNED_INT, nullptr);
     }
 
 /**

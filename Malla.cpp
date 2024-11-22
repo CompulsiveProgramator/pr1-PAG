@@ -12,6 +12,12 @@ PAG::Malla::Malla() {
     creaModeloPrueba();
 }
 
+PAG::Malla::Malla(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> coloresVertices,
+                  std::vector<GLuint> indices) {
+    matrizModelado = glm::translate(glm::vec3(0,0,0));
+    creaModelo(posicionVertices, coloresVertices, indices);
+}
+
 /**
  * El destructor del modelo, que libera los recursos ;)
  */
@@ -47,6 +53,9 @@ void PAG::Malla::creaModeloPrueba() {
 
     ///Los datos del IBO para indices de triangulo
     std::vector<GLuint> iboIndicesTriangulo = {0,1,2};
+
+    numIndices = 3;
+    numVertices = 3;
 
     // Generamos los buffers de OpenGL vacios:
     glGenVertexArrays(1, &idVAO);
@@ -99,7 +108,28 @@ void PAG::Malla::creaModeloPrueba() {
  * @param indices Un array con los indices para dibujar triangulos      Ej:  0,1,2 == Triangulo con los vertices 0, 1, 2 del array "posicionVertices"
  */
 void PAG::Malla::creaModelo(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> coloresVertices, std::vector<GLuint> indices){
-//ToDo
+    numVertices = posicionVertices.size();
+    numIndices = indices.size();
+
+    glGenVertexArrays(1, &idVAO);
+    glGenBuffers(1, &idVBO1); //El VBO para los vertices
+    glGenBuffers(1, &idVBO2); //El VBO para los colores
+    glGenBuffers(1, &idIBO);
+
+    glBindVertexArray(idVAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, idVBO1);
+    glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(GLfloat), posicionVertices.data(), GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0); //Esto es para decir que el contenido que vamos a leer para este VBO ira al "layout = 0" de nuestro vertex shader
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,3 * sizeof(GLfloat), nullptr);
+
+    glBindBuffer(GL_ARRAY_BUFFER, idVBO2);
+    glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(GLfloat), coloresVertices.data(), GL_STATIC_DRAW);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,3 * sizeof(GLfloat), nullptr);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, idIBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * numIndices, indices.data(), GL_STATIC_DRAW);
 }
 
 GLuint PAG::Malla::getIdVao() const {
@@ -116,4 +146,12 @@ GLuint PAG::Malla::getIdIbo() const {
 
 const glm::mat4 &PAG::Malla::getMatrizModelado() {
     return matrizModelado;
+}
+
+GLuint PAG::Malla::getNumIndices() const {
+    return numIndices;
+}
+
+GLuint PAG::Malla::getNumVertices() const {
+    return numVertices;
 }

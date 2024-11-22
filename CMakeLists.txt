@@ -43,26 +43,25 @@ find_package(glm)
 # Los dos siguiente comandos de CMake son los que explico Fran, para poder usar la biblioteca compilada de assimp, con su archivo .dll ;)
 
 # Este comando es para crear una variable, con la ruta del archivo .dll
-set(ASSIMP_DLL_PATH "${CMAKE_SOURCE_DIR}/Bibliotecas_DLL")
+#set(ASSIMP_DLL_PATH "${CMAKE_SOURCE_DIR}/Bibliotecas_DLL")
 
 # Enlazamos la .dll de Assimp con nuestro proyecto
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${ASSIMP_DLL_PATH}/libassimp-5d.dll"
-        $<TARGET_FILE_DIR:${PROJECT_NAME}>)
+# add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+#       COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#       "${ASSIMP_DLL_PATH}/libassimp-5d.dll"
+#       $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 
-add_subdirectory(assimp)
-target_link_libraries(${PROJECT_NAME} assimp::assimp)
+#add_subdirectory(assimp) # Esto le dice a CMake que busque un Cmakelist.txt en el subdirectorio de assimp, para que tambien se haga la build de assimp ;)
 
-# Para poder agregar directamente al main las librerias con <>
+# Ahora, agregamos al ejecutable de la "libreria" de assimp, al del proyecto principal
+target_link_libraries(${PROJECT_NAME} PUBLIC opengl::opengl glad::glad glfw glm::glm)
+
+# PUBLIC es para que si hacemos un ejecutable que dependa de este, necesite las librerias de este tambien
+
+# Agregamos al ejecutable de nuestro programa, los directorios donde se encuentran los archivos .h , para que puedan ser encontrados por nuestro ejecutable
 target_include_directories(${PROJECT_NAME} PUBLIC glad/include imgui)
 
-# Para que Cmake agregue las librerias "descargadas con Conan" al proyecto
-target_link_libraries(${PROJECT_NAME} opengl::opengl glad::glad glfw glm::glm "-static")
 
-# -static Hacemos que se enlace de forma estatica toodo en el proyecto
-
-# DLL Dynamic Link Libraries se usa para enlazar en tiempo de ejecucion con las bibliotecas del proyecto
-# asi el ejecutable del programa es más chikito
-# Ya que si compilamos y enlazamos toodas las bibliotecas de una aplicación en un solo ejecutable, este puede ser enormeeeeee
+# DLL Dynamic Link Libraries es el archivo compilado de una biblioteca, que podemos incluir en otro proyecto para usarlo
+# Lo invento Windows
 # Para mas info : https://es.wikipedia.org/wiki/Biblioteca_de_enlace_din%C3%A1mico

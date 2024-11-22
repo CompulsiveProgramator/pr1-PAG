@@ -55,3 +55,5 @@ La version actual en un diagrama de clases UML de la aplicación, es la siguient
 ## Práctica 6
 Vamos a por esta práctica, que consiste en desacoplar del Shader Program el funcionamiento del modelo. Para ello, voy a empezar haciendo una clase PAG::Modelo
 que contenga por supuesto, los datos como vertices, normales, y matriz de modelado que definen al modelo.
+
+Uso OBJ_Loader para cargar los archivos, porque assimp no lee bien mis .obj
