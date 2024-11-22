@@ -1,5 +1,6 @@
 //ToDo Completar UML actual de la pr6
 //ToDo Adaptar la clase Modelo para que se puedan leer archivos .obj de cualquier complejidad
+//ToDo Dar toda la funcionalidad a la VentanaTransformacionesModelos
 
 /**
  * @brief Prácticas de PAG
@@ -367,6 +368,7 @@ int main()
         try{
             if(instanciaGUI.getBotonPulsado()){
                 instanciaRenderer.setNombreShaderProgram(instanciaGUI.getNombreShaderProgram());
+                instanciaGUI.asociarModelos(instanciaRenderer.getShaderProgram()->getModelos());
             }
             if(instanciaGUI.getLocalizacionArchivo() != ""){
                 instanciaRenderer.agregarModelo(instanciaGUI.getLocalizacionArchivo());

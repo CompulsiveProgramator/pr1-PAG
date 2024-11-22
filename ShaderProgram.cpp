@@ -9,7 +9,7 @@ namespace PAG{
      * Constructor de la clase
      * @param nombreFicheros
      */
-    ShaderProgram::ShaderProgram(std::string &nombreFicheros, Camara *camara) {
+    ShaderProgram::ShaderProgram(std::string &nombreFicheros, Camara *camara): modelos() {
         this->nombreFicheros = nombreFicheros;
         this->camara = camara;
         creaShaderProgram();
@@ -203,6 +203,10 @@ namespace PAG{
      */
     void ShaderProgram::agregarModelo(std::string localizacion) {
         modelos.push_back(new Modelo(localizacion));
+    }
+
+    std::vector<Modelo *> *ShaderProgram::getModelos() {
+        return &modelos;
     }
 }
 

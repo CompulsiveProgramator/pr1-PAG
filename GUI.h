@@ -7,18 +7,19 @@
 #ifndef PR1_GUI_H
 #define PR1_GUI_H
 
-#include <imgui.h>
-#include <imgui_impl_glfw.h>
-#include <imgui_impl_opengl3.h>
-#include <vector>
-#include <iostream>
-#include "GL/gl.h" //Solo para el color de fondo de la ventana de color
+//#include <imgui.h>
+//#include <imgui_impl_glfw.h>
+//#include <imgui_impl_opengl3.h>
+//#include <vector>
+//#include <iostream>
+//#include "GL/gl.h" //Solo para el color de fondo de la ventana de color
 #include "ventanas-gui/VentanaSeleccionColor.h"
 #include "ventanas-gui/VentanaLog.h"
 #include "ventanas-gui/VentanaSeleccionShaderProgram.h"
 #include "ventanas-gui/VentanaMovimientoCamara.h"
 #include "ventanas-gui/VentanaSelectorModelo.h"
-#include "Camara.h"
+#include "ventanas-gui/VentanaTransformacionesModelos.h"
+//#include "Camara.h"
 
 namespace PAG
 {
@@ -34,6 +35,7 @@ namespace PAG
         VentanaSeleccionShaderProgram ventanaSeleccionShaderProgram;
         VentanaMovimientoCamara ventanaMovimientoCamara;
         VentanaSelectorModelo ventanaSelectorModelo;
+        VentanaTransformacionesModelos ventanaTransformacionesModelos;
 
         void pintarGUI();
     public:
@@ -46,6 +48,7 @@ namespace PAG
         void setColor(GLfloat *color);
         void asociarCamara(Camara *camara);
         std::string getLocalizacionArchivo();
+        void asociarModelos(std::vector<Modelo*> *modelos);
     };
 }
 

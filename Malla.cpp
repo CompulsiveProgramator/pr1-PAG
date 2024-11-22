@@ -2,7 +2,21 @@
 // Created by secre on 17/11/2024.
 //
 
-#include "Malla.h"
+#define GLM_ENABLE_EXPERIMENTAL
+
+#include <glad/glad.h>
+#include <glm/gtx/transform.hpp>
+#include "Malla.h" ///SIEMPRE EL .H DE MI .CPP SE INCLUYE EL ULTIMO
+
+/**
+ * Reglas para los includes:
+ *
+ * 1a -> En el archivo solo poner los includes que se usen directamente, es decir, no declarar en el .h lo que se vaya a usar en el .cpp solo, lo correcto es ponerlo
+ * en el .cpp
+ * 2o -> Primero los includes <> que son de las librerias externas del proyecto (las que metemos con Conan, las de STL tan chulas, ...)
+ * luego los includes "" que son de nuestro proyecto (los de Dear ImGui)
+ * 3o -> Invitar a
+ */
 
 /**
  * El constructor de la clase
@@ -154,4 +168,16 @@ GLuint PAG::Malla::getNumIndices() const {
 
 GLuint PAG::Malla::getNumVertices() const {
     return numVertices;
+}
+
+void PAG::Malla::trasladarMalla(glm::mat4 matrizTraslacion) {
+    matrizModelado = matrizTraslacion * matrizModelado;
+}
+
+void PAG::Malla::rotarMalla(glm::mat4 matrizRotacion) {
+    //ToDo
+}
+
+void PAG::Malla::escalarMalla(glm::mat4 matrizEscalado) {
+    //ToDo
 }

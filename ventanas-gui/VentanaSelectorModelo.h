@@ -12,6 +12,9 @@
 #include "imfilebrowser.h"
 
 namespace PAG{
+    /**
+     * Clase para la ventana que permite cargar modelos en la app, seleccionando la ruta del archivo, que luego se pasa afuera ;)
+     */
     class VentanaSelectorModelo: public Ventana{
     private:
         ImGui::FileBrowser fileDialog;

@@ -39,6 +39,7 @@ namespace PAG{
         void enlazarSP(GLuint handler, GLuint shaderHandler, std::string filename);
 
         void agregarModelo(std::string localizacion);
+        std::vector<Modelo*>* getModelos();
     };
 }
 

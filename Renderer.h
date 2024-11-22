@@ -36,6 +36,7 @@ namespace PAG{
         void setNombreShaderProgram(std::string nombreF);
         Camara* getCamara();
         void agregarModelo(std::string localizacionArchivo);
+        ShaderProgram* getShaderProgram();
 
     };
 }

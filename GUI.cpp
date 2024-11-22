@@ -10,7 +10,8 @@ PAG::GUI* PAG::GUI::instancia = nullptr; //Para inicializar la instancia como nu
  * Constructor por defecto de la clase, que inicializa toodo para que ImGui funcione
  * @param window Es la ventana sobre la que se pintará la GUI
  */
-PAG::GUI::GUI(): ventanaSeleccionColor(), ventanaLog(),ventanaSeleccionShaderProgram(), ventanaMovimientoCamara(), ventanaSelectorModelo(){
+PAG::GUI::GUI(): ventanaSeleccionColor(), ventanaLog(),ventanaSeleccionShaderProgram(), ventanaMovimientoCamara(), ventanaSelectorModelo(),
+                 ventanaTransformacionesModelos(){
 
 }
 
@@ -59,6 +60,9 @@ void PAG::GUI::pintarGUI() {
 
     //Ventana para seleccionar un modelo
     ventanaSelectorModelo.refrescarVentana();
+
+    //Ventana para aplicar transformaciones a los modelos de la app
+    ventanaTransformacionesModelos.refrescarVentana();
 
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData ( ImGui::GetDrawData() );
@@ -116,4 +120,8 @@ void PAG::GUI::asociarCamara(PAG::Camara *camara) {
  */
 std::string PAG::GUI::getLocalizacionArchivo() {
     return ventanaSelectorModelo.getLocalizacionFichero();
+}
+
+void PAG::GUI::asociarModelos(std::vector<Modelo*> *modelos) {
+    this->ventanaTransformacionesModelos.agregarModelos(modelos);
 }

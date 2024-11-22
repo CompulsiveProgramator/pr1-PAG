@@ -18,7 +18,7 @@ PAG::VentanaSelectorModelo::VentanaSelectorModelo(): fileDialog() {
 void PAG::VentanaSelectorModelo::refrescarVentana() {
     ImGui::SetNextWindowPos ( ImVec2 (350, 50), ImGuiCond_Once );
 
-    if(ImGui::Begin("##")){
+    if(ImGui::Begin("Ventana seleccion de modelo")){
         if(ImGui::Button("open file dialog"))
             fileDialog.Open();
     }

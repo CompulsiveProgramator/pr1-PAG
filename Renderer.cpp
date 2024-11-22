@@ -117,6 +117,7 @@ namespace PAG
      */
     void Renderer::setNombreShaderProgram(std::string nombreF) {
         nombreSP = nombreF;
+        delete this->shaderProgram;
         this->shaderProgram = new ShaderProgram(nombreF, camara);
     }
 
@@ -133,5 +134,13 @@ namespace PAG
      */
     void Renderer::agregarModelo(std::string localizacionArchivo) {
         shaderProgram->agregarModelo(localizacionArchivo);
+    }
+
+    /**
+     * Metodo para obtener el Shader Program
+     * @return
+     */
+    ShaderProgram *Renderer::getShaderProgram() {
+        return shaderProgram;
     }
 }

@@ -2,16 +2,15 @@
 // Created by secre on 17/11/2024.
 //
 
+// #pragma once /// Esto sirve para decirle al compilador que solo compile el archivo .h una vez, por lo que hace lo mismo que el #ifndef y el #define
+
+/// Include Guards, para que no se lean .h innecesarios duplicado
 #ifndef PR1_MALLA_H
 #define PR1_MALLA_H
 
-#define GLM_ENABLE_EXPERIMENTAL
-
-#include <glad/glad.h>
-#include "GL/gl.h"
-#include "glm/mat4x4.hpp"
-#include "glm/gtx/transform.hpp"
 #include <vector>
+#include <GL/gl.h>
+#include <glm/mat4x4.hpp>
 
 namespace PAG{
     class Malla {
@@ -40,6 +39,10 @@ namespace PAG{
         GLuint getNumIndices() const;
 
         GLuint getNumVertices() const;
+
+        void trasladarMalla(glm::mat4 matrizTraslacion);
+        void rotarMalla(glm::mat4 matrizRotacion);
+        void escalarMalla(glm::mat4 matrizEscalado);
     };
 }
 

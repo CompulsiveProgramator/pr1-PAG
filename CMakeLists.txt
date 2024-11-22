@@ -34,6 +34,8 @@ add_executable(Pr1 main.cpp
         Modelo.h
         ventanas-gui/VentanaSelectorModelo.cpp
         ventanas-gui/VentanaSelectorModelo.h
+        ventanas-gui/VentanaTransformacionesModelos.cpp
+        ventanas-gui/VentanaTransformacionesModelos.h
 )
 
 # Para que Cmake encuentre los bonitos paquetes:
@@ -58,10 +60,14 @@ find_package(glm)
 # Ahora, agregamos al ejecutable de la "libreria" de assimp, al del proyecto principal
 target_link_libraries(${PROJECT_NAME} PUBLIC opengl::opengl glad::glad glfw glm::glm)
 
+# Para RenderDoc, poner -static en target_link_libraries() al final para que el ejecutable del proyecto tenga una "copia" de todas las
+# librerias externas/internas ( .dll ) y así el ejecutable es más grande, pero, podemos llevarnoslo a donde queramos!!!
+
 # PUBLIC es para que si hacemos un ejecutable que dependa de este, necesite las librerias de este tambien
 
 # Agregamos al ejecutable de nuestro programa, los directorios donde se encuentran los archivos .h , para que puedan ser encontrados por nuestro ejecutable
 target_include_directories(${PROJECT_NAME} PUBLIC glad/include imgui)
+
 
 
 # DLL Dynamic Link Libraries es el archivo compilado de una biblioteca, que podemos incluir en otro proyecto para usarlo
