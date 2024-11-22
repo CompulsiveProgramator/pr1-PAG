@@ -1,4 +1,6 @@
 //ToDo Completar UML actual de la pr6
+//ToDo Adaptar la clase Modelo para que se puedan leer archivos .obj de cualquier complejidad
+
 /**
  * @brief Prácticas de PAG
  *
@@ -367,7 +369,7 @@ int main()
                 instanciaRenderer.setNombreShaderProgram(instanciaGUI.getNombreShaderProgram());
             }
             if(instanciaGUI.getLocalizacionArchivo() != ""){
-                instanciaRenderer.seleccionarModelo(instanciaGUI.getLocalizacionArchivo());
+                instanciaRenderer.agregarModelo(instanciaGUI.getLocalizacionArchivo());
             }
         }catch(std::string &message){
             PAG::GUI::getInstancia().agregarMensajeLog(message);

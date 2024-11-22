@@ -21,40 +21,45 @@ namespace PAG{
             glDeleteProgram(idSP);
         }
 
-        delete this->modelo;
+        for(int i = 0 ; i < modelos.size() ; i++){
+            delete modelos[i];
+        }
     }
 
 /**
  * Metodo llamado desde Renderer para ejecutar el shader program
  */
     void ShaderProgram::ejecutarSP() {
-        if(modelo == nullptr){
+        if(modelos.size() == 0){
             return;
         }
 
-        glm::mat4 matrizModelado = modelo->getMalla()->getMatrizModelado();
-        glm::mat4 matrizModeladoVision = camara->getMatrizVision() * matrizModelado;
-        glm::mat4 matrizModeladoVisionPerspectiva = camara->getMatrizPerspectiva() * matrizModeladoVision;
-        glUseProgram ( idSP );
+        for(int i = 0 ; i < modelos.size() ; i++){
+            glm::mat4 matrizModelado = modelos[i]->getMalla()->getMatrizModelado();
+            glm::mat4 matrizModeladoVision = camara->getMatrizVision() * matrizModelado;
+            glm::mat4 matrizModeladoVisionPerspectiva = camara->getMatrizPerspectiva() * matrizModeladoVision;
+            glUseProgram ( idSP );
 
-        ///Hacer esto por cada malla de triangulos:
+            ///Hacer esto por cada malla de triangulos:
 
-        //Para pasar un uniform al vertex shader
-        std::string matrizMV("matrizModeladoVision"); ///La matriz con la transformacion de modelado del objeto, y la de vision
-        GLint pos = glGetUniformLocation(idSP, matrizMV.c_str());
-        if(pos != -1){
-            glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVision[0][0]);
+            //Para pasar un uniform al vertex shader
+            std::string matrizMV("matrizModeladoVision"); ///La matriz con la transformacion de modelado del objeto, y la de vision
+            GLint pos = glGetUniformLocation(idSP, matrizMV.c_str());
+            if(pos != -1){
+                glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVision[0][0]);
+            }
+
+            std::string matrizMVP("matrizModeladoVisionPerspectiva");
+            pos = glGetUniformLocation(idSP, matrizMVP.c_str());
+            if(pos != -1){
+                glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVisionPerspectiva[0][0]);
+            }
+
+            glBindVertexArray ( modelos[i]->getMalla()->getIdVao() );
+            glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, modelos[i]->getMalla()->getIdIbo() );
+            glDrawElements ( GL_TRIANGLES, modelos[i]->getMalla()->getNumIndices(), GL_UNSIGNED_INT, nullptr);
         }
 
-        std::string matrizMVP("matrizModeladoVisionPerspectiva");
-        pos = glGetUniformLocation(idSP, matrizMVP.c_str());
-        if(pos != -1){
-            glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVisionPerspectiva[0][0]);
-        }
-
-        glBindVertexArray ( modelo->getMalla()->getIdVao() );
-        glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, modelo->getMalla()->getIdIbo() );
-        glDrawElements ( GL_TRIANGLES, modelo->getMalla()->getNumIndices(), GL_UNSIGNED_INT, nullptr);
     }
 
 /**
@@ -196,9 +201,8 @@ namespace PAG{
      * Metodo para pasarle el nombre del modelo al shader program
      * @param localizacion
      */
-    void ShaderProgram::setModelo(std::string localizacion) {
-        delete modelo;
-        modelo = new Modelo(localizacion);
+    void ShaderProgram::agregarModelo(std::string localizacion) {
+        modelos.push_back(new Modelo(localizacion));
     }
 }
 

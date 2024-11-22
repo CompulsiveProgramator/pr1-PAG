@@ -35,7 +35,7 @@ namespace PAG{
         void inicializaOpenGL();
         void setNombreShaderProgram(std::string nombreF);
         Camara* getCamara();
-        void seleccionarModelo(std::string localizacionArchivo);
+        void agregarModelo(std::string localizacionArchivo);
 
     };
 }

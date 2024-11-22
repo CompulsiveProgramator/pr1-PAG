@@ -129,9 +129,9 @@ namespace PAG
     }
 
     /**
-     * Metodo para seleccionar el modelo amooo
+     * Metodo para agregar un modelo a la app
      */
-    void Renderer::seleccionarModelo(std::string localizacionArchivo) {
-        shaderProgram->setModelo(localizacionArchivo);
+    void Renderer::agregarModelo(std::string localizacionArchivo) {
+        shaderProgram->agregarModelo(localizacionArchivo);
     }
 }
