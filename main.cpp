@@ -1,10 +1,7 @@
 // Prioritario:
 //ToDo Completar UML actual de la pr6
 //ToDo Adaptar la clase Modelo para que se puedan leer archivos .obj de cualquier complejidad
-//ToDo Explicar como usar la app actual en el README
 
-// Secundario:
-//ToDo Poner opcion en la ventana de Camara para activar/desactivar el movimiento del raton que mueve la camara ;)
 /**
  * @brief Prácticas de PAG
  *

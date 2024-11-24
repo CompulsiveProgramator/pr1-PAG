@@ -64,6 +64,14 @@ que cree el VAO que usará nuestro querido OpenGL para dibujar el modelo. Assimp
 Siguiendo la jerarquía de ventanas de ImGui en mi app, agrego dos ventanas nuevas:
 <img src="images/ventanas_gestion_modelos.png">
 
-La de la izquierda en la imagen es para elegir un modelo, dentro de la carpeta "Modelos3D", y la de la derecha
+La de la izquierda en la imagen es para elegir un modelo dentro de la carpeta "Modelos3D", y agregarlo al Shader Program, y la de la derecha
 es para aplicar una transformacion como Traslación, Rotación o Escalado al modelo que seleccionemos de los activos
 en escena
+
+Para usar la aplicación, hemos de seguir los siguientes pasos:
+1. En la ventana de shader program, escoger el shader que deseemos
+2. Luego, seleccionamos un modelo a cargar en la ventana de selección de modelo
+3. Ya podemos ver nuestro modelo!
+
+Si queremos cargar otro modelo, no hay ningún problema, solo tenemos que repetir el paso 2.
+
