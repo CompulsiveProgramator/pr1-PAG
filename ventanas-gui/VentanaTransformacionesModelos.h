@@ -18,6 +18,7 @@ namespace PAG{
         void seleccionaTransformacion();
         void selectorTraslacion();
         void selectorRotacion();
+        void selectorEscalado();
     public:
         VentanaTransformacionesModelos();
         void refrescarVentana() override;

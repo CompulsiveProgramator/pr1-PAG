@@ -110,6 +110,8 @@ void PAG::VentanaTransformacionesModelos::seleccionaTransformacion() {
         selectorTraslacion();
     }else if(tiposTransformaciones[tipoTransformacionActual] == "Rotacion"){
         selectorRotacion();
+    }else if(tiposTransformaciones[tipoTransformacionActual] == "Escalado"){
+        selectorEscalado();
     }
 }
 
@@ -196,6 +198,51 @@ void PAG::VentanaTransformacionesModelos::selectorRotacion() {
             modelos->data()[modeloSeleccionado]->getMalla()->rotarMalla(glm::rotate(glm::radians(gradosRotacion), glm::vec3(0, 1, 0)));
         }else if(tipoRotacion[tipoRotacionActual] == "Z"){
             modelos->data()[modeloSeleccionado]->getMalla()->rotarMalla(glm::rotate(glm::radians(gradosRotacion), glm::vec3(0, 0, 1)));
+        }
+    }
+}
+
+/**
+ * Parte de la ventana que hace el escalado del objeto en escena
+ */
+void PAG::VentanaTransformacionesModelos::selectorEscalado() {
+    const char* tipoEscalado[] = {"X", "Y", "Z", "Uniforme"};
+    static unsigned int tipoEscaladoActual = 0;
+
+    if(ImGui::BeginCombo("##s", tipoEscalado[tipoEscaladoActual]))
+    {
+        for(int n = 0 ; n < IM_ARRAYSIZE(tipoEscalado) ; n++ )
+        {
+            const bool is_selected = (tipoEscaladoActual == n);
+            if(ImGui::Selectable(tipoEscalado[n], is_selected))
+            {
+                tipoEscaladoActual = n;
+            }
+
+            if (is_selected)
+            {
+                ImGui::SetItemDefaultFocus();
+            }
+        }
+        ImGui::EndCombo();
+    }
+
+    static bool inputs_step = true;
+    static ImGuiInputTextFlags flags = ImGuiInputTextFlags_None;
+    static float valorEscalado = 1; //Para ver cual es el valor de la rotacion del Drag
+    float min = 0.5, max = 2; //Para decir el rango maximo de movimiento de x[-1, 1]
+    ImGui::DragScalar("##d", ImGuiDataType_Float, &valorEscalado, 0.005f, &min, &max, "%f");
+
+    if(ImGui::Button("Aplicar"))
+    {
+        if(tipoEscalado[tipoEscaladoActual] == "X"){
+            modelos->data()[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(valorEscalado, 1, 1)));
+        }else if(tipoEscalado[tipoEscaladoActual] == "Y"){
+            modelos->data()[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(1, valorEscalado, 1)));
+        }else if(tipoEscalado[tipoEscaladoActual] == "Z"){
+            modelos->data()[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(1, 1, valorEscalado)));
+        }else if(tipoEscalado[tipoEscaladoActual] == "Uniforme"){
+            modelos->data()[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(valorEscalado, valorEscalado, valorEscalado)));
         }
     }
 }
