@@ -137,18 +137,21 @@ void PAG::VentanaTransformacionesModelos::selectorTraslacion() {
         ImGui::EndCombo();
     }
 
-    if(tiposTraslaciones[tipoTraslacionActual] == "X")
-    {
-        static bool inputs_step = true;
-        static ImGuiInputTextFlags flags = ImGuiInputTextFlags_None;
-        static float valorTraslacion = 0; //Para ver cual es el valor de la traslacion del Drag
-        float min = -1, max = 1; //Para decir el rango maximo de movimiento de x[-1, 1]
-        ImGui::DragScalar("##d",     ImGuiDataType_Float,  &valorTraslacion, 0.005f,  &min, &max, "%f");
+    static bool inputs_step = true;
+    static ImGuiInputTextFlags flags = ImGuiInputTextFlags_None;
+    static float valorTraslacion = 0; //Para ver cual es el valor de la traslacion del Drag
+    float min = -1, max = 1; //Para decir el rango maximo de movimiento de x[-1, 1]
+    ImGui::DragScalar("##d",     ImGuiDataType_Float,  &valorTraslacion, 0.005f,  &min, &max, "%f");
 
-        //Para aplicar la traslacion al modelo seleccionado
-        if(ImGui::Button("Aplicar"))
-        {
+    if(ImGui::Button("Aplicar"))
+    {
+        if(tiposTraslaciones[tipoTraslacionActual] == "X"){
             modelos->data()[modeloSeleccionado]->getMalla()->trasladarMalla(glm::translate(glm::vec3(valorTraslacion, 0, 0)));
+        }else if(tiposTraslaciones[tipoTraslacionActual] == "Y"){
+            modelos->data()[modeloSeleccionado]->getMalla()->trasladarMalla(glm::translate(glm::vec3(0, valorTraslacion, 0)));
+        }else if(tiposTraslaciones[tipoTraslacionActual] == "Z"){
+            modelos->data()[modeloSeleccionado]->getMalla()->trasladarMalla(glm::translate(glm::vec3(0, 0, valorTraslacion)));
         }
     }
+
 }

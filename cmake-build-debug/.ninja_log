@@ -451,3 +451,7 @@
 15	3668	7541628905282420	CMakeFiles/Pr1.dir/main.cpp.obj	20680737bc3995e9
 21	3932	7541628905352332	CMakeFiles/Pr1.dir/GUI.cpp.obj	340943688118eb0f
 3933	4898	7541628944467991	Pr1.exe	7740a6065aeac1e2
+16	6812	7541633835242378	CMakeFiles/Pr1.dir/ventanas-gui/VentanaTransformacionesModelos.cpp.obj	46f6ba0f303ba4f7
+6813	8043	7541633903205098	Pr1.exe	7740a6065aeac1e2
+15	2270	7541635002363198	CMakeFiles/Pr1.dir/ventanas-gui/VentanaTransformacionesModelos.cpp.obj	46f6ba0f303ba4f7
+2271	3237	7541635024927004	Pr1.exe	7740a6065aeac1e2
