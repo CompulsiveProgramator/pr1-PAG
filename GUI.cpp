@@ -125,3 +125,11 @@ std::string PAG::GUI::getLocalizacionArchivo() {
 void PAG::GUI::asociarModelos(std::vector<Modelo*> *modelos) {
     this->ventanaTransformacionesModelos.agregarModelos(modelos);
 }
+
+/**
+ * Metodo para seguir el movimiento del raton
+ * @return
+ */
+bool PAG::GUI::getSeguirRaton() {
+    return ventanaMovimientoCamara.getSeguirMovimientoRaton();
+}

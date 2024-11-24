@@ -54,6 +54,16 @@ La version actual en un diagrama de clases UML de la aplicación, es la siguient
 
 ## Práctica 6
 Vamos a por esta práctica, que consiste en desacoplar del Shader Program el funcionamiento del modelo. Para ello, voy a empezar haciendo una clase PAG::Modelo
-que contenga por supuesto, los datos como vertices, normales, y matriz de modelado que definen al modelo.
+que contenga por supuesto, los datos como vertices, normales, y matriz de modelado que definen al modelo, pero en mi caso lo hace dentro de una clase auxiliar llamada
+PAG::Malla, y por ahora un modelo solo tiene una malla, aunque esto se puede cambiar facilmente.
 
-Uso OBJ_Loader para cargar los archivos, porque assimp no lee bien mis .obj
+Para extraer los datos del modelo que queramos en nuestra app uso OBJ_Loader que los saca de archivos .obj. 
+Esto lo hago dentro de la clase Modelo, y luego a la clase Malla se pasan estos datos extraidos, para
+que cree el VAO que usará nuestro querido OpenGL para dibujar el modelo. Assimp me dio ciertos fallos leyendo .obj, por eso utilizo esta herramienta
+
+Siguiendo la jerarquía de ventanas de ImGui en mi app, agrego dos ventanas nuevas:
+<img src="images/ventanas_gestion_modelos.png">
+
+La de la izquierda en la imagen es para elegir un modelo, dentro de la carpeta "Modelos3D", y la de la derecha
+es para aplicar una transformacion como Traslación, Rotación o Escalado al modelo que seleccionemos de los activos
+en escena

@@ -1,7 +1,10 @@
+// Prioritario:
 //ToDo Completar UML actual de la pr6
 //ToDo Adaptar la clase Modelo para que se puedan leer archivos .obj de cualquier complejidad
-//ToDo Dar toda la funcionalidad a la VentanaTransformacionesModelos
+//ToDo Explicar como usar la app actual en el README
 
+// Secundario:
+//ToDo Poner opcion en la ventana de Camara para activar/desactivar el movimiento del raton que mueve la camara ;)
 /**
  * @brief Prácticas de PAG
  *
@@ -30,6 +33,7 @@
 //Para mover la camara con el movimiento del raton
 double lastXpos = 0, lastYpos = 0; //Empezamos a contar desde arriba a la izquierda de la pantalla en glfw, pero en open gl es de la esquina inferior derecha ;)
 bool pulsado = false;
+bool seguirMovimientoRaton = false; //Para activar/desactivar el movimiento con el raton
 
 void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
     /**
@@ -37,6 +41,11 @@ void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
      * 2o. Si mantengo el raton pulsado, y lo muevo, miro cuanto se ha movido en vertical y horizontal, y si son al menos 100 pixeles actualizamos la posicion de la camara
      * 3o. Guardo la posicion del raton de nuevo
      */
+
+    if(!seguirMovimientoRaton)
+    {
+        return;
+    }
 
      double difX, difY;
      if(pulsado){
@@ -370,9 +379,12 @@ int main()
                 instanciaRenderer.setNombreShaderProgram(instanciaGUI.getNombreShaderProgram());
                 instanciaGUI.asociarModelos(instanciaRenderer.getShaderProgram()->getModelos());
             }
+
             if(instanciaGUI.getLocalizacionArchivo() != ""){
                 instanciaRenderer.agregarModelo(instanciaGUI.getLocalizacionArchivo());
             }
+
+            seguirMovimientoRaton = instanciaGUI.getSeguirRaton();
         }catch(std::string &message){
             PAG::GUI::getInstancia().agregarMensajeLog(message);
         }

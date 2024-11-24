@@ -49,6 +49,7 @@ namespace PAG
         void asociarCamara(Camara *camara);
         std::string getLocalizacionArchivo();
         void asociarModelos(std::vector<Modelo*> *modelos);
+        bool getSeguirRaton();
     };
 }
 

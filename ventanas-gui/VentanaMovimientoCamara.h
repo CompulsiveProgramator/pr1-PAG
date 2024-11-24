@@ -13,10 +13,11 @@ namespace PAG{
     class VentanaMovimientoCamara: public Ventana{
     private:
         Camara *camara;
-
+        bool seguirMovimientoRaton = false; //Variable para gestionar si seguimos o no, el movimiento del raton para mover la camara
     public:
         void refrescarVentana() override;
         void setCamara(Camara *_camara);
+        bool getSeguirMovimientoRaton();
     };
 }
 

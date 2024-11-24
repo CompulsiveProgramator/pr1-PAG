@@ -96,9 +96,19 @@ void PAG::VentanaMovimientoCamara::refrescarVentana() {
         }
     }
 
-        ImGui::End();
+    ImGui::Checkbox("Seguir movimiento raton", &seguirMovimientoRaton);
+
+    ImGui::End();
 }
 
 void PAG::VentanaMovimientoCamara::setCamara(PAG::Camara *_camara) {
     this->camara = _camara;
+}
+
+/**
+ * Devuelve si hay que seguir (True) o no (False) el movimiento del raton para mover la camara
+ * @return
+ */
+bool PAG::VentanaMovimientoCamara::getSeguirMovimientoRaton() {
+    return seguirMovimientoRaton;
 }
