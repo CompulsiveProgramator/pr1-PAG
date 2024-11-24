@@ -175,9 +175,9 @@ void PAG::Malla::trasladarMalla(glm::mat4 matrizTraslacion) {
 }
 
 void PAG::Malla::rotarMalla(glm::mat4 matrizRotacion) {
-    //ToDo
+    matrizModelado = matrizRotacion * matrizModelado;
 }
 
 void PAG::Malla::escalarMalla(glm::mat4 matrizEscalado) {
-    //ToDo
+    matrizModelado = matrizEscalado * matrizModelado;
 }

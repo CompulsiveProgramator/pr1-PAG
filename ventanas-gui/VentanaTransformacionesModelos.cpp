@@ -30,7 +30,6 @@ void PAG::VentanaTransformacionesModelos::refrescarVentana() {
 
     ImGui::SetNextWindowPos ( ImVec2 (350, 350), ImGuiCond_Once );
 
-    //TODO Ventana para trasladar un modelo:
     ImGui::Begin("Ventana transformaciones de modelos:");
 
     seleccionaModelo();
@@ -109,6 +108,8 @@ void PAG::VentanaTransformacionesModelos::seleccionaTransformacion() {
 
     if(tiposTransformaciones[tipoTransformacionActual] == "Traslacion"){
         selectorTraslacion();
+    }else if(tiposTransformaciones[tipoTransformacionActual] == "Rotacion"){
+        selectorRotacion();
     }
 }
 
@@ -154,4 +155,47 @@ void PAG::VentanaTransformacionesModelos::selectorTraslacion() {
         }
     }
 
+}
+
+/**
+ * Parte de la ventana que permite aplicar rotaciones al modelo seleccionado
+ */
+void PAG::VentanaTransformacionesModelos::selectorRotacion() {
+    const char* tipoRotacion[] = {"X", "Y", "Z"};
+    static unsigned int tipoRotacionActual = 0;
+
+    if(ImGui::BeginCombo("##t", tipoRotacion[tipoRotacionActual]))
+    {
+        for(int n = 0 ; n < IM_ARRAYSIZE(tipoRotacion) ; n++ )
+        {
+            const bool is_selected = (tipoRotacionActual == n);
+            if(ImGui::Selectable(tipoRotacion[n], is_selected))
+            {
+                tipoRotacionActual = n;
+            }
+
+            if (is_selected)
+            {
+                ImGui::SetItemDefaultFocus();
+            }
+        }
+        ImGui::EndCombo();
+    }
+
+    static bool inputs_step = true;
+    static ImGuiInputTextFlags flags = ImGuiInputTextFlags_None;
+    static float gradosRotacion = 0; //Para ver cual es el valor de la rotacion del Drag
+    float min = -90, max = 90; //Para decir el rango maximo de movimiento de x[-1, 1]
+    ImGui::DragScalar("##d", ImGuiDataType_Float, &gradosRotacion, 0.05f, &min, &max, "%f");
+
+    if(ImGui::Button("Aplicar"))
+    {
+        if(tipoRotacion[tipoRotacionActual] == "X"){
+            modelos->data()[modeloSeleccionado]->getMalla()->rotarMalla(glm::rotate(glm::radians(gradosRotacion), glm::vec3(1, 0, 0)));
+        }else if(tipoRotacion[tipoRotacionActual] == "Y"){
+            modelos->data()[modeloSeleccionado]->getMalla()->rotarMalla(glm::rotate(glm::radians(gradosRotacion), glm::vec3(0, 1, 0)));
+        }else if(tipoRotacion[tipoRotacionActual] == "Z"){
+            modelos->data()[modeloSeleccionado]->getMalla()->rotarMalla(glm::rotate(glm::radians(gradosRotacion), glm::vec3(0, 0, 1)));
+        }
+    }
 }
