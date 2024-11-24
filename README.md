@@ -6,7 +6,7 @@ He realizado bastantes cambios para implementar la practica 3, principalmente de
 Agregué toda la funcionalidad con los shader programs, como el vertex/fragment shader, el VAO del triangulo, y su VBO e IBO.
 En UML ahora mismo la aplicación funciona así:
 
-<img src="images/pr2UML.png" width=800px>
+<img src="images/diagramasUML/pr2UML.png" width=800px>
 
 Tanto Renderer como GUI son Singletons, Renderer compila y ejecuta el shader program desde creaShaderProgram() y refrescar(), respectivamente.
 GUI pinta la interfaz de usuario con el metodo refrescar(), y tiene los métodos setColor() y agregarMensajeLog(), para el dibujado de las ventanas de
@@ -25,7 +25,7 @@ Para esta práctica solo hemos tenido que desacoplar de la clase Renderer el fun
 y para ello he creado una clase llamada ShaderProgram que se encarga de ello. Incluye el funcionamiento del 
 Vertex Shader y del Fragment Shader en su interior, pero en la siguiente práctica desacoplaré esto. El UML con la idea del proyecto actual es el siguiente:
 
-<img src="images/pr4UML.png" width=900px>
+<img src="images/diagramasUML/pr4UML.png" width=900px>
 
 ## Práctica 5
 Para esta práctica hemos tenido que implementar una camara virtual, que se puede mover con el ratón, teclado y con controles
@@ -49,7 +49,7 @@ la de gestion de movimiento de cámara, con un simple selector de tipo de movimi
 
 La version actual en un diagrama de clases UML de la aplicación, es la siguiente:
 
-<img src="images/pr5UML.png">
+<img src="images/diagramasUML/pr5UML.png">
 
 
 ## Práctica 6
@@ -75,3 +75,8 @@ Para usar la aplicación, hemos de seguir los siguientes pasos:
 
 Si queremos cargar otro modelo, no hay ningún problema, solo tenemos que repetir el paso 2.
 
+La aplicación en funcionamiento se ve así:
+<img src="images/pag06_estado.png">
+
+Y el UML actual es el siguiente:
+<img src="images/diagramasUML/pr6UML.png">

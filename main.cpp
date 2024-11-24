@@ -1,6 +1,3 @@
-// Prioritario:
-//ToDo Completar UML actual de la pr6
-
 /**
  * @brief Prácticas de PAG
  *
@@ -12,7 +9,7 @@
  * - Práctica 4 -> El funcionamiento del shader program lo "desacoplamos" de la clase Renderer, y lo agregamos a la clase ShaderProgram que interactua con
  * la clase Renderer
  * - Práctica 5 -> Crear camara virtual, que se pueda mover con el raton, el teclado, y con botones de la GUI
- * - Práctica 6 -> //ToDo
+ * - Práctica 6 -> Desacoplar funcionamiento de los modelos ( VAO, VBO, IBO ) de la clase Shader Program
  *
  * @author Adrián González Almansa
  */
