@@ -29,6 +29,8 @@ PAG::Modelo::Modelo(std::string pathToModel) {
 
     objl::Mesh &mesh = loader.LoadedMeshes[0];
 
+    nombreModelo = mesh.MeshName;
+
     vector<GLfloat> posicionVertices;
     vector<GLfloat> color;
     vector<unsigned int> indices;
@@ -62,4 +64,12 @@ PAG::Modelo::~Modelo() {
 
 PAG::Malla *PAG::Modelo::getMalla() {
     return malla;
+}
+
+/**
+ * Getter del atributo nombre modelo
+ * @return
+ */
+std::string PAG::Modelo::getNombreModelo() {
+    return nombreModelo;
 }

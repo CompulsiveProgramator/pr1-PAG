@@ -12,7 +12,11 @@ namespace PAG{
     class VentanaTransformacionesModelos: public Ventana{
     private:
         std::vector<Modelo*> *modelos; ///Un vector con los modelos activos en escena
-        unsigned int seleccion = -1;
+        unsigned int modeloSeleccionado = 0; ///La posicion relativa en el vector de arriba, del modelo seleccionado para aplicar una transformacion
+
+        void seleccionaModelo();
+        void seleccionaTransformacion();
+        void selectorTraslacion();
     public:
         VentanaTransformacionesModelos();
         void refrescarVentana() override;

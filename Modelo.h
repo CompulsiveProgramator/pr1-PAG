@@ -17,10 +17,12 @@ namespace PAG{
     class Modelo {
     private:
         Malla *malla = nullptr;
+        std::string nombreModelo;
     public:
         Modelo(std::string pathToModel);
         ~Modelo();
         Malla* getMalla();
+        std::string getNombreModelo();
     };
 }
 
