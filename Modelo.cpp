@@ -27,6 +27,11 @@ PAG::Modelo::Modelo(std::string pathToModel) {
         cout << "No se pudo cargar el archivo";
     }
 
+    /**
+     * Cuando OBJ loader lee un .obj como el de vaca.obj, primero mira cuantas caras tiene y lo multiplica por 3 para saber el numero de vertices/indices
+     * luego es cuando segun lo que pone en cada cara, para un vertice coje una posicion, textura y normal ;)
+     */
+
     objl::Mesh &mesh = loader.LoadedMeshes[0];
 
     nombreModelo = mesh.MeshName;
@@ -35,24 +40,28 @@ PAG::Modelo::Modelo(std::string pathToModel) {
     vector<GLfloat> color;
     vector<unsigned int> indices;
 
-    /// Pillamos las posiciones de cada vertice ;)
-    for(int i = 0 ; i < mesh.Vertices.size() ; i++){
-        posicionVertices.push_back(mesh.Vertices[i].Position.X);
-        posicionVertices.push_back(mesh.Vertices[i].Position.Y);
-        posicionVertices.push_back(mesh.Vertices[i].Position.Z);
+    unsigned int counter = 0;
 
-        cout << mesh.Vertices[i].Position.X << " " << mesh.Vertices[i].Position.Y << " " << mesh.Vertices[i].Position.Z << endl;
+    //Leemos la posicion/color de cada vertice
+    while(counter < mesh.Vertices.size())
+    {
+        //Metemos la posicion del vertice:
+        posicionVertices.push_back(mesh.Vertices[counter].Position.X);
+        posicionVertices.push_back(mesh.Vertices[counter].Position.Y);
+        posicionVertices.push_back(mesh.Vertices[counter].Position.Z);
+
+        //Metemos la coordenada de textura como color: todo Para la práctica 7 de texturas corregirlo ;)
+        color.push_back(1);
+        color.push_back(1);
+        color.push_back(0);
+
+        counter++;
     }
 
-    /// Le damos un color fijo a cada vertice todo Hacer que lo coja del .obj
-    for(int i = 0 ; i < mesh.Vertices.size() ; i++){
-        color.push_back(0.0);
-        color.push_back(0.0);
-        color.push_back(1.0); //Metemos un azul
-    }
-
-    for(int i = 0 ; i < mesh.Indices.size() ; i++){
-        indices.push_back(mesh.Indices[i]);
+    counter = 0;
+    while(counter < mesh.Indices.size()){
+        indices.push_back(mesh.Indices[counter]);
+        counter++;
     }
 
     malla = new Malla(posicionVertices, color, indices);
