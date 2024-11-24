@@ -1,6 +1,5 @@
 // Prioritario:
 //ToDo Completar UML actual de la pr6
-//ToDo Adaptar la clase Modelo para que se puedan leer archivos .obj de cualquier complejidad
 
 /**
  * @brief Prácticas de PAG

@@ -51,8 +51,8 @@ PAG::Modelo::Modelo(std::string pathToModel) {
         posicionVertices.push_back(mesh.Vertices[counter].Position.Z);
 
         //Metemos la coordenada de textura como color: todo Para la práctica 7 de texturas corregirlo ;)
-        color.push_back(1);
-        color.push_back(1);
+        color.push_back(mesh.Vertices[counter].TextureCoordinate.X);
+        color.push_back(mesh.Vertices[counter].TextureCoordinate.Y);
         color.push_back(0);
 
         counter++;
