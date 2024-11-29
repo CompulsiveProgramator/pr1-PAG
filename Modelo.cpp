@@ -82,3 +82,17 @@ PAG::Malla *PAG::Modelo::getMalla() {
 std::string PAG::Modelo::getNombreModelo() {
     return nombreModelo;
 }
+
+/**
+ * Operador de asignacion
+ * @param otro
+ */
+void PAG::Modelo::operator=(PAG::Modelo &otro) {
+    malla = otro.malla;
+    nombreModelo = otro.nombreModelo;
+}
+
+void PAG::Modelo::liberarMalla() {
+    delete malla;
+    malla = nullptr;
+}

@@ -208,5 +208,38 @@ namespace PAG{
     std::vector<Modelo *> *ShaderProgram::getModelos() {
         return &modelos;
     }
+
+    /**
+     * Metodo para eliminar el modelo en la posicion dada
+     * //ToDo Cuando se borran todos los elementos, la ventana de ImGui de transformacion de modelos deja de mostrarse aunque luego se agregen mas modelos ( puede ser porque al vaciar el vector este sea "null" )
+     * //Todo y el puntero al vector de modelos de la ventana, no se actualiza
+     * @param posicion La posicion a borrar
+     */
+    void ShaderProgram::eliminarModelo(unsigned int posicion) {
+        if(posicion >= modelos.size())
+        {
+            return;
+        }
+
+        // Si queremos borrar el ultimo elemento
+        if(posicion == modelos.size() - 1)
+        {
+            //Cuando tenemos un vector de punteros, y usamos std::vector<>::erase(), solo se pone a nullptr el puntero, no se hace delete ;)
+
+            delete modelos[posicion];
+            modelos.erase(modelos.end()--);
+        }else{ //Si queremos borrar otro elemento
+            std::cout << "Se solicita borrar el modelo en la posicion " << posicion << std::endl;
+
+            delete modelos[posicion];
+
+            auto iterador = modelos.begin();
+            for(int i = 0 ; i < posicion ; i++){
+                iterador++;
+            }
+
+            modelos.erase(iterador);
+        }
+    }
 }
 

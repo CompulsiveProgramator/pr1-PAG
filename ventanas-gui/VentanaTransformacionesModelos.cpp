@@ -36,6 +36,13 @@ void PAG::VentanaTransformacionesModelos::refrescarVentana() {
 
     seleccionaTransformacion();
 
+    if(ImGui::Button("Eliminar modelo seleccionado"))
+    {
+        eliminarModelo = true;
+    }else{
+        eliminarModelo = false;
+    }
+
     ImGui::End();
 }
 
@@ -43,8 +50,8 @@ void PAG::VentanaTransformacionesModelos::refrescarVentana() {
  * Metodo para agregar la direccion en memoria, del vector con los modelos activos en el Shader Program ;)
  * @param modelo
  */
-void PAG::VentanaTransformacionesModelos::agregarModelos(std::vector<Modelo*> *modelos) {
-    this->modelos = modelos;
+void PAG::VentanaTransformacionesModelos::agregarModelos(std::vector<Modelo*> *_modelos) {
+    this->modelos = _modelos;
 }
 
 /**
@@ -57,6 +64,12 @@ void PAG::VentanaTransformacionesModelos::seleccionaModelo() {
     std::vector<std::string> nombresModelos;
     for(int i = 0 ; i < modelos->size() ; i++){
         nombresModelos.push_back(modelos->data()[i]->getNombreModelo());
+    }
+
+    // Esto es para cuando se borra el ultimo elemento del vector de modelos, ya que modeloSeleccionado pasaria a estar fuera del rango legal ! ;)
+    if(modeloSeleccionado >= modelos->size())
+    {
+        modeloSeleccionado = 0; //Volvemos al inicial por defecto
     }
 
     if (ImGui::BeginCombo("##selectorModelo", nombresModelos[modeloSeleccionado].c_str())) // Etiqueta del combo
@@ -245,4 +258,12 @@ void PAG::VentanaTransformacionesModelos::selectorEscalado() {
             modelos->data()[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(valorEscalado, valorEscalado, valorEscalado)));
         }
     }
+}
+
+unsigned int PAG::VentanaTransformacionesModelos::getModeloSeleccionado() {
+    return modeloSeleccionado;
+}
+
+bool PAG::VentanaTransformacionesModelos::getEliminarModelo() {
+    return eliminarModelo;
 }

@@ -40,6 +40,7 @@ namespace PAG{
 
         void agregarModelo(std::string localizacion);
         std::vector<Modelo*>* getModelos();
+        void eliminarModelo(unsigned int posicion);
     };
 }
 

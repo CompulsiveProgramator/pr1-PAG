@@ -23,6 +23,8 @@ namespace PAG{
         ~Modelo();
         Malla* getMalla();
         std::string getNombreModelo();
+        void operator=(Modelo &otro);
+        void liberarMalla();
     };
 }
 

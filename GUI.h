@@ -50,6 +50,8 @@ namespace PAG
         std::string getLocalizacionArchivo();
         void asociarModelos(std::vector<Modelo*> *modelos);
         bool getSeguirRaton();
+        bool getEliminarModelo();
+        unsigned int getPosicionModeloEliminar();
     };
 }
 

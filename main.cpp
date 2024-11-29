@@ -10,7 +10,7 @@
  * la clase Renderer
  * - Práctica 5 -> Crear camara virtual, que se pueda mover con el raton, el teclado, y con botones de la GUI
  * - Práctica 6 -> Desacoplar funcionamiento de los modelos ( VAO, VBO, IBO ) de la clase Shader Program
- *
+ * - Práctica 7 -> //ToDo Subrutina y material
  * @author Adrián González Almansa
  */
 #include <iostream>
@@ -368,6 +368,7 @@ int main()
         instanciaRenderer.refrescar(); //Primero se dibuja el Renderer
         instanciaGUI.refrescar(); //La GUI se dibuja lo ultimo, porque es lo que mas arriba está ;)
         try{
+            //Para ver si se crea un Shader Program nuevo
             if(instanciaGUI.getBotonPulsado()){
                 instanciaRenderer.setNombreShaderProgram(instanciaGUI.getNombreShaderProgram());
                 instanciaGUI.asociarModelos(instanciaRenderer.getShaderProgram()->getModelos());
@@ -375,6 +376,12 @@ int main()
 
             if(instanciaGUI.getLocalizacionArchivo() != ""){
                 instanciaRenderer.agregarModelo(instanciaGUI.getLocalizacionArchivo());
+            }
+
+            //Preguntamos a la GUI si tenemos que eliminar algun modelo activo
+            if(instanciaGUI.getEliminarModelo())
+            {
+                instanciaRenderer.getShaderProgram()->eliminarModelo(instanciaGUI.getPosicionModeloEliminar());
             }
 
             seguirMovimientoRaton = instanciaGUI.getSeguirRaton();

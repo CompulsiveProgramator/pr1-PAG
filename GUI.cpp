@@ -133,3 +133,11 @@ void PAG::GUI::asociarModelos(std::vector<Modelo*> *modelos) {
 bool PAG::GUI::getSeguirRaton() {
     return ventanaMovimientoCamara.getSeguirMovimientoRaton();
 }
+
+bool PAG::GUI::getEliminarModelo() {
+    return this->ventanaTransformacionesModelos.getEliminarModelo();
+}
+
+unsigned int PAG::GUI::getPosicionModeloEliminar() {
+    return this->ventanaTransformacionesModelos.getModeloSeleccionado();
+}
