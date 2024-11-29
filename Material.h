@@ -21,6 +21,14 @@ namespace PAG{
 
     public:
         Material() = default;
+
+        const float *getColorAmbiente() const;
+
+        const float *getColorDifuso() const;
+
+        const float *getColorEspecular() const;
+
+        float getExponenteEspecular() const;
     };
 }
 
