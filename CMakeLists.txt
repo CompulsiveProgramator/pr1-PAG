@@ -36,6 +36,8 @@ add_executable(Pr1 main.cpp
         ventanas-gui/VentanaSelectorModelo.h
         ventanas-gui/VentanaTransformacionesModelos.cpp
         ventanas-gui/VentanaTransformacionesModelos.h
+        Material.cpp
+        Material.h
 )
 
 # Para que Cmake encuentre los bonitos paquetes:

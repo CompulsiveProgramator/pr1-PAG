@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "Malla.h"
+#include "Material.h"
 
 namespace PAG{
     /**
@@ -17,6 +18,7 @@ namespace PAG{
     class Modelo {
     private:
         Malla *malla = nullptr;
+        Material material;
         std::string nombreModelo;
     public:
         Modelo(std::string pathToModel);
@@ -24,7 +26,7 @@ namespace PAG{
         Malla* getMalla();
         std::string getNombreModelo();
         void operator=(Modelo &otro);
-        void liberarMalla();
+        Material* getMaterial();
     };
 }
 

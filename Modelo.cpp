@@ -10,7 +10,7 @@
  * Constructor de la clase, que inicializa el modelo usando Assimp !
  * @param pathToModel El camino al archivo que se quiere abrir
  */
-PAG::Modelo::Modelo(std::string pathToModel) {
+PAG::Modelo::Modelo(std::string pathToModel):material() {
     /*
      * OBJ loader carga el archivo .obj en una variable loader
      *
@@ -92,7 +92,6 @@ void PAG::Modelo::operator=(PAG::Modelo &otro) {
     nombreModelo = otro.nombreModelo;
 }
 
-void PAG::Modelo::liberarMalla() {
-    delete malla;
-    malla = nullptr;
+PAG::Material *PAG::Modelo::getMaterial() {
+    return &material;
 }
