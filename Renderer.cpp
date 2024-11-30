@@ -115,7 +115,7 @@ namespace PAG
      * Funcion para establecer el nombre del Shader Program
      * @param nombreF El nombre del archivo
      */
-    void Renderer::setNombreShaderProgram(std::string nombreF) {
+    void Renderer::crearShaderProgram(std::string nombreF) {
         nombreSP = nombreF;
         delete this->shaderProgram;
         this->shaderProgram = new ShaderProgram(nombreF, camara);
@@ -142,5 +142,23 @@ namespace PAG
      */
     ShaderProgram *Renderer::getShaderProgram() {
         return shaderProgram;
+    }
+
+    void Renderer::activarModoAlambre() {
+        if(!shaderProgram)
+        {
+            return;
+        }else{
+            shaderProgram->setModoVisualizacion(ALAMBRE);
+        }
+    }
+
+    void Renderer::activarModoSolido() {
+        if(!shaderProgram)
+        {
+            return;
+        }else{
+            shaderProgram->setModoVisualizacion(SOLIDO);
+        }
     }
 }

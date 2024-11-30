@@ -20,7 +20,7 @@ vec3 colorRojo()
 }
 
 //CUIDAO!
-        //No declares una variable con un nombre, y luego una funcion con ese mismo nombre porque peta (Ej: colorDifuso y colorDifuso() NO! )
+//No declares una variable con un nombre, y luego una funcion con ese mismo nombre porque peta (Ej: colorDifuso y colorDifuso() NO! )
 subroutine(calcularColor)
 vec3 colorSolido()
 {

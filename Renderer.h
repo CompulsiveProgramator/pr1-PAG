@@ -33,11 +33,12 @@ namespace PAG{
         void setColorFondo(const GLfloat color[4]);
         void modificarTamañoVentana(int width, int height);
         void inicializaOpenGL();
-        void setNombreShaderProgram(std::string nombreF);
+        void crearShaderProgram(std::string nombreF);
         Camara* getCamara();
         void agregarModelo(std::string localizacionArchivo);
         ShaderProgram* getShaderProgram();
-
+        void activarModoAlambre();
+        void activarModoSolido();
     };
 }
 

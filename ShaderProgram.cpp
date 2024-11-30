@@ -63,13 +63,23 @@ namespace PAG{
                 glUniform3fv(pos, 1, &modelos[i]->getMaterial()->getColorDifuso()[0]);
             }
 
-            //Para obtener el id de la implementacion colorRojo()
-            GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "colorRojo");
-            /*
-             * Activamos la implementacion colorRojo() con su indice
-             * el parametro "count" es para decir de cuantas subrutinas elegimos la implementacion
-             */
-            glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+            if(modoVisualizacion == ALAMBRE){
+                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+                //Para obtener el id de la implementacion dada
+                GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "colorRojo");
+                /*
+                 * Activamos la implementacion con su id obtenido arriba ;)
+                 * el parametro "count" es para decir de cuantas subrutinas elegimos la implementacion
+                 */
+                glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+            }else if(modoVisualizacion == SOLIDO){
+                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+                GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "colorSolido");
+
+                glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+            }
 
             glBindVertexArray ( modelos[i]->getMalla()->getIdVao() );
             glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, modelos[i]->getMalla()->getIdIbo() );
@@ -252,6 +262,10 @@ namespace PAG{
 
             modelos.erase(iterador);
         }
+    }
+
+    void ShaderProgram::setModoVisualizacion(ModosVisualizacion modo) {
+        modoVisualizacion = modo;
     }
 }
 

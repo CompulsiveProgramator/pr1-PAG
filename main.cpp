@@ -27,6 +27,7 @@
 double lastXpos = 0, lastYpos = 0; //Empezamos a contar desde arriba a la izquierda de la pantalla en glfw, pero en open gl es de la esquina inferior derecha ;)
 bool pulsado = false;
 bool seguirMovimientoRaton = false; //Para activar/desactivar el movimiento con el raton
+PAG::ModosVisualizacion modo = PAG::ALAMBRE;
 
 void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
     /**
@@ -140,6 +141,17 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
         glfwSetWindowShouldClose(window, GLFW_TRUE);
         ImGuiIO& io = ImGui::GetIO();
         io.AddKeyEvent(ImGuiKey_Escape, true);
+    }
+
+    if ( key == GLFW_KEY_A && action == GLFW_PRESS )
+    {
+        //ToDo Si utilizo PAG::Renderer::getInstancia() aqui, me da una instancia distinta a la del ciclo de eventos, que esta mas abajo en este codigo, en el main
+        modo = PAG::ALAMBRE;
+    }
+
+    if ( key == GLFW_KEY_S && action == GLFW_PRESS )
+    {
+        modo = PAG::SOLIDO;
     }
 
     if(PAG::MovimientoCamara::getInstancia().getTipoMovimiento() == PAG::tipoMovimiento::Dolly){
@@ -370,9 +382,16 @@ int main()
             instanciaGUI.refrescar(); //La GUI se dibuja lo ultimo, porque es lo que mas arriba está ;)
             //Para ver si se crea un Shader Program nuevo
             if(instanciaGUI.getBotonPulsado()){
-                instanciaRenderer.setNombreShaderProgram(instanciaGUI.getNombreShaderProgram());
+                instanciaRenderer.crearShaderProgram(instanciaGUI.getNombreShaderProgram());
                 instanciaGUI.asociarModelos(instanciaRenderer.getShaderProgram()->getModelos());
             }
+
+            if(modo == PAG::ALAMBRE){
+                instanciaRenderer.activarModoAlambre();
+            }else if(modo == PAG::SOLIDO){
+                instanciaRenderer.activarModoSolido();
+            }
+            //std::cout << &instanciaRenderer << std::endl;
 
             if(instanciaGUI.getLocalizacionArchivo() != ""){
                 instanciaRenderer.agregarModelo(instanciaGUI.getLocalizacionArchivo());
