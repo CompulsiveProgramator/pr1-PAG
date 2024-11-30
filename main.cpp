@@ -365,9 +365,9 @@ int main()
     /// CICLO DE EVENTOS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     while ( !glfwWindowShouldClose ( window ) )
     {
-        instanciaRenderer.refrescar(); //Primero se dibuja el Renderer
-        instanciaGUI.refrescar(); //La GUI se dibuja lo ultimo, porque es lo que mas arriba está ;)
         try{
+            instanciaRenderer.refrescar(); //Primero se dibuja el Renderer
+            instanciaGUI.refrescar(); //La GUI se dibuja lo ultimo, porque es lo que mas arriba está ;)
             //Para ver si se crea un Shader Program nuevo
             if(instanciaGUI.getBotonPulsado()){
                 instanciaRenderer.setNombreShaderProgram(instanciaGUI.getNombreShaderProgram());
