@@ -17,7 +17,7 @@
 #include <cstdlib>
 
 // IMPORTANTE: El include de GLAD debe estar siempre ANTES de el de GLFW
-#include <glad/glad.h>
+#include "glad/glad.h"
 #include <GLFW/glfw3.h>
 #include "Renderer.h"
 #include "GUI.h"
@@ -387,6 +387,7 @@ int main()
             seguirMovimientoRaton = instanciaGUI.getSeguirRaton();
         }catch(std::string &message){
             PAG::GUI::getInstancia().agregarMensajeLog(message);
+            std::cout << message;
         }
 
         //Para ver lo que se ha pintado en la llamada de justo arriba

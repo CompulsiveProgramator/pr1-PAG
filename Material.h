@@ -2,6 +2,8 @@
 // Created by secre on 29/11/2024.
 //
 
+#include "GL/gl.h"
+
 #ifndef PR1_MATERIAL_H
 #define PR1_MATERIAL_H
 namespace PAG{
@@ -14,21 +16,21 @@ namespace PAG{
      */
     class Material {
     private:
-        float colorAmbiente[3] {0.1, 0.0, 0.0};
-        float colorDifuso[3] {1.0, 0.0, 1.0}; //El color difuso, que es el que se ve al iluminar el modelo con dicho material
-        float colorEspecular[3] {1.0, 0.0, 1.0};
-        float exponenteEspecular = 100; //Esto es para decir como de rapido decrece la intensidad del material en un punto
+        GLfloat colorAmbiente[3] {0.1, 0.0, 0.0};
+        GLfloat colorDifuso[3] {1.0, 0.0, 1.0}; //El color difuso, que es el que se ve al iluminar el modelo con dicho material
+        GLfloat colorEspecular[3] {1.0, 0.0, 1.0};
+        GLfloat exponenteEspecular = 100; //Esto es para decir como de rapido decrece la intensidad del material en un punto
 
     public:
         Material() = default;
 
-        const float *getColorAmbiente() const;
+        const GLfloat *getColorAmbiente() const;
 
-        const float *getColorDifuso() const;
+        const GLfloat *getColorDifuso() const;
 
-        const float *getColorEspecular() const;
+        const GLfloat *getColorEspecular() const;
 
-        float getExponenteEspecular() const;
+        GLfloat getExponenteEspecular() const;
     };
 }
 

@@ -4,18 +4,18 @@
 
 #include "Material.h"
 
-const float *PAG::Material::getColorAmbiente() const {
+const GLfloat *PAG::Material::getColorAmbiente() const {
     return colorAmbiente;
 }
 
-const float *PAG::Material::getColorDifuso() const {
+const GLfloat *PAG::Material::getColorDifuso() const {
     return colorDifuso;
 }
 
-const float *PAG::Material::getColorEspecular() const {
+const GLfloat *PAG::Material::getColorEspecular() const {
     return colorEspecular;
 }
 
-float PAG::Material::getExponenteEspecular() const {
+GLfloat PAG::Material::getExponenteEspecular() const {
     return exponenteEspecular;
 }

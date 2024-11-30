@@ -36,7 +36,7 @@ namespace PAG{
         std::string leerShaderSource(std::string filename);
         GLuint creaShaderObject(GLenum shaderType);
         void compilarShaderObject(std::string shaderSourceString, GLuint shaderHandler, GLenum shaderType);
-        void enlazarSP(GLuint handler, GLuint shaderHandler, std::string filename);
+        void enlazarSP(GLuint handler, std::string filename);
 
         void agregarModelo(std::string localizacion);
         std::vector<Modelo*>* getModelos();

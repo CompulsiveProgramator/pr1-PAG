@@ -133,9 +133,9 @@ list(PREPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR})
 # Definition of CMAKE_PREFIX_PATH, CMAKE_XXXXX_PATH
 # The Conan local "generators" folder, where this toolchain is saved.
 list(PREPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_LIST_DIR} )
-list(PREPEND CMAKE_LIBRARY_PATH "C:/Users/secre/.conan2/p/b/imguif996f22b74b0c/p/lib" "C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib" "C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/lib")
-list(PREPEND CMAKE_INCLUDE_PATH "C:/Users/secre/.conan2/p/glmc7261f667dea4/p/include" "C:/Users/secre/.conan2/p/b/imguif996f22b74b0c/p/include" "C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include" "C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/include")
-set(CONAN_RUNTIME_LIB_DIRS "C:/Users/secre/.conan2/p/b/imguif996f22b74b0c/p/bin" "C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/bin" "C:/Users/secre/.conan2/p/b/glad90632e58c8bab/p/bin" )
+list(PREPEND CMAKE_LIBRARY_PATH "C:/Users/secre/.conan2/p/b/imguif996f22b74b0c/p/lib" "C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/lib")
+list(PREPEND CMAKE_INCLUDE_PATH "C:/Users/secre/.conan2/p/glmc7261f667dea4/p/include" "C:/Users/secre/.conan2/p/b/imguif996f22b74b0c/p/include" "C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/include")
+set(CONAN_RUNTIME_LIB_DIRS "C:/Users/secre/.conan2/p/b/imguif996f22b74b0c/p/bin" "C:/Users/secre/.conan2/p/b/glfw41e2b19d9ab57/p/bin" )
 
 
 

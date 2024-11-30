@@ -55,6 +55,22 @@ namespace PAG{
                 glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVisionPerspectiva[0][0]);
             }
 
+            /// Practica 7, Subrutina de color:
+
+            std::string colorDifuso("colorDifuso");
+            pos = glGetUniformLocation(idSP, colorDifuso.c_str());
+            if(pos != -1){
+                glUniform3fv(pos, 1, &modelos[i]->getMaterial()->getColorDifuso()[0]);
+            }
+
+            //Para obtener el id de la implementacion colorRojo()
+            GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "colorRojo");
+            /*
+             * Activamos la implementacion colorRojo() con su indice
+             * el parametro "count" es para decir de cuantas subrutinas elegimos la implementacion
+             */
+            glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+
             glBindVertexArray ( modelos[i]->getMalla()->getIdVao() );
             glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, modelos[i]->getMalla()->getIdIbo() );
             glDrawElements ( GL_TRIANGLES, modelos[i]->getMalla()->getNumIndices(), GL_UNSIGNED_INT, nullptr);
@@ -62,29 +78,27 @@ namespace PAG{
 
     }
 
-/**
+    /**
      * Métoodo para crear, compilar y enlazar el shader program
      * Con comprobacion de errores
      */
     void ShaderProgram::creaShaderProgram() {
         std::string contenido;
-        GLuint shaderHandler; //Para gestionar cada shader object
-        std::string filename;
-
+        std::string filename = nombreFicheros;
+        GLuint vertexShaderId, fragmentShaderId;
         crearSP(idSP); //Fase 1
 
-        //1o El vertex shader
-        filename = "../shader_files/"+nombreFicheros+"-vs.glsl";
-        contenido = leerShaderSource(filename); //Fase 2
-        shaderHandler = creaShaderObject(GL_VERTEX_SHADER); //Fase 3
-        compilarShaderObject(contenido, shaderHandler, GL_VERTEX_SHADER); //Fase 4
-        enlazarSP(idSP, shaderHandler, filename);
+        vertexShaderId = creaShaderObject(GL_VERTEX_SHADER);
+        contenido = leerShaderSource("../shader_files/"+filename+"-vs.glsl");
+        compilarShaderObject(contenido, vertexShaderId, GL_VERTEX_SHADER);
 
-        filename = "../shader_files/"+nombreFicheros+"-fs.glsl";
-        contenido = leerShaderSource(filename); //Fase 2
-        shaderHandler = creaShaderObject(GL_FRAGMENT_SHADER); //Fase 3
-        compilarShaderObject(contenido, shaderHandler, GL_FRAGMENT_SHADER); //Fase 4
-        enlazarSP(idSP, shaderHandler, filename); //Fase 5
+        fragmentShaderId = creaShaderObject(GL_FRAGMENT_SHADER);
+        contenido = leerShaderSource("../shader_files/"+filename+"-fs.glsl");
+        compilarShaderObject(contenido, fragmentShaderId, GL_FRAGMENT_SHADER);
+
+        glAttachShader(idSP, vertexShaderId);
+        glAttachShader(idSP, fragmentShaderId);
+        enlazarSP(idSP, filename);
     }
 
 /**
@@ -171,14 +185,12 @@ namespace PAG{
 
 /**
  * 5 fase del compilado del shader program
- * Enlazar el shader object al shader program
+ * Enlazar el shader program
  * @param handler El id del shader program
- * @param shaderHandler El id del shader object
  * @param filename El nombre del shader
  */
-    void ShaderProgram::enlazarSP(GLuint handler, GLuint shaderHandler, std::string filename) {
-        glAttachShader(handler, shaderHandler);
-
+    void ShaderProgram::enlazarSP(GLuint handler, std::string filename)
+    {
         glLinkProgram(handler);
         GLint linkSuccess = 0;
         glGetProgramiv(handler, GL_LINK_STATUS, &linkSuccess);

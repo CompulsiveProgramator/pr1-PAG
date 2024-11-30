@@ -42,7 +42,6 @@ add_executable(Pr1 main.cpp
 
 # Para que Cmake encuentre los bonitos paquetes:
 find_package(opengl_system)
-find_package(glad)
 find_package(glfw3)
 find_package(glm)
 
@@ -60,7 +59,7 @@ find_package(glm)
 #add_subdirectory(assimp) # Esto le dice a CMake que busque un Cmakelist.txt en el subdirectorio de assimp, para que tambien se haga la build de assimp ;)
 
 # Ahora, agregamos al ejecutable de la "libreria" de assimp, al del proyecto principal
-target_link_libraries(${PROJECT_NAME} PUBLIC opengl::opengl glad::glad glfw glm::glm)
+target_link_libraries(${PROJECT_NAME} PUBLIC opengl::opengl glfw glm::glm)
 
 # Para RenderDoc, poner -static en target_link_libraries() al final para que el ejecutable del proyecto tenga una "copia" de todas las
 # librerias externas/internas ( .dll ) y así el ejecutable es más grande, pero, podemos llevarnoslo a donde queramos!!!
