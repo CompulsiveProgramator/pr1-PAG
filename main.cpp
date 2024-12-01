@@ -1,6 +1,3 @@
-//ToDo Diagrama UML actualizado
-// Documentar Pr 7
-
 /**
  * @brief Prácticas de PAG
  *
@@ -13,7 +10,7 @@
  * la clase Renderer
  * - Práctica 5 -> Crear camara virtual, que se pueda mover con el raton, el teclado, y con botones de la GUI
  * - Práctica 6 -> Desacoplar funcionamiento de los modelos ( VAO, VBO, IBO ) de la clase Shader Program
- * - Práctica 7 -> //ToDo Subrutina y material
+ * - Práctica 7 -> Crear un material, y asignarlo a un modelo. También usar una subrutina GLSL, para el color de dibujado del modelo
  * @author Adrián González Almansa
  */
 #include <iostream>

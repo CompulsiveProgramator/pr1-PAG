@@ -80,3 +80,28 @@ La aplicación en funcionamiento se ve así:
 
 Y el UML actual es el siguiente:
 <img src="images/diagramasUML/pr6UML.png">
+
+## Práctica 7
+
+Para esta práctica he tenido que crear una clase Material, que contiene actualmente el color ambiente, difuso y especular del material, así como el exponente especular. Luego, también
+hemos usado una subrutina GLSL, que con código C++ en la clase Shader Program se escoge su implementación, para así pintar el módelo actual con un color u otro.
+
+El material ahora mismo se asigna por defecto en la creación del modelo, como se ve en el constructor de la clase PAG::Modelo:
+
+<img src="images/crea_modelo.png">
+
+El material tiene asignado unos atributos por defecto, los colores están en formato RGB :
+- colorAmbiente = (0.1, 0.0, 0.0)
+- colorDifuso = (1.0, 1.0, 1.0)
+- colorEspecular = (1.0, 0.0, 1.0)
+- exponenteEspecular = 100
+
+Para próximas prácticas se podrán crear materiales distintos, y asignarlos a cada modelo de forma dinámica
+
+La subrutina solo necesita este código en C++ , que actualmente está en la el método PAG::ShaderProgram::ejecutarSP()
+<img src="images/subrutina_pr7.png">
+
+El UML actual de la app es el siguiente:
+
+<img src="images/diagramasUML/pr7UML.png">
+

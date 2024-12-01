@@ -7,7 +7,7 @@
 #include "OBJ_Loader.h"
 
 /**
- * Constructor de la clase, que inicializa el modelo usando Assimp !
+ * Constructor de la clase, que inicializa el modelo usando OBJ_Loader
  * @param pathToModel El camino al archivo que se quiere abrir
  */
 PAG::Modelo::Modelo(std::string pathToModel):material() {
