@@ -27,7 +27,7 @@
 double lastXpos = 0, lastYpos = 0; //Empezamos a contar desde arriba a la izquierda de la pantalla en glfw, pero en open gl es de la esquina inferior derecha ;)
 bool pulsado = false;
 bool seguirMovimientoRaton = false; //Para activar/desactivar el movimiento con el raton
-PAG::ModosVisualizacion modo = PAG::ALAMBRE;
+PAG::ModosVisualizacion modo = PAG::ALAMBRE; //Para el modo de visualizacion del modelo
 
 void cursorPosition_callback(GLFWwindow *window, double xpos, double ypos){
     /**

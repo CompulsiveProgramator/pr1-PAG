@@ -46,5 +46,9 @@ Luego para aplicar la transformación, hacemos clic en el boton de "Aplicar".
 Si queremos borrar el modelo seleccionado, hacemos clic en el boton "Eliminar modelo seleccionado" y este
 desaparecerá
 
+## Teclas especiales
+a -> Activa el modo alambre, que hace que los modelos se vean como una malla de triangulos
+s -> Activa el modo solido, que hace que se vean llenos los modelos
+
 
 
