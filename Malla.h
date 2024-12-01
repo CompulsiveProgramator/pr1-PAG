@@ -26,10 +26,10 @@ namespace PAG{
         glm::mat4 matrizModelado; //La matriz de modelado, que coloca en escena al objeto ;)
 
         void creaModeloPrueba();
-        void creaModelo(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> coloresVertices, std::vector<GLuint> indices);
+        void creaModelo(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> normales, std::vector<GLuint> indices);
     public:
         Malla();
-        Malla(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> coloresVertices, std::vector<GLuint> indices);
+        Malla(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> normales, std::vector<GLuint> indices);
         ~Malla();
         GLuint getIdVao() const;
         GLuint getIdVbo1() const;

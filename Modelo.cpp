@@ -37,12 +37,12 @@ PAG::Modelo::Modelo(std::string pathToModel):material() {
     nombreModelo = mesh.MeshName;
 
     vector<GLfloat> posicionVertices;
-    vector<GLfloat> color;
+    vector<GLfloat> normales;
     vector<unsigned int> indices;
 
     unsigned int counter = 0;
 
-    //Leemos la posicion/color de cada vertice
+    //Leemos la posicion/colores de cada vertice
     while(counter < mesh.Vertices.size())
     {
         //Metemos la posicion del vertice:
@@ -50,10 +50,10 @@ PAG::Modelo::Modelo(std::string pathToModel):material() {
         posicionVertices.push_back(mesh.Vertices[counter].Position.Y);
         posicionVertices.push_back(mesh.Vertices[counter].Position.Z);
 
-        //Metemos la coordenada de textura como color: todo Para la práctica 7 de texturas corregirlo ;)
-        color.push_back(mesh.Vertices[counter].TextureCoordinate.X);
-        color.push_back(mesh.Vertices[counter].TextureCoordinate.Y);
-        color.push_back(0);
+        //Leemos las normales:
+        normales.push_back(mesh.Vertices[counter].Normal.X);
+        normales.push_back(mesh.Vertices[counter].Normal.Y);
+        normales.push_back(mesh.Vertices[counter].Normal.Z);
 
         counter++;
     }
@@ -64,7 +64,7 @@ PAG::Modelo::Modelo(std::string pathToModel):material() {
         counter++;
     }
 
-    malla = new Malla(posicionVertices, color, indices);
+    malla = new Malla(posicionVertices, normales, indices);
 }
 
 PAG::Modelo::~Modelo() {

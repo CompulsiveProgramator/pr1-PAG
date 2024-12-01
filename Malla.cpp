@@ -26,10 +26,10 @@ PAG::Malla::Malla() {
     creaModeloPrueba();
 }
 
-PAG::Malla::Malla(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> coloresVertices,
-                  std::vector<GLuint> indices) {
+PAG::Malla::Malla(std::vector<GLfloat> posicionVertices,
+                  std::vector<GLfloat> normales, std::vector<GLuint> indices) {
     matrizModelado = glm::translate(glm::vec3(0,0,0));
-    creaModelo(posicionVertices, coloresVertices, indices);
+    creaModelo(posicionVertices, normales, indices);
 }
 
 /**
@@ -118,10 +118,10 @@ void PAG::Malla::creaModeloPrueba() {
 /**
  * Metodo que crea el VAO, VBO e IBO para los datos dados
  * @param posicionVertices Un array con las posiciones x,y,z de cada vertice
- * @param coloresVertices Un array con los colores R,G,B de cada vertice
+ * @param normales Un array con las normales (x,y,z) de cada vertice
  * @param indices Un array con los indices para dibujar triangulos      Ej:  0,1,2 == Triangulo con los vertices 0, 1, 2 del array "posicionVertices"
  */
-void PAG::Malla::creaModelo(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> coloresVertices, std::vector<GLuint> indices){
+void PAG::Malla::creaModelo(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> normales, std::vector<GLuint> indices){
     numVertices = posicionVertices.size();
     numIndices = indices.size();
 
@@ -138,7 +138,7 @@ void PAG::Malla::creaModelo(std::vector<GLfloat> posicionVertices, std::vector<G
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,3 * sizeof(GLfloat), nullptr);
 
     glBindBuffer(GL_ARRAY_BUFFER, idVBO2);
-    glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(GLfloat), coloresVertices.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(GLfloat), normales.data(), GL_STATIC_DRAW);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,3 * sizeof(GLfloat), nullptr);
 
