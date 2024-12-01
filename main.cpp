@@ -1,3 +1,6 @@
+//ToDo Diagrama UML actualizado
+// Documentar Pr 7
+
 /**
  * @brief Prácticas de PAG
  *
@@ -145,7 +148,7 @@ void key_callback ( GLFWwindow *window, int key, int scancode, int action, int m
 
     if ( key == GLFW_KEY_A && action == GLFW_PRESS )
     {
-        //ToDo Si utilizo PAG::Renderer::getInstancia() aqui, me da una instancia distinta a la del ciclo de eventos, que esta mas abajo en este codigo, en el main
+        //Si utilizo PAG::Renderer::getInstancia() aqui, me da una instancia distinta a la del ciclo de eventos, que esta mas abajo en este codigo, en el main
         modo = PAG::ALAMBRE;
     }
 
