@@ -11,7 +11,7 @@ PAG::GUI* PAG::GUI::instancia = nullptr; //Para inicializar la instancia como nu
  * @param window Es la ventana sobre la que se pintará la GUI
  */
 PAG::GUI::GUI(): ventanaSeleccionColor(), ventanaLog(),ventanaSeleccionShaderProgram(), ventanaMovimientoCamara(), ventanaSelectorModelo(),
-                 ventanaTransformacionesModelos(){
+                 ventanaTransformacionesModelos(), ventanaParametrosCamara(){
 
 }
 
@@ -64,6 +64,9 @@ void PAG::GUI::pintarGUI() {
     //Ventana para aplicar transformaciones a los modelos de la app
     ventanaTransformacionesModelos.refrescarVentana();
 
+    //Ventana para ver los parametros de la camara
+    ventanaParametrosCamara.refrescarVentana();
+
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData ( ImGui::GetDrawData() );
 }
@@ -112,6 +115,7 @@ void PAG::GUI::setColor(GLfloat *color) {
  */
 void PAG::GUI::asociarCamara(PAG::Camara *camara) {
     this->ventanaMovimientoCamara.setCamara(camara);
+    this->ventanaParametrosCamara.asociarCamara(camara);
 }
 
 /**

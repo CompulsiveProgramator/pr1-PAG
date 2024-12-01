@@ -1,6 +1,6 @@
 #version 410
 
-layout ( location = 0 ) posicion;
+layout ( location = 0 ) in vec3 posicion;
 
 uniform mat4 matrizModeladoVisionPerspectiva;
 

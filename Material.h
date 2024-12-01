@@ -16,7 +16,7 @@ namespace PAG{
      */
     class Material {
     private:
-        GLfloat colorAmbiente[3] {0.1, 0.0, 0.0};
+        GLfloat colorAmbiente[3] {0.1, 0.1, 0.1};
         GLfloat colorDifuso[3] {1.0, 1.0, 1.0}; //El color difuso, que es el que se ve al iluminar el modelo con dicho material
         GLfloat colorEspecular[3] {1.0, 0.0, 1.0};
         GLfloat exponenteEspecular = 100; //Esto es para decir como de rapido decrece la intensidad del material en un punto

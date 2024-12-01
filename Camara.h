@@ -31,6 +31,18 @@ namespace PAG{
         void rotarSobreLookAtEjeX(bool antihorario);
         void rotarSobreLookAtEjeY(bool antihorario);
         void zoom(bool positivo);
+
+        const glm::vec3 &getPosicion() const;
+
+        const glm::vec3 &getLookAt() const;
+
+        glm::float32 getFovY() const;
+
+        glm::float32 getAspect() const;
+
+        glm::float32 getZNear() const;
+
+        glm::float32 getZFar() const;
     };
 }
 

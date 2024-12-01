@@ -52,6 +52,23 @@ namespace PAG{
 
             elegirModoVisualizacion();
 
+            std::string colorAmbientalMaterial("Ka");
+            std::string colorAmbientalLuz("Ia");
+            pos = glGetUniformLocation(idSP, colorAmbientalMaterial.c_str());
+            if(pos != -1)
+            {
+                glUniform3fv(pos, 1, &modelos[i]->getMaterial()->getColorAmbiente()[0]);
+            }
+
+            pos = glGetUniformLocation(idSP, colorAmbientalLuz.c_str());
+            if(pos != -1)
+            {
+                GLfloat colorLuzA[3] = {0.1,0.1,0.1};
+                glUniform3fv(pos, 1, colorLuzA);
+            }
+
+
+
             glBindVertexArray ( modelos[i]->getMalla()->getIdVao() );
             glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, modelos[i]->getMalla()->getIdIbo() );
             glDrawElements ( GL_TRIANGLES, modelos[i]->getMalla()->getNumIndices(), GL_UNSIGNED_INT, nullptr);

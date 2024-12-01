@@ -160,3 +160,27 @@ void PAG::Camara::zoom(bool positivo) {
         }
     }
 }
+
+const glm::vec3 &PAG::Camara::getPosicion() const {
+    return posicion;
+}
+
+const glm::vec3 &PAG::Camara::getLookAt() const {
+    return lookAt;
+}
+
+glm::float32 PAG::Camara::getFovY() const {
+    return fovY;
+}
+
+glm::float32 PAG::Camara::getAspect() const {
+    return aspect;
+}
+
+glm::float32 PAG::Camara::getZNear() const {
+    return zNear;
+}
+
+glm::float32 PAG::Camara::getZFar() const {
+    return zFar;
+}

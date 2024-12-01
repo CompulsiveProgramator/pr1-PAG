@@ -19,6 +19,7 @@
 #include "ventanas-gui/VentanaMovimientoCamara.h"
 #include "ventanas-gui/VentanaSelectorModelo.h"
 #include "ventanas-gui/VentanaTransformacionesModelos.h"
+#include "ventanas-gui/VentanaParametrosCamara.h"
 //#include "Camara.h"
 
 namespace PAG
@@ -36,6 +37,7 @@ namespace PAG
         VentanaMovimientoCamara ventanaMovimientoCamara;
         VentanaSelectorModelo ventanaSelectorModelo;
         VentanaTransformacionesModelos ventanaTransformacionesModelos;
+        VentanaParametrosCamara ventanaParametrosCamara;
 
         void pintarGUI();
     public:
