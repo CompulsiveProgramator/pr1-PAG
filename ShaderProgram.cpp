@@ -40,46 +40,17 @@ namespace PAG{
             glm::mat4 matrizModeladoVisionPerspectiva = camara->getMatrizPerspectiva() * matrizModeladoVision;
             glUseProgram ( idSP );
 
-            ///Hacer esto por cada malla de triangulos:
+            pasarUniformMV(matrizModeladoVision);
 
-            //Para pasar un uniform al vertex shader
-            std::string matrizMV("matrizModeladoVision"); ///La matriz con la transformacion de modelado del objeto, y la de vision
-            GLint pos = glGetUniformLocation(idSP, matrizMV.c_str());
-            if(pos != -1){
-                glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVision[0][0]);
-            }
-
-            std::string matrizMVP("matrizModeladoVisionPerspectiva");
-            pos = glGetUniformLocation(idSP, matrizMVP.c_str());
-            if(pos != -1){
-                glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVisionPerspectiva[0][0]);
-            }
-
-            /// Practica 7, Subrutina de color:
+            pasarUniformMVP(matrizModeladoVisionPerspectiva);
 
             std::string colorDifuso("colorDifuso");
-            pos = glGetUniformLocation(idSP, colorDifuso.c_str());
+            GLuint pos = glGetUniformLocation(idSP, colorDifuso.c_str());
             if(pos != -1){
                 glUniform3fv(pos, 1, &modelos[i]->getMaterial()->getColorDifuso()[0]);
             }
 
-            if(modoVisualizacion == ALAMBRE){
-                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
-                //Para obtener el id de la implementacion dada
-                GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "colorRojo");
-                /*
-                 * Activamos la implementacion con su id obtenido arriba ;)
-                 * el parametro "count" es para decir de cuantas subrutinas elegimos la implementacion
-                 */
-                glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
-            }else if(modoVisualizacion == SOLIDO){
-                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-                GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "colorSolido");
-
-                glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
-            }
+            elegirModoVisualizacion();
 
             glBindVertexArray ( modelos[i]->getMalla()->getIdVao() );
             glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, modelos[i]->getMalla()->getIdIbo() );
@@ -266,6 +237,54 @@ namespace PAG{
 
     void ShaderProgram::setModoVisualizacion(ModosVisualizacion modo) {
         modoVisualizacion = modo;
+    }
+
+    /**
+     * Metodo para elegir el modo de visualizacion a renderizar
+     */
+    void ShaderProgram::elegirModoVisualizacion() {
+        if(modoVisualizacion == ALAMBRE){
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+            //Para obtener el id de la implementacion dada
+            GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "colorRojo");
+            /*
+             * Activamos la implementacion con su id obtenido arriba ;)
+             * el parametro "count" es para decir de cuantas subrutinas elegimos la implementacion
+             */
+            glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+        }else if(modoVisualizacion == SOLIDO){
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+            GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "colorSolido");
+
+            glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+        }
+    }
+
+    /**
+     * Metodo para pasar al shader program la matriz de modelado y vision
+     * @param matrizMV La matriz de modelado y vision
+     */
+    void ShaderProgram::pasarUniformMV(glm::mat4 &matrizModeladoVision) {
+        //Para pasar un uniform al vertex shader
+        std::string matrizMV("matrizModeladoVision"); ///La matriz con la transformacion de modelado del objeto, y la de vision
+        GLint pos = glGetUniformLocation(idSP, matrizMV.c_str());
+        if(pos != -1){
+            glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVision[0][0]);
+        }
+    }
+
+    /**
+     * Metodo para pasar al shader program la matriz de modelado, vision y perspectiva
+     * @param matrizMVP La matriz de modelado, vision y perspectiva
+     */
+    void ShaderProgram::pasarUniformMVP(glm::mat4 &matrizModeladoVisionPerspectiva) {
+        std::string matrizMVP("matrizModeladoVisionPerspectiva");
+        GLuint pos = glGetUniformLocation(idSP, matrizMVP.c_str());
+        if(pos != -1){
+            glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVisionPerspectiva[0][0]);
+        }
     }
 }
 

@@ -32,6 +32,10 @@ namespace PAG{
         Camara *camara = nullptr; /// El puntero para la camara virtual de la ventana
         std::vector<Modelo*> modelos; /// El puntero a nuestro modelo!
         ModosVisualizacion modoVisualizacion = SOLIDO;
+
+        void elegirModoVisualizacion();
+        void pasarUniformMV(glm::mat4 &matrizMV);
+        void pasarUniformMVP(glm::mat4 &matrizMVP);
     public:
         ShaderProgram(std::string &nombreFicheros, Camara *camara);
         ~ShaderProgram();

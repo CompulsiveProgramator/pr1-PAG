@@ -480,3 +480,13 @@
 18	2670	7547568152999479	CMakeFiles/Pr1.dir/main.cpp.obj	abd375bd5d1ffdcb
 25	2893	7547568153069238	CMakeFiles/Pr1.dir/Modelo.cpp.obj	c35c09d4e36dd4b3
 2893	4066	7547568181756811	Pr1.exe	eaba7ecfe49aabe9
+34	6424	7547738585252921	CMakeFiles/Pr1.dir/main.cpp.obj	abd375bd5d1ffdcb
+6425	8752	7547738649154441	Pr1.exe	eaba7ecfe49aabe9
+51	2607	7547754757689310	CMakeFiles/Pr1.dir/Renderer.cpp.obj	eb25791266472838
+66	2817	7547754757844955	CMakeFiles/Pr1.dir/ShaderProgram.cpp.obj	2496f2019d7bf26
+37	6873	7547754757560202	CMakeFiles/Pr1.dir/main.cpp.obj	abd375bd5d1ffdcb
+6873	8878	7547754825916675	Pr1.exe	eaba7ecfe49aabe9
+41	2364	7547758370724497	CMakeFiles/Pr1.dir/Renderer.cpp.obj	eb25791266472838
+52	2704	7547758370829607	CMakeFiles/Pr1.dir/ShaderProgram.cpp.obj	2496f2019d7bf26
+30	6593	7547758370607413	CMakeFiles/Pr1.dir/main.cpp.obj	abd375bd5d1ffdcb
+6593	8614	7547758436234552	Pr1.exe	eaba7ecfe49aabe9
