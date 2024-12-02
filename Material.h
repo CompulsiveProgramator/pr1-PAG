@@ -16,21 +16,18 @@ namespace PAG{
      */
     class Material {
     private:
-        GLfloat colorAmbiente[3] {0.1, 0.1, 0.1};
-        GLfloat colorDifuso[3] {1.0, 1.0, 1.0}; //El color difuso, que es el que se ve al iluminar el modelo con dicho material
-        GLfloat colorEspecular[3] {1.0, 0.0, 1.0};
-        GLfloat exponenteEspecular = 100; //Esto es para decir como de rapido decrece la intensidad del material en un punto
+        GLfloat Ka[3] {0.1, 0.1, 0.1};
+        GLfloat Kd[3] {1.0, .2, .3}; //El color difuso, que es el que se ve al iluminar el modelo con dicho material
+        GLfloat Ks[3] {1.0, .2, .3};
 
     public:
         Material() = default;
 
-        const GLfloat *getColorAmbiente() const;
+        const GLfloat *getKa() const;
 
-        const GLfloat *getColorDifuso() const;
+        const GLfloat *getKd() const;
 
-        const GLfloat *getColorEspecular() const;
-
-        GLfloat getExponenteEspecular() const;
+        const GLfloat *getKs() const;
     };
 }
 

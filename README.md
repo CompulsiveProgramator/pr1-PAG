@@ -91,9 +91,9 @@ El material ahora mismo se asigna por defecto en la creación del modelo, como s
 <img src="images/crea_modelo.png">
 
 El material tiene asignado unos atributos por defecto, los colores están en formato RGB :
-- colorAmbiente = (0.1, 0.0, 0.0)
-- colorDifuso = (1.0, 1.0, 1.0)
-- colorEspecular = (1.0, 0.0, 1.0)
+- Ka = (0.1, 0.0, 0.0)
+- Kd = (1.0, 1.0, 1.0)
+- Ks = (1.0, 0.0, 1.0)
 - exponenteEspecular = 100
 
 Para próximas prácticas se podrán crear materiales distintos, y asignarlos a cada modelo de forma dinámica

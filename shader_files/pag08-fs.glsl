@@ -15,8 +15,8 @@ uniform vec3 Kd; // Color difuso
 uniform vec3 Ks; // Color especular
 
 // Varibles que vienen del rasterizador:
-in vec4 posicionV;
-in vec4 normalV;
+in vec3 posicion;
+in vec3 normal;
 
 subroutine vec3 iluminacion();
 
@@ -26,6 +26,23 @@ subroutine (iluminacion)
 vec3 luzAmbiental()
 {
     return Ia * Ka;
+}
+
+subroutine (iluminacion)
+vec3 luzPuntual()
+{
+        vec3 n = normalize( normal ); // La normal
+        vec3 l = normalize( lightPosition - posicion ); // Vector que va a la fuente de luz
+        //Como la camara esta en el (0,0), el vector que va desde el punto a la camara es -posicion
+        vec3 v = normalize( -posicion ); // El vector posicion del observador
+        vec3 r = reflect( -l, n ); // El rebote de la luz
+
+        vec3 diffuse = ( Id * Kd * max(dot(l,n), 0.0) );
+        vec3 specular;
+
+        specular = ( Is * Ks * pow( max(dot(v,r), 0.0) , exponenteEspecular ) );
+
+        return diffuse + specular;
 }
 
 out vec3 fragColor;

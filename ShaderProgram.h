@@ -7,17 +7,9 @@
 
 #define GLM_ENABLE_EXPERIMENTAL
 
-#include <glad/glad.h>
-#include "GL/gl.h"
-#include "glm/mat4x4.hpp"
-#include "glm/gtx/transform.hpp"
-#include <iostream>
-#include <fstream>
-#include <sstream>
 #include "Camara.h"
 #include "Modelo.h"
-
-
+#include "Luz.h"
 
 namespace PAG{
     enum ModosVisualizacion{
@@ -31,6 +23,7 @@ namespace PAG{
         std::string nombreFicheros; /// El nombre de los ficheros ( solo parte inicial, EJ: pag03 , y asi sacamos el pag03-vs.glsl y el pag03-fs.glsl ;) )
         Camara *camara = nullptr; /// El puntero para la camara virtual de la ventana
         std::vector<Modelo*> modelos; /// El puntero a nuestro modelo!
+        std::vector<Luz> luces;
         ModosVisualizacion modoVisualizacion = SOLIDO;
 
         void elegirModoVisualizacion();

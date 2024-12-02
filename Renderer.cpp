@@ -25,7 +25,7 @@ namespace PAG
         colorFondo[3] = 1.0; //Para que se vea el color completo
 
         ///Creamos una camara por defecto:
-        this->camara = new Camara(glm::vec3(0,0,1), glm::vec3(0,0,-1), glm::radians(90.0f), glm::float32(2), glm::float32(1), glm::float32(3));
+        this->camara = new Camara(glm::vec3(0,0,2), glm::vec3(0,0,-1), glm::radians(90.0f), glm::float32(2), glm::float32(1), glm::float32(10));
     }
 
     /**
@@ -100,6 +100,9 @@ namespace PAG
 
         glEnable(GL_PROGRAM_POINT_SIZE);
         glEnable(GL_MULTISAMPLE);
+
+        //Para el blending de las luces :
+        glEnable(GL_BLEND);
     }
 
     /**
