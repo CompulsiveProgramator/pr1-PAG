@@ -17,8 +17,8 @@ namespace PAG{
     class Material {
     private:
         GLfloat Ka[3] {0.1, 0.1, 0.1};
-        GLfloat Kd[3] {1.0, .2, .3}; //El color difuso, que es el que se ve al iluminar el modelo con dicho material
-        GLfloat Ks[3] {1.0, .2, .3};
+        GLfloat Kd[3] {.0, 1.0, .3}; //El color difuso, que es el que se ve al iluminar el modelo con dicho material
+        GLfloat Ks[3] {.0, 1.0, .3};
 
     public:
         Material() = default;

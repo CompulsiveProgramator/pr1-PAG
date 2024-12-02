@@ -105,3 +105,21 @@ El UML actual de la app es el siguiente:
 
 <img src="images/diagramasUML/pr7UML.png">
 
+## Práctica 8
+
+Para esta práctica solo he tenido que agregar el funcionamiento de la luz. Para ello hice una clase luz PAG::Luz que contiene los atributos de todos
+los tipos de luz que conocemos:
+- Ambiental
+- Puntual
+- Direccional
+- Focal
+
+Desde la clase PAG::ShaderProgram se tiene un vector con 4 luces, una de cada tipo, y cuando se pinta cada modelo, se hace blending con cada luz. Por supuesto, el fragment
+shader tiene una subrutina para segun el tipo de luz hacer unos calculos u otros ;)
+
+El UML actual de la aplicación es el siguiente:
+<img src="images/diagramasUML/pr8UML.jpg">
+
+Y un dinosaurio bien iluminado gracias a las luces agregadas:
+<img src="images/trex-saturado.png">
+
