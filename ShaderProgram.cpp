@@ -21,6 +21,12 @@ namespace PAG{
         luces.push_back(Luz(AMBIENTAL));
         luces.push_back(Luz(PUNTUAL));
         luces.push_back(Luz(DIRECCIONAL));
+        luces.push_back(Luz(FOCAL));
+
+        GLfloat dirNuevaFoco[3] = {0, -1, 0};
+        GLfloat posNuevaFoco[3] = {0, 2, -2};
+        luces[3].setDireccion(dirNuevaFoco);
+        luces[3].setPosicion(posNuevaFoco);
     }
 
     ShaderProgram::~ShaderProgram() {

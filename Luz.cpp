@@ -45,3 +45,15 @@ const GLfloat *PAG::Luz::getDireccion() const {
 GLfloat PAG::Luz::getAnguloApertura() const {
     return anguloApertura;
 }
+
+void PAG::Luz::setPosicion(GLfloat *pos) {
+    for(int i = 0 ; i < 3 ; i++){
+        posicion[i] = pos[i];
+    }
+}
+
+void PAG::Luz::setDireccion(GLfloat *dir) {
+    for(int i = 0 ; i < 3 ; i++){
+        direccion[i] = dir[i];
+    }
+}

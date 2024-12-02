@@ -46,7 +46,6 @@ namespace PAG{
         std::vector<Modelo*>* getModelos();
         void eliminarModelo(unsigned int posicion);
         void setModoVisualizacion(ModosVisualizacion modo);
-        void cargarUniformsLuz();
     };
 }
 

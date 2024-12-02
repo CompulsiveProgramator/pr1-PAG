@@ -40,6 +40,8 @@ namespace PAG{
         const GLfloat *getPosicion() const;
         const GLfloat *getDireccion() const;
         GLfloat getAnguloApertura() const;
+        void setPosicion(GLfloat pos[3]);
+        void setDireccion(GLfloat dir[3]);
     };
 }
 
