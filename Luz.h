@@ -6,6 +6,7 @@
 #define PR1_LUZ_H
 
 #include "GL/gl.h"
+#include <math.h>
 
 namespace PAG{
 
@@ -28,7 +29,7 @@ namespace PAG{
         GLfloat exponenteEspecular = 1.0; // Exponente para tunear la reflexion especular
         GLfloat posicion[3] = {0.0, -1.0,-1}; // Posicion de la luz ( Puntual o focal )
         GLfloat direccion[3] = {0.0, 0.0, -1.0}; // Vector que dice la direccion de la luz ( Direccional o focal )
-        GLfloat anguloApertura = 30; // El angulo de apertura del foco en grados sexagesimales //ToDo Ver si tengo que usar radianes
+        GLfloat anguloApertura = M_PI/3; // El angulo de apertura del foco en grados sexagesimales
     public:
         Luz(TipoLuz tipo);
         TipoLuz getTipoLuz() const;

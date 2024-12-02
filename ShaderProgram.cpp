@@ -20,6 +20,7 @@ namespace PAG{
 
         luces.push_back(Luz(AMBIENTAL));
         luces.push_back(Luz(PUNTUAL));
+        luces.push_back(Luz(DIRECCIONAL));
     }
 
     ShaderProgram::~ShaderProgram() {
@@ -59,76 +60,98 @@ namespace PAG{
             /// Un bucle para cada luz:
             for(int j = 0 ; j < luces.size() ; j++)
             {
+                GLuint pos;
+
+                std::string colorAmbienteLuz("Ia");
+                std::string colorAmbienteMaterial("Ka");
+                std::string p("lightPosition");
+                std::string direccion("direccion");
+                std::string Id("Id");
+                std::string Is("Is");
+                std::string Kd("Kd");
+                std::string Ks("Ks");
+                std::string exponenteEspecular("exponenteEspecular");
+                std::string angulo("angulo");
+
+                pos = glGetUniformLocation(idSP, direccion.c_str());
+                if(pos != -1)
+                {
+                    glUniform3fv(pos, 1, luces[j].getDireccion());
+                }
+
+                pos = glGetUniformLocation(idSP, Id.c_str());
+                if(pos != -1)
+                {
+                    glUniform3fv(pos, 1, luces[j].getId());
+                }
+
+                pos = glGetUniformLocation(idSP, Is.c_str());
+                if(pos != -1)
+                {
+                    glUniform3fv(pos, 1, luces[j].getIs());
+                }
+
+                pos = glGetUniformLocation(idSP, Kd.c_str());
+                if(pos != -1)
+                {
+                    glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKd());
+                }
+
+                pos = glGetUniformLocation(idSP, Ks.c_str());
+                if(pos != -1)
+                {
+                    glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKs());
+                }
+
+                pos = glGetUniformLocation(idSP, exponenteEspecular.c_str());
+                if(pos != -1)
+                {
+                    glUniform1f(pos, luces[j].getExponenteEspecular());
+                }
+
+                pos = glGetUniformLocation(idSP, colorAmbienteLuz.c_str());
+                if(pos != -1)
+                {
+                    glUniform3fv(pos, 1, luces[j].getIa());
+                }
+
+                pos = glGetUniformLocation(idSP, colorAmbienteMaterial.c_str());
+                if(pos != -1)
+                {
+                    glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKa());
+                }
+
+                pos = glGetUniformLocation(idSP, p.c_str());
+                if(pos != -1)
+                {
+                    glUniform3fv(pos, 1, luces[j].getPosicion());
+                }
+
+                pos = glGetUniformLocation(idSP, angulo.c_str());
+                if(pos != -1)
+                {
+                    glUniform1f(pos, luces[j].getAnguloApertura());
+                }
+
                 if(luces[j].getTipoLuz() == AMBIENTAL)
                 {
-                    std::string colorAmbienteLuz("Ia");
-                    std::string colorAmbienteMaterial("Ka");
-                    GLuint pos;
-
-                    pos = glGetUniformLocation(idSP, colorAmbienteLuz.c_str());
-                    if(pos != -1)
-                    {
-                        glUniform3fv(pos, 1, luces[j].getIa());
-                    }
-
-                    pos = glGetUniformLocation(idSP, colorAmbienteMaterial.c_str());
-                    if(pos != -1)
-                    {
-                        glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKa());
-                    }
-
                     GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzAmbiental");
 
                     glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
                 }
                 else if(luces[j].getTipoLuz() == PUNTUAL)
                 {
-                    GLuint pos;
-                    std::string p("lightPosition");
-                    std::string Id("Id");
-                    std::string Is("Is");
-                    std::string Kd("Kd");
-                    std::string Ks("Ks");
-                    std::string exponenteEspecular("exponenteEspecular");
-
-
-                    pos = glGetUniformLocation(idSP, p.c_str());
-                    if(pos != -1)
-                    {
-                        glUniform3fv(pos, 1, luces[j].getPosicion());
-                    }
-
-                    pos = glGetUniformLocation(idSP, Id.c_str());
-                    if(pos != -1)
-                    {
-                        glUniform3fv(pos, 1, luces[j].getId());
-                    }
-
-                    pos = glGetUniformLocation(idSP, Is.c_str());
-                    if(pos != -1)
-                    {
-                        glUniform3fv(pos, 1, luces[j].getIs());
-                    }
-
-                    pos = glGetUniformLocation(idSP, Kd.c_str());
-                    if(pos != -1)
-                    {
-                        glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKd());
-                    }
-
-                    pos = glGetUniformLocation(idSP, Ks.c_str());
-                    if(pos != -1)
-                    {
-                        glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKs());
-                    }
-
-                    pos = glGetUniformLocation(idSP, exponenteEspecular.c_str());
-                    if(pos != -1)
-                    {
-                        glUniform1f(pos, luces[j].getExponenteEspecular());
-                    }
-
                     GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzPuntual");
+
+                    glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+                }else if(luces[j].getTipoLuz() == DIRECCIONAL)
+                {
+                    GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzDireccional");
+
+                    glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+                }else if(luces[j].getTipoLuz() == FOCAL)
+                {
+                    GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzFocal");
 
                     glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
                 }
