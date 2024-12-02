@@ -26,7 +26,7 @@ namespace PAG{
         GLfloat Id[3] = {.7, .7, .7}; // Color luz difusa
         GLfloat Is[3] = {1., 1., 1.}; // Color luz especular
         GLfloat exponenteEspecular = 1.0; // Exponente para tunear la reflexion especular
-        GLfloat posicion[3] = {0.0, 1.0,-1}; // Posicion de la luz ( Puntual o focal )
+        GLfloat posicion[3] = {0.0, -1.0,-1}; // Posicion de la luz ( Puntual o focal )
         GLfloat direccion[3] = {0.0, 0.0, -1.0}; // Vector que dice la direccion de la luz ( Direccional o focal )
         GLfloat anguloApertura = 30; // El angulo de apertura del foco en grados sexagesimales //ToDo Ver si tengo que usar radianes
     public:

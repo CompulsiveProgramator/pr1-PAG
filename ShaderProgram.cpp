@@ -18,7 +18,7 @@ namespace PAG{
         this->camara = camara;
         creaShaderProgram();
 
-        //luces.push_back(Luz(AMBIENTAL));
+        luces.push_back(Luz(AMBIENTAL));
         luces.push_back(Luz(PUNTUAL));
     }
 
@@ -133,13 +133,12 @@ namespace PAG{
                     glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
                 }
 
-                //ToDo Blending
-//                if(j == 0)
-//                {
-//                    glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
-//                }else{
-//                    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-//                }
+                if(j == 0)
+                {
+                    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+                }else{
+                    glBlendFunc(GL_ONE, GL_ONE);
+                }
 
 
                 ///Se dibuja una vez por cada luz ;)
