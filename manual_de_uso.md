@@ -9,6 +9,7 @@ Para empezar, tenemos que elegir el shader program a cargar, actualmente solo ha
 - pag03
 - pag05
 - pag07
+- pag08
 
 Para escoger el Shader Program a utilizar, se escribe el nombre en la ventana siguiente, y se clica en el boton,
 que pone "Load":
@@ -45,6 +46,12 @@ Luego para aplicar la transformación, hacemos clic en el boton de "Aplicar".
 
 Si queremos borrar el modelo seleccionado, hacemos clic en el boton "Eliminar modelo seleccionado" y este
 desaparecerá
+
+# Para la iluminación
+Las luces están creadas de forma manual en el constructor del shader program, y para des/activarlas solo tenemos
+que des/comentar su creación en el código:
+
+<img src="images/manual_usuario/manual_7.png">
 
 ## Teclas especiales
 a -> Activa el modo alambre, que hace que los modelos se vean como una malla de triangulos
