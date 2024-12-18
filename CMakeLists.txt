@@ -11,6 +11,7 @@ add_executable(Pr1 main.cpp
         utilities/Renderer.h
         ${GLAD_FILES}
         ${IMGUI_FILES}
+        utilities/lodepng.cpp
         utilities/GUI.cpp
         utilities/GUI.h
         utilities/ShaderProgram.cpp

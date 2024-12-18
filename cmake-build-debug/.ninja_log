@@ -3,7 +3,7 @@
 21	2109	7500417031462825	CMakeFiles/Pr1.dir/ColorPicker.cpp.obj	4d8652febdf566fa
 26981	29353	7539303976340714	assimp/code/CMakeFiles/assimp.dir/__/contrib/poly2tri/poly2tri/sweep/sweep.cc.obj	9d61d772bc74f41
 5897	9162	7537324137520178	assimp/assimp-master/code/CMakeFiles/assimp.dir/PostProcessing/OptimizeMeshes.cpp.obj	8b26394aa356c8df
-31	5493	7562477637149401	build.ninja	49d6eeb14a5ff4e5
+31	5493	7562481015248188	build.ninja	49d6eeb14a5ff4e5
 545	3490	7537374554953794	assimp/assimp-master/code/CMakeFiles/assimp.dir/Common/Compression.cpp.obj	97a506b4b483a0a2
 25700	31227	7539729537526490	assimp/code/CMakeFiles/assimp.dir/AssetLib/MD5/MD5Loader.cpp.obj	6bffc9b63f36c858
 14	3697	7562477113524122	CMakeFiles/Pr1.dir/main.cpp.obj	abd375bd5d1ffdcb
@@ -383,3 +383,6 @@
 73	2180	7562466168555782	CMakeFiles/Pr1.dir/utilities/Camara.cpp.obj	7b7ef6220157619f
 133	4120	7562466169151923	CMakeFiles/Pr1.dir/utilities/Material.cpp.obj	3112936012236e18
 154	4610	7562466169361815	CMakeFiles/Pr1.dir/utilities/Luz.cpp.obj	a5057d3447d42676
+21	85	7562481178324850	CMakeFiles/Pr1.dir/utilities/Textura.cpp.obj	b5f1be79a431375b
+15	1024	7562481178255799	CMakeFiles/Pr1.dir/utilities/lodepng.cpp.obj	52b5e5e5ef786839
+1024	2003	7562481188348355	Pr1.exe	81fa21c88ba04221
