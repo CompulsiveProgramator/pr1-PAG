@@ -6,8 +6,8 @@
 #define PR1_VENTANAMOVIMIENTOCAMARA_H
 
 #include "Ventana.h"
-#include "../Constantes.h"
-#include "../Camara.h"
+#include "../utilities/Constantes.h"
+#include "../utilities/Camara.h"
 
 namespace PAG{
     class VentanaMovimientoCamara: public Ventana{

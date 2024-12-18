@@ -2,7 +2,7 @@
 // Created by secre on 11/10/2024.
 //
 
-#include <glad/glad.h>
+#include "glad/glad.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>

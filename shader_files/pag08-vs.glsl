@@ -1,7 +1,7 @@
 #version 410
 
-layout ( location = 0 ) in vec3 p;
-layout ( location = 1 ) in vec3 n;
+layout ( location = 0 ) in vec3 p; // La posicion
+layout ( location = 1 ) in vec3 n; // La normal del vertice
 
 uniform mat4 matrizModeladoVisionPerspectiva;
 uniform mat4 matrizModeladoVision;

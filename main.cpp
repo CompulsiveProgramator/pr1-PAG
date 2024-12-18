@@ -19,9 +19,9 @@
 // IMPORTANTE: El include de GLAD debe estar siempre ANTES de el de GLFW
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
-#include "Renderer.h"
-#include "GUI.h"
-#include "Constantes.h"
+#include "utilities/Renderer.h"
+#include "utilities/GUI.h"
+#include "utilities/Constantes.h"
 
 //Para mover la camara con el movimiento del raton
 double lastXpos = 0, lastYpos = 0; //Empezamos a contar desde arriba a la izquierda de la pantalla en glfw, pero en open gl es de la esquina inferior derecha ;)

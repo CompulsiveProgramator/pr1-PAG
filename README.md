@@ -123,3 +123,6 @@ El UML actual de la aplicación es el siguiente:
 Y un dinosaurio bien iluminado gracias a las luces agregadas:
 <img src="images/trex-saturado.png">
 
+## Práctica 9
+
+Para esta práctica solo he tenido que agregar la funcionalidad de la textura, para ello c

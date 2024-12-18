@@ -6,7 +6,7 @@
 #define PR1_VENTANAPARAMETROSCAMARA_H
 
 #include "Ventana.h"
-#include "../Camara.h"
+#include "../utilities/Camara.h"
 
 namespace PAG{
     /**

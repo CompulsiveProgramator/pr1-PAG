@@ -5,7 +5,7 @@
 #ifndef PR1_VENTANATRANSFORMACIONESMODELOS_H
 #define PR1_VENTANATRANSFORMACIONESMODELOS_H
 
-#include "../Modelo.h"
+#include "../utilities/Modelo.h"
 #include "Ventana.h"
 
 namespace PAG{

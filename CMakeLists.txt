@@ -7,17 +7,17 @@ file( GLOB GLAD_FILES glad/src/*.c ) # Para agregar como un nombre al add execut
 file( GLOB IMGUI_FILES imgui/*.cpp)
 
 add_executable(Pr1 main.cpp
-        Renderer.cpp
-        Renderer.h
+        utilities/Renderer.cpp
+        utilities/Renderer.h
         ${GLAD_FILES}
         ${IMGUI_FILES}
-        GUI.cpp
-        GUI.h
-        ShaderProgram.cpp
-        ShaderProgram.h
-        Camara.cpp
-        Camara.h
-        Constantes.h
+        utilities/GUI.cpp
+        utilities/GUI.h
+        utilities/ShaderProgram.cpp
+        utilities/ShaderProgram.h
+        utilities/Camara.cpp
+        utilities/Camara.h
+        utilities/Constantes.h
         ventanas-gui/VentanaSeleccionColor.cpp
         ventanas-gui/VentanaSeleccionColor.h
         ventanas-gui/VentanaLog.cpp
@@ -27,21 +27,21 @@ add_executable(Pr1 main.cpp
         ventanas-gui/VentanaSeleccionShaderProgram.h
         ventanas-gui/VentanaMovimientoCamara.cpp
         ventanas-gui/VentanaMovimientoCamara.h
-        Constantes.cpp
-        Malla.cpp
-        Malla.h
-        Modelo.cpp
-        Modelo.h
+        utilities/Constantes.cpp
+        utilities/Malla.cpp
+        utilities/Malla.h
+        utilities/Modelo.cpp
+        utilities/Modelo.h
         ventanas-gui/VentanaSelectorModelo.cpp
         ventanas-gui/VentanaSelectorModelo.h
         ventanas-gui/VentanaTransformacionesModelos.cpp
         ventanas-gui/VentanaTransformacionesModelos.h
-        Material.cpp
-        Material.h
+        utilities/Material.cpp
+        utilities/Material.h
         ventanas-gui/VentanaParametrosCamara.cpp
         ventanas-gui/VentanaParametrosCamara.h
-        Luz.cpp
-        Luz.h
+        utilities/Luz.cpp
+        utilities/Luz.h
 )
 
 # Para que Cmake encuentre los bonitos paquetes:

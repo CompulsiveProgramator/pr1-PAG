@@ -4,7 +4,7 @@
 
 #define GLM_ENABLE_EXPERIMENTAL
 
-#include <glad/glad.h>
+#include "glad/glad.h"
 #include <glm/gtx/transform.hpp>
 #include "Malla.h" ///SIEMPRE EL .H DE MI .CPP SE INCLUYE EL ULTIMO
 

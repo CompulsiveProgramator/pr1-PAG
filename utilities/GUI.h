@@ -13,13 +13,13 @@
 //#include <vector>
 //#include <iostream>
 //#include "GL/gl.h" //Solo para el color de fondo de la ventana de color
-#include "ventanas-gui/VentanaSeleccionColor.h"
-#include "ventanas-gui/VentanaLog.h"
-#include "ventanas-gui/VentanaSeleccionShaderProgram.h"
-#include "ventanas-gui/VentanaMovimientoCamara.h"
-#include "ventanas-gui/VentanaSelectorModelo.h"
-#include "ventanas-gui/VentanaTransformacionesModelos.h"
-#include "ventanas-gui/VentanaParametrosCamara.h"
+#include "../ventanas-gui/VentanaSeleccionColor.h"
+#include "../ventanas-gui/VentanaLog.h"
+#include "../ventanas-gui/VentanaSeleccionShaderProgram.h"
+#include "../ventanas-gui/VentanaMovimientoCamara.h"
+#include "../ventanas-gui/VentanaSelectorModelo.h"
+#include "../ventanas-gui/VentanaTransformacionesModelos.h"
+#include "../ventanas-gui/VentanaParametrosCamara.h"
 //#include "Camara.h"
 
 namespace PAG
