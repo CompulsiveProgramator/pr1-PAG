@@ -18,9 +18,9 @@ namespace PAG{
         this->camara = camara;
         creaShaderProgram();
 
-        luces.push_back(Luz(AMBIENTAL));
+        //luces.push_back(Luz(AMBIENTAL));
         luces.push_back(Luz(PUNTUAL));
-        luces.push_back(Luz(DIRECCIONAL));
+        //luces.push_back(Luz(DIRECCIONAL));
 
         //luces.push_back(Luz(FOCAL));
         //GLfloat dirNuevaFoco[3] = {0, -1, 0};
@@ -33,6 +33,11 @@ namespace PAG{
         if( idSP != 0 )
         {
             glDeleteProgram(idSP);
+        }
+
+        if( idTextura != 0)
+        {
+            glDeleteTextures(1, &idTextura);
         }
 
         for(int i = 0 ; i < modelos.size() ; i++){
@@ -48,12 +53,26 @@ namespace PAG{
             return;
         }
 
+        static bool primeraVez = true;
+        if(primeraVez){
+            activarTextura();
+            primeraVez = false;
+        }
+
         /// Un bucle para pintar cada modelo
         for(int i = 0 ; i < modelos.size() ; i++){
             glm::mat4 matrizModelado = modelos[i]->getMalla()->getMatrizModelado();
             glm::mat4 matrizModeladoVision = camara->getMatrizVision() * matrizModelado;
             glm::mat4 matrizModeladoVisionPerspectiva = camara->getMatrizPerspectiva() * matrizModeladoVision;
             glUseProgram ( idSP );
+
+            // Asignamos el muestreador del shader program a la unidad de textura 0
+            GLint posicion = glGetUniformLocation ( idSP, "muestreador" );
+            glUniform1i ( posicion, 0 );
+
+            // Activamos la unidad de textura 0, y le asociamos la textura que habíamos configurado
+            glActiveTexture ( GL_TEXTURE0 );
+            glBindTexture ( GL_TEXTURE_2D, idTextura );
 
             pasarUniformMV(matrizModeladoVision);
 
@@ -147,9 +166,9 @@ namespace PAG{
                 }
                 else if(luces[j].getTipoLuz() == PUNTUAL)
                 {
-                    GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzPuntual");
-
-                    glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+//                    GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzPuntual");
+//
+//                    glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
                 }else if(luces[j].getTipoLuz() == DIRECCIONAL)
                 {
                     GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzDireccional");
@@ -405,6 +424,35 @@ namespace PAG{
         if(pos != -1){
             glUniformMatrix4fv(pos, 1, GL_FALSE, &matrizModeladoVisionPerspectiva[0][0]);
         }
+    }
+
+    /**
+     * Metodo auxiliar para cargar y usar la textura, que se encuentra en el material asociado
+     */
+    void ShaderProgram::activarTextura() {
+        std::vector<unsigned char> imagen = modelos[0]->getMaterial()->getImagenTextura(); // Se lee la imagen de la vaquita!
+        unsigned ancho, alto; // El ancho y alto de la imagen (en pixels)
+
+        std::cout << imagen.size(); /// La imagen se lee bien!
+
+        ancho = modelos[0]->getMaterial()->getTextura()->getAncho();
+        alto = modelos[0]->getMaterial()->getTextura()->getAlto();
+        glGenTextures ( 1, &idTextura );
+        glBindTexture ( GL_TEXTURE_2D, idTextura );
+
+        // Cómo resolver la minificación. En este caso, le decimos que utilice mipmaps, y que aplique interpolación lineal
+        glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+        // Cómo resolver la magnificación. En este caso, le decimos que utilice mipmaps, y que aplique interpolación lineal
+        glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+        // Cómo pasar de coordenadas de textura a coordenadas en el espacio de la textura en horizontal
+        glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
+        // Cómo pasar de coordenadas de textura a coordenadas en el espacio de la textura en vertical
+        glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
+        // Transferimos la información de la imagen. En este caso, la imagen está guardada en std::vector<unsigned char> _pixels;
+        glTexImage2D ( GL_TEXTURE_2D, 0, GL_RGBA, ancho, alto, 0, GL_RGBA, GL_UNSIGNED_BYTE, imagen.data () );
+
+        // Generamos el mimMap
+        glGenerateMipmap(idTextura); //siiiiiiiii vale
     }
 }
 

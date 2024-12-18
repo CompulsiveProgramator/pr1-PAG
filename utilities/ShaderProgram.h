@@ -20,6 +20,7 @@ namespace PAG{
     class ShaderProgram {
     private:
         GLuint idSP = 0; //Id del shader program
+        GLuint idTextura = 0; //Id de la textura!
         std::string nombreFicheros; /// El nombre de los ficheros ( solo parte inicial, EJ: pag03 , y asi sacamos el pag03-vs.glsl y el pag03-fs.glsl ;) )
         Camara *camara = nullptr; /// El puntero para la camara virtual de la ventana
         std::vector<Modelo*> modelos; /// El puntero a nuestro modelo!
@@ -46,6 +47,8 @@ namespace PAG{
         std::vector<Modelo*>* getModelos();
         void eliminarModelo(unsigned int posicion);
         void setModoVisualizacion(ModosVisualizacion modo);
+
+        void activarTextura();
     };
 }
 

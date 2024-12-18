@@ -2,10 +2,12 @@
 // Created by secre on 29/11/2024.
 //
 
-#include "GL/gl.h"
-
 #ifndef PR1_MATERIAL_H
 #define PR1_MATERIAL_H
+
+#include "GL/gl.h"
+#include "Textura.h"
+
 namespace PAG{
     /**
      * Clase que contiene todoo lo relativo a un material, que se le asigna a un modelo
@@ -19,10 +21,12 @@ namespace PAG{
         GLfloat Ka[3] {0.1, 0.1, 0.1};
         GLfloat Kd[3] {.0, 1.0, .3}; //El color difuso, que es el que se ve al iluminar el modelo con dicho material
         GLfloat Ks[3] {.0, 1.0, .3};
-
+        Textura textura;
     public:
         Material() = default;
 
+        std::vector<unsigned char> getImagenTextura();
+        Textura* getTextura();
         const GLfloat *getKa() const;
 
         const GLfloat *getKd() const;
