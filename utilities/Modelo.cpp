@@ -38,6 +38,7 @@ PAG::Modelo::Modelo(std::string pathToModel):material() {
 
     vector<GLfloat> posicionVertices;
     vector<GLfloat> normales;
+    vector<GLfloat> coordenadasTextura; // El vector con las coordenas de textura todas seguidas
     vector<unsigned int> indices;
 
     unsigned int counter = 0;
@@ -55,6 +56,10 @@ PAG::Modelo::Modelo(std::string pathToModel):material() {
         normales.push_back(mesh.Vertices[counter].Normal.Y);
         normales.push_back(mesh.Vertices[counter].Normal.Z);
 
+        // Leemos las coordenadas de textura:
+        coordenadasTextura.push_back(mesh.Vertices[counter].TextureCoordinate.X);
+        coordenadasTextura.push_back(mesh.Vertices[counter].TextureCoordinate.Y);
+
         counter++;
     }
 
@@ -64,7 +69,7 @@ PAG::Modelo::Modelo(std::string pathToModel):material() {
         counter++;
     }
 
-    malla = new Malla(posicionVertices, normales, indices);
+    malla = new Malla(posicionVertices, normales, coordenadasTextura, indices);
 }
 
 PAG::Modelo::~Modelo() {

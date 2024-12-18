@@ -42,6 +42,8 @@ add_executable(Pr1 main.cpp
         ventanas-gui/VentanaParametrosCamara.h
         utilities/Luz.cpp
         utilities/Luz.h
+        utilities/Textura.cpp
+        utilities/Textura.h
 )
 
 # Para que Cmake encuentre los bonitos paquetes:

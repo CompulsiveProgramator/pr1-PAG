@@ -17,8 +17,9 @@ namespace PAG{
     private:
         ///Los ids del VAO, VBO y IBO del modelo
         GLuint idVAO = 0; //Id del Vertex Array Object
-        GLuint idVBO1 = 0; //Id del Vertex Buffer Object
-        GLuint idVBO2 = 0;
+        GLuint idVBO1 = 0; // VBO para posicion
+        GLuint idVBO2 = 0; // VBO para normales
+        GLuint idVBO3 = 0; // VBO para coordenadas de textura
         GLuint idIBO = 0; //Id del Index Buffer Object
 
         GLuint numIndices;
@@ -26,10 +27,10 @@ namespace PAG{
         glm::mat4 matrizModelado; //La matriz de modelado, que coloca en escena al objeto ;)
 
         void creaModeloPrueba();
-        void creaModelo(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> normales, std::vector<GLuint> indices);
+        void creaModelo(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> normales, std::vector<GLfloat> coordenadasTextura,std::vector<GLuint> indices);
     public:
         Malla();
-        Malla(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> normales, std::vector<GLuint> indices);
+        Malla(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> normales, std::vector<GLfloat> coordenadasTextura,std::vector<GLuint> indices);
         ~Malla();
         GLuint getIdVao() const;
         GLuint getIdVbo1() const;

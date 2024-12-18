@@ -125,4 +125,15 @@ Y un dinosaurio bien iluminado gracias a las luces agregadas:
 
 ## Práctica 9
 
-Para esta práctica solo he tenido que agregar la funcionalidad de la textura, para ello c
+Para esta práctica solo he tenido que agregar la funcionalidad de la textura, para ello está la clase PAG::Textura, que se ve como cuelga
+de la clase PAG::Material en el diagrama UML:
+
+<img src="images/diagramasUML/pr9UML.jpg">
+
+Dentro de esta clase Textura, se lee la imagen con Lode PNG y se almacena dentro para ser consultada por el Shader Program. Luego,
+agrego a la clase Malla un VBO en el layout 2 para las coordenadas de texturas que se leen con OBJ loader.
+
+Con todo lo anterior, se programa la clase Shader Program para que una todo y pase los datos necesarios al vertex/fragment shader,
+y que estos puedan hacer los calculos con la textura y aplicarlos al modelo a pintar!
+
+Para el dado, vemos como se ve ....

@@ -27,9 +27,9 @@ PAG::Malla::Malla() {
 }
 
 PAG::Malla::Malla(std::vector<GLfloat> posicionVertices,
-                  std::vector<GLfloat> normales, std::vector<GLuint> indices) {
+                  std::vector<GLfloat> normales, std::vector<GLfloat> coordenadasTextura, std::vector<GLuint> indices) {
     matrizModelado = glm::translate(glm::vec3(0,0,0));
-    creaModelo(posicionVertices, normales, indices);
+    creaModelo(posicionVertices, normales, coordenadasTextura, indices);
 }
 
 /**
@@ -121,13 +121,14 @@ void PAG::Malla::creaModeloPrueba() {
  * @param normales Un array con las normales (x,y,z) de cada vertice
  * @param indices Un array con los indices para dibujar triangulos      Ej:  0,1,2 == Triangulo con los vertices 0, 1, 2 del array "posicionVertices"
  */
-void PAG::Malla::creaModelo(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> normales, std::vector<GLuint> indices){
+void PAG::Malla::creaModelo(std::vector<GLfloat> posicionVertices, std::vector<GLfloat> normales, std::vector<GLfloat> coordenadasTextura, std::vector<GLuint> indices){
     numVertices = posicionVertices.size();
     numIndices = indices.size();
 
     glGenVertexArrays(1, &idVAO);
     glGenBuffers(1, &idVBO1); //El VBO para los vertices
     glGenBuffers(1, &idVBO2); //El VBO para los colores
+    glGenBuffers(1, &idVBO3); // El VBO para las coord. de textura !!!
     glGenBuffers(1, &idIBO);
 
     glBindVertexArray(idVAO);
@@ -141,6 +142,11 @@ void PAG::Malla::creaModelo(std::vector<GLfloat> posicionVertices, std::vector<G
     glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(GLfloat), normales.data(), GL_STATIC_DRAW);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,3 * sizeof(GLfloat), nullptr);
+
+    glBindBuffer(GL_ARRAY_BUFFER, idVBO3);
+    glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(GLfloat), coordenadasTextura.data(), GL_STATIC_DRAW);
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE,2 * sizeof(GLfloat), nullptr);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, idIBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * numIndices, indices.data(), GL_STATIC_DRAW);
