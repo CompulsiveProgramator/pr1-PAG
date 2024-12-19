@@ -67,6 +67,30 @@ vec3 luzDireccional()
    return diffuse + specular;
 }
 
+subroutine (iluminacion)
+vec3 luzFocal()
+{
+   vec3 color = texture ( muestreador, entrada.cTexturaV ).rgb;   // Acceso a la textura. Descarta el valor de alfa
+
+   vec3 n = normalize( entrada.normalV );
+   vec3 l = normalize( lightPosition - entrada.posicionV ); // El vector que va de la posicion de la luz a la del fragment a iluminar !!!
+   vec3 v = normalize( -entrada.posicionV ); //La posicion de la camara (0, 0) tras la transformacion de vision ;)
+   vec3 r = reflect ( -l, n ); // El rebote de la luz del foco
+   vec3 d = normalize( direccion ); // La direccion del foco
+
+   // dot(d, -l) es el coseno entre la direccion del foco y la del objeto ya que de "d" y "-l" estan normalizados
+   if( dot(d, -l) < cos(angulo) )
+   {
+      return vec3(0, 0, 0);
+   }else{
+      vec3 diffuse = ( Id * color * max(dot(l,n), 0.0) );
+      vec3 specular;
+      specular = ( Is * Ks * pow( max(dot(v,r), 0.0) , exponenteEspecular ) );
+
+      return diffuse + specular;
+   }
+}
+
 // El color que tendra el fragmento ;)
 out vec3 colorFragmento;
 
