@@ -21,7 +21,7 @@ namespace PAG{
 
         luces.push_back(Luz(AMBIENTAL));
         luces.push_back(Luz(PUNTUAL));
-        //luces.push_back(Luz(DIRECCIONAL));
+        luces.push_back(Luz(DIRECCIONAL));
 
         //luces.push_back(Luz(FOCAL));
         //GLfloat dirNuevaFoco[3] = {0, -1, 0};
@@ -209,22 +209,28 @@ namespace PAG{
      * Con comprobacion de errores
      */
     void ShaderProgram::creaShaderProgram() {
-        std::string contenido;
-        std::string filename = nombreFicheros;
-        GLuint vertexShaderId, fragmentShaderId;
-        crearSP(idSP); //Fase 1
+        try{
+            std::string contenido;
+            std::string filename = nombreFicheros;
+            GLuint vertexShaderId, fragmentShaderId;
+            crearSP(idSP); //Fase 1
 
-        vertexShaderId = creaShaderObject(GL_VERTEX_SHADER);
-        contenido = leerShaderSource("../shader_files/"+filename+"-vs.glsl");
-        compilarShaderObject(contenido, vertexShaderId, GL_VERTEX_SHADER);
+            vertexShaderId = creaShaderObject(GL_VERTEX_SHADER);
+            contenido = leerShaderSource("../shader_files/"+filename+"-vs.glsl");
+            compilarShaderObject(contenido, vertexShaderId, GL_VERTEX_SHADER);
 
-        fragmentShaderId = creaShaderObject(GL_FRAGMENT_SHADER);
-        contenido = leerShaderSource("../shader_files/"+filename+"-fs.glsl");
-        compilarShaderObject(contenido, fragmentShaderId, GL_FRAGMENT_SHADER);
+            fragmentShaderId = creaShaderObject(GL_FRAGMENT_SHADER);
+            contenido = leerShaderSource("../shader_files/"+filename+"-fs.glsl");
+            compilarShaderObject(contenido, fragmentShaderId, GL_FRAGMENT_SHADER);
 
-        glAttachShader(idSP, vertexShaderId);
-        glAttachShader(idSP, fragmentShaderId);
-        enlazarSP(idSP, filename);
+            glAttachShader(idSP, vertexShaderId);
+            glAttachShader(idSP, fragmentShaderId);
+            enlazarSP(idSP, filename);
+        }
+        catch(std::exception &e)
+        {
+            std::cout << e.what();
+        }
     }
 
 /**

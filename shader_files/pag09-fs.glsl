@@ -49,6 +49,24 @@ vec3 luzPuntual ()
    return ( colorD + colorS);
 }
 
+subroutine (iluminacion)
+vec3 luzDireccional()
+{
+   vec3 color = texture ( muestreador, entrada.cTexturaV ).rgb;   // Acceso a la textura. Descarta el valor de alfa
+   vec3 n = normalize( entrada.normalV ); // La normal
+   vec3 l = normalize( -direccion ); // Vector que va a la fuente de luz
+   //Como la camara esta en el (0,0), el vector que va desde el punto a la camara es -posicion
+   vec3 v = normalize( -entrada.posicionV ); // El vector posicion del observador
+   vec3 r = reflect( -l, n ); // El rebote de la luz
+
+   vec3 diffuse = ( Id * color * max(dot(l,n), 0.0) );
+   vec3 specular;
+
+   specular = ( Is * Ks * pow( max(dot(v,r), 0.0) , exponenteEspecular ) );
+
+   return diffuse + specular;
+}
+
 // El color que tendra el fragmento ;)
 out vec3 colorFragmento;
 

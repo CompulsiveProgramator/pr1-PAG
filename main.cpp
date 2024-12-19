@@ -404,9 +404,9 @@ int main()
             }
 
             seguirMovimientoRaton = instanciaGUI.getSeguirRaton();
-        }catch(std::string &message){
-            PAG::GUI::getInstancia().agregarMensajeLog(message);
-            std::cout << message;
+        }catch(std::exception &message){
+            //PAG::GUI::getInstancia().agregarMensajeLog(message.what());
+            std::cout << message.what();
         }
 
         //Para ver lo que se ha pintado en la llamada de justo arriba
