@@ -7,18 +7,36 @@ in salidaVS
    vec2 cTexturaV;
 } entrada;
 
-uniform vec3 Ks; // Coeficiente especular material
-uniform float exponenteEspecular; // Exponente especular
-uniform vec3 Id; // Luz difusa
-uniform vec3 Is; // Luz especular
-uniform vec3 lightPosition; // Posicion de la luz
+// Los uniforms para las propiedades de la luz ;)
+uniform vec3 Ia; // Color ambiental (Solo luz ambiente)
+uniform vec3 Id; // Color difuso
+uniform vec3 Is; // Colo especular
+uniform float exponenteEspecular; // Para tunear el brillo de la luz especular
+uniform vec3 lightPosition; // La posicion de la luz (Luz puntual o focal)
+uniform vec3 direccion; // La direccion de la luz (Luz direccional o focal)
+uniform float angulo; // El angulo de apertura de una luz focal
+
+// Los uniforms para el material
+uniform vec3 Ka; // Color ambiental
+uniform vec3 Kd; // Color difuso
+uniform vec3 Ks; // Color especular
 
 uniform sampler2D muestreador;   // Sampler para comunicar con la unidad de textura
 
-out vec4 colorFragmento;
+subroutine vec3 iluminacion();
 
+subroutine uniform iluminacion metodoIluminacion;
+
+subroutine (iluminacion)
+vec3 luzAmbiental()
+{
+   return Ia * Ka;
+}
+
+subroutine (iluminacion)
 vec3 luzPuntual ()
-{  vec3 color = texture ( muestreador, entrada.cTexturaV ).rgb;   // Acceso a la textura. Descarta el valor de alfa
+{
+   vec3 color = texture ( muestreador, entrada.cTexturaV ).rgb;   // Acceso a la textura. Descarta el valor de alfa
    vec3 n = normalize ( entrada.normalV );
 
    vec3 l = normalize (lightPosition - entrada.posicionV );
@@ -26,11 +44,15 @@ vec3 luzPuntual ()
    vec3 r = reflect ( -l, n );
 
    vec3 colorD = Id * color * max (dot (l, n ), 0 );   // Uso del color tomado de la textura
-   //vec3 colorS = Is * Ks.rgb * pow (max (dot (r, v ), 0 ), exponenteEspecular);
+   vec3 colorS = Is * Ks.rgb * pow (max (dot (r, v ), 0 ), exponenteEspecular);
 
-   return ( color );
+   return ( colorD + colorS);
 }
 
+// El color que tendra el fragmento ;)
+out vec3 colorFragmento;
+
 void main ()
-{  colorFragmento = vec4 ( luzPuntual(), 1 );
+{
+   colorFragmento = metodoIluminacion();
 }

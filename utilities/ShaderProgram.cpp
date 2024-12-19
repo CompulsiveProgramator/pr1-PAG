@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include "exception"
 #include "ShaderProgram.h"
 
 namespace PAG{
@@ -18,7 +19,7 @@ namespace PAG{
         this->camara = camara;
         creaShaderProgram();
 
-        //luces.push_back(Luz(AMBIENTAL));
+        luces.push_back(Luz(AMBIENTAL));
         luces.push_back(Luz(PUNTUAL));
         //luces.push_back(Luz(DIRECCIONAL));
 
@@ -49,153 +50,158 @@ namespace PAG{
  * Metodo llamado desde Renderer para ejecutar el shader program
  */
     void ShaderProgram::ejecutarSP() {
-        if(modelos.size() == 0){
-            return;
-        }
-
-        static bool primeraVez = true;
-        if(primeraVez){
-            activarTextura();
-            primeraVez = false;
-        }
-
-        /// Un bucle para pintar cada modelo
-        for(int i = 0 ; i < modelos.size() ; i++){
-            glm::mat4 matrizModelado = modelos[i]->getMalla()->getMatrizModelado();
-            glm::mat4 matrizModeladoVision = camara->getMatrizVision() * matrizModelado;
-            glm::mat4 matrizModeladoVisionPerspectiva = camara->getMatrizPerspectiva() * matrizModeladoVision;
-            glUseProgram ( idSP );
-
-            // Asignamos el muestreador del shader program a la unidad de textura 0
-            GLint posicion = glGetUniformLocation ( idSP, "muestreador" );
-            glUniform1i ( posicion, 0 );
-
-            // Activamos la unidad de textura 0, y le asociamos la textura que habíamos configurado
-            glActiveTexture ( GL_TEXTURE0 );
-            glBindTexture ( GL_TEXTURE_2D, idTextura );
-
-            pasarUniformMV(matrizModeladoVision);
-
-            pasarUniformMVP(matrizModeladoVisionPerspectiva);
-
-            elegirModoVisualizacion();
-
-            /// Pr 8 Iluminacion
-
-            /// Un bucle para cada luz:
-            for(int j = 0 ; j < luces.size() ; j++)
-            {
-                GLuint pos;
-
-                std::string colorAmbienteLuz("Ia");
-                std::string colorAmbienteMaterial("Ka");
-                std::string p("lightPosition");
-                std::string direccion("direccion");
-                std::string Id("Id");
-                std::string Is("Is");
-                std::string Kd("Kd");
-                std::string Ks("Ks");
-                std::string exponenteEspecular("exponenteEspecular");
-                std::string angulo("angulo");
-
-                pos = glGetUniformLocation(idSP, direccion.c_str());
-                if(pos != -1)
-                {
-                    glUniform3fv(pos, 1, luces[j].getDireccion());
-                }
-
-                pos = glGetUniformLocation(idSP, Id.c_str());
-                if(pos != -1)
-                {
-                    glUniform3fv(pos, 1, luces[j].getId());
-                }
-
-                pos = glGetUniformLocation(idSP, Is.c_str());
-                if(pos != -1)
-                {
-                    glUniform3fv(pos, 1, luces[j].getIs());
-                }
-
-                pos = glGetUniformLocation(idSP, Kd.c_str());
-                if(pos != -1)
-                {
-                    glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKd());
-                }
-
-                pos = glGetUniformLocation(idSP, Ks.c_str());
-                if(pos != -1)
-                {
-                    glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKs());
-                }
-
-                pos = glGetUniformLocation(idSP, exponenteEspecular.c_str());
-                if(pos != -1)
-                {
-                    glUniform1f(pos, luces[j].getExponenteEspecular());
-                }
-
-                pos = glGetUniformLocation(idSP, colorAmbienteLuz.c_str());
-                if(pos != -1)
-                {
-                    glUniform3fv(pos, 1, luces[j].getIa());
-                }
-
-                pos = glGetUniformLocation(idSP, colorAmbienteMaterial.c_str());
-                if(pos != -1)
-                {
-                    glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKa());
-                }
-
-                pos = glGetUniformLocation(idSP, p.c_str());
-                if(pos != -1)
-                {
-                    glUniform3fv(pos, 1, luces[j].getPosicion());
-                }
-
-                pos = glGetUniformLocation(idSP, angulo.c_str());
-                if(pos != -1)
-                {
-                    glUniform1f(pos, luces[j].getAnguloApertura());
-                }
-
-                if(luces[j].getTipoLuz() == AMBIENTAL)
-                {
-                    GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzAmbiental");
-
-                    glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
-                }
-                else if(luces[j].getTipoLuz() == PUNTUAL)
-                {
-//                    GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzPuntual");
-//
-//                    glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
-                }else if(luces[j].getTipoLuz() == DIRECCIONAL)
-                {
-                    GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzDireccional");
-
-                    glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
-                }else if(luces[j].getTipoLuz() == FOCAL)
-                {
-                    GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzFocal");
-
-                    glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
-                }
-
-                if(j == 0)
-                {
-                    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-                }else{
-                    glBlendFunc(GL_ONE, GL_ONE);
-                }
-
-
-                ///Se dibuja una vez por cada luz ;)
-                glBindVertexArray ( modelos[i]->getMalla()->getIdVao() );
-                glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, modelos[i]->getMalla()->getIdIbo() );
-                glDrawElements ( GL_TRIANGLES, modelos[i]->getMalla()->getNumIndices(), GL_UNSIGNED_INT, nullptr);
+        try{
+            if(modelos.size() == 0){
+                return;
             }
-        }
 
+            static bool primeraVez = true;
+            if(primeraVez){
+                activarTextura();
+                primeraVez = false;
+            }
+
+            /// Un bucle para pintar cada modelo
+            for(int i = 0 ; i < modelos.size() ; i++){
+                glm::mat4 matrizModelado = modelos[i]->getMalla()->getMatrizModelado();
+                glm::mat4 matrizModeladoVision = camara->getMatrizVision() * matrizModelado;
+                glm::mat4 matrizModeladoVisionPerspectiva = camara->getMatrizPerspectiva() * matrizModeladoVision;
+                glUseProgram ( idSP );
+
+                // Asignamos el muestreador del shader program a la unidad de textura 0
+                GLint posicion = glGetUniformLocation ( idSP, "muestreador" );
+                glUniform1i ( posicion, 0 );
+
+                // Activamos la unidad de textura 0, y le asociamos la textura que habíamos configurado
+                glActiveTexture ( GL_TEXTURE0 );
+                glBindTexture ( GL_TEXTURE_2D, idTextura );
+
+                pasarUniformMV(matrizModeladoVision);
+
+                pasarUniformMVP(matrizModeladoVisionPerspectiva);
+
+                elegirModoVisualizacion();
+
+                /// Pr 8 Iluminacion
+
+                /// Un bucle para cada luz:
+                for(int j = 0 ; j < luces.size() ; j++)
+                {
+                    GLuint pos;
+
+                    std::string colorAmbienteLuz("Ia");
+                    std::string colorAmbienteMaterial("Ka");
+                    std::string p("lightPosition");
+                    std::string direccion("direccion");
+                    std::string Id("Id");
+                    std::string Is("Is");
+                    std::string Kd("Kd");
+                    std::string Ks("Ks");
+                    std::string exponenteEspecular("exponenteEspecular");
+                    std::string angulo("angulo");
+
+                    pos = glGetUniformLocation(idSP, direccion.c_str());
+                    if(pos != -1)
+                    {
+                        glUniform3fv(pos, 1, luces[j].getDireccion());
+                    }
+
+                    pos = glGetUniformLocation(idSP, Id.c_str());
+                    if(pos != -1)
+                    {
+                        glUniform3fv(pos, 1, luces[j].getId());
+                    }
+
+                    pos = glGetUniformLocation(idSP, Is.c_str());
+                    if(pos != -1)
+                    {
+                        glUniform3fv(pos, 1, luces[j].getIs());
+                    }
+
+                    pos = glGetUniformLocation(idSP, Kd.c_str());
+                    if(pos != -1)
+                    {
+                        glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKd());
+                    }
+
+                    pos = glGetUniformLocation(idSP, Ks.c_str());
+                    if(pos != -1)
+                    {
+                        glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKs());
+                    }
+
+                    pos = glGetUniformLocation(idSP, exponenteEspecular.c_str());
+                    if(pos != -1)
+                    {
+                        glUniform1f(pos, luces[j].getExponenteEspecular());
+                    }
+
+                    pos = glGetUniformLocation(idSP, colorAmbienteLuz.c_str());
+                    if(pos != -1)
+                    {
+                        glUniform3fv(pos, 1, luces[j].getIa());
+                    }
+
+                    pos = glGetUniformLocation(idSP, colorAmbienteMaterial.c_str());
+                    if(pos != -1)
+                    {
+                        glUniform3fv(pos, 1, modelos[i]->getMaterial()->getKa());
+                    }
+
+                    pos = glGetUniformLocation(idSP, p.c_str());
+                    if(pos != -1)
+                    {
+                        glUniform3fv(pos, 1, luces[j].getPosicion());
+                    }
+
+                    pos = glGetUniformLocation(idSP, angulo.c_str());
+                    if(pos != -1)
+                    {
+                        glUniform1f(pos, luces[j].getAnguloApertura());
+                    }
+
+                    if(luces[j].getTipoLuz() == AMBIENTAL)
+                    {
+                        GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzAmbiental");
+
+                        glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+                    }
+                    else if(luces[j].getTipoLuz() == PUNTUAL)
+                    {
+                        GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzPuntual");
+
+                        glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+                    }else if(luces[j].getTipoLuz() == DIRECCIONAL)
+                    {
+                        GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzDireccional");
+
+                        glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+                    }else if(luces[j].getTipoLuz() == FOCAL)
+                    {
+                        GLuint aux = glGetSubroutineIndex(idSP, GL_FRAGMENT_SHADER, "luzFocal");
+
+                        glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &aux);
+                    }
+
+                    if(j == 0)
+                    {
+                        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+                    }else{
+                        glBlendFunc(GL_ONE, GL_ONE);
+                    }
+
+
+                    ///Se dibuja una vez por cada luz ;)
+                    glBindVertexArray ( modelos[i]->getMalla()->getIdVao() );
+                    glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER, modelos[i]->getMalla()->getIdIbo() );
+                    glDrawElements ( GL_TRIANGLES, modelos[i]->getMalla()->getNumIndices(), GL_UNSIGNED_INT, nullptr);
+                }
+            }
+
+        }catch (std::exception &e)
+        {
+            std::cout << e.what();
+        }
     }
 
     /**
