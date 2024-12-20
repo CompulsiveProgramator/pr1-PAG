@@ -468,3 +468,15 @@
 1053	2282	7563327629156926	Pr1.exe	8da871d43cebd3a
 13	1173	7563328253664684	CMakeFiles/Pr1.dir/utilities/ShaderProgram.cpp.obj	67b0b4d32d9f697
 1174	2424	7563328265268349	Pr1.exe	8da871d43cebd3a
+13	1047	7563329543833598	CMakeFiles/Pr1.dir/utilities/ShaderProgram.cpp.obj	67b0b4d32d9f697
+1047	2304	7563329554172007	Pr1.exe	8da871d43cebd3a
+72	5005	7564117125848338	CMakeFiles/Pr1.dir/utilities/Renderer.cpp.obj	c4e3159bf1163ecc
+99	6184	7564117126126590	CMakeFiles/Pr1.dir/utilities/ShaderProgram.cpp.obj	67b0b4d32d9f697
+140	8273	7564117126543025	CMakeFiles/Pr1.dir/utilities/Material.cpp.obj	3112936012236e18
+125	11106	7564117126395585	CMakeFiles/Pr1.dir/ventanas-gui/VentanaTransformacionesModelos.cpp.obj	b1cc2ddfe078e947
+85	12697	7564117125986632	CMakeFiles/Pr1.dir/utilities/GUI.cpp.obj	1b84c13074628f7b
+112	12734	7564117126257892	CMakeFiles/Pr1.dir/utilities/Modelo.cpp.obj	1198aea2189bae3f
+45	13068	7564117125592448	CMakeFiles/Pr1.dir/main.cpp.obj	abd375bd5d1ffdcb
+13068	16982	7564117255814600	Pr1.exe	8da871d43cebd3a
+36	1176	7564120744400728	CMakeFiles/Pr1.dir/utilities/Textura.cpp.obj	b5f1be79a431375b
+1178	4596	7564120755817162	Pr1.exe	8da871d43cebd3a

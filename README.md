@@ -136,4 +136,9 @@ agrego a la clase Malla un VBO en el layout 2 para las coordenadas de texturas q
 Con todo lo anterior, se programa la clase Shader Program para que una todo y pase los datos necesarios al vertex/fragment shader,
 y que estos puedan hacer los calculos con la textura y aplicarlos al modelo a pintar!
 
-Para el dado, vemos como se ve ....
+Para la vaca, podemos ver como se aplica la textura correctamente:
+
+<img src="images/vaca_textura.png">
+
+O para el t-rex:
+<img src="images/trex_textura.png">

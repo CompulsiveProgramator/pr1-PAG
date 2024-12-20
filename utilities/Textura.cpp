@@ -12,7 +12,7 @@
  * Por ahora, se carga manualmente la textura
  */
 PAG::Textura::Textura() {
-    std::string rutaDeFichero = "../imagenes_textura/vaca_texture.png";
+    std::string rutaDeFichero = "../imagenes_textura/trex_texture.png";
 
     unsigned error = lodepng::decode (imagen, ancho, alto, rutaDeFichero);
 
