@@ -349,8 +349,8 @@ namespace PAG{
         modelos.push_back(new Modelo(localizacion));
     }
 
-    std::vector<Modelo *> *ShaderProgram::getModelos() {
-        return &modelos;
+    std::vector<Modelo *> &ShaderProgram::getModelos() {
+        return modelos;
     }
 
     /**

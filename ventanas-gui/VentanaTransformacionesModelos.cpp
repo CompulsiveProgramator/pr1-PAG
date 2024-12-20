@@ -11,7 +11,6 @@
  * Constructor de la clase
  */
 PAG::VentanaTransformacionesModelos::VentanaTransformacionesModelos() {
-    modelos = nullptr;
     modeloSeleccionado = 0;
 }
 
@@ -21,10 +20,8 @@ void PAG::VentanaTransformacionesModelos::refrescarVentana() {
      */
 
     //Si no hay modelos, no se pinta la ventana ;)
-    if(modelos == nullptr){
-        return;
-    }
-    if(modelos->size() == 0){
+
+    if(modelos.size() == 0){
         return;
     }
 
@@ -50,7 +47,7 @@ void PAG::VentanaTransformacionesModelos::refrescarVentana() {
  * Metodo para agregar la direccion en memoria, del vector con los modelos activos en el Shader Program ;)
  * @param modelo
  */
-void PAG::VentanaTransformacionesModelos::agregarModelos(std::vector<Modelo*> *_modelos) {
+void PAG::VentanaTransformacionesModelos::agregarModelos(std::vector<Modelo*> &_modelos) {
     this->modelos = _modelos;
 }
 
@@ -62,12 +59,12 @@ void PAG::VentanaTransformacionesModelos::seleccionaModelo() {
     ImGui::Text("Selecciona el modelo:");
 
     std::vector<std::string> nombresModelos;
-    for(int i = 0 ; i < modelos->size() ; i++){
-        nombresModelos.push_back(modelos->data()[i]->getNombreModelo());
+    for(int i = 0 ; i < modelos.size() ; i++){
+        nombresModelos.push_back(modelos[i]->getNombreModelo());
     }
 
     // Esto es para cuando se borra el ultimo elemento del vector de modelos, ya que modeloSeleccionado pasaria a estar fuera del rango legal ! ;)
-    if(modeloSeleccionado >= modelos->size())
+    if(modeloSeleccionado >= modelos.size())
     {
         modeloSeleccionado = 0; //Volvemos al inicial por defecto
     }
@@ -162,11 +159,11 @@ void PAG::VentanaTransformacionesModelos::selectorTraslacion() {
     if(ImGui::Button("Aplicar"))
     {
         if(tiposTraslaciones[tipoTraslacionActual] == "X"){
-            modelos->data()[modeloSeleccionado]->getMalla()->trasladarMalla(glm::translate(glm::vec3(valorTraslacion, 0, 0)));
+            modelos[modeloSeleccionado]->getMalla()->trasladarMalla(glm::translate(glm::vec3(valorTraslacion, 0, 0)));
         }else if(tiposTraslaciones[tipoTraslacionActual] == "Y"){
-            modelos->data()[modeloSeleccionado]->getMalla()->trasladarMalla(glm::translate(glm::vec3(0, valorTraslacion, 0)));
+            modelos[modeloSeleccionado]->getMalla()->trasladarMalla(glm::translate(glm::vec3(0, valorTraslacion, 0)));
         }else if(tiposTraslaciones[tipoTraslacionActual] == "Z"){
-            modelos->data()[modeloSeleccionado]->getMalla()->trasladarMalla(glm::translate(glm::vec3(0, 0, valorTraslacion)));
+            modelos[modeloSeleccionado]->getMalla()->trasladarMalla(glm::translate(glm::vec3(0, 0, valorTraslacion)));
         }
     }
 
@@ -206,11 +203,11 @@ void PAG::VentanaTransformacionesModelos::selectorRotacion() {
     if(ImGui::Button("Aplicar"))
     {
         if(tipoRotacion[tipoRotacionActual] == "X"){
-            modelos->data()[modeloSeleccionado]->getMalla()->rotarMalla(glm::rotate(glm::radians(gradosRotacion), glm::vec3(1, 0, 0)));
+            modelos[modeloSeleccionado]->getMalla()->rotarMalla(glm::rotate(glm::radians(gradosRotacion), glm::vec3(1, 0, 0)));
         }else if(tipoRotacion[tipoRotacionActual] == "Y"){
-            modelos->data()[modeloSeleccionado]->getMalla()->rotarMalla(glm::rotate(glm::radians(gradosRotacion), glm::vec3(0, 1, 0)));
+            modelos[modeloSeleccionado]->getMalla()->rotarMalla(glm::rotate(glm::radians(gradosRotacion), glm::vec3(0, 1, 0)));
         }else if(tipoRotacion[tipoRotacionActual] == "Z"){
-            modelos->data()[modeloSeleccionado]->getMalla()->rotarMalla(glm::rotate(glm::radians(gradosRotacion), glm::vec3(0, 0, 1)));
+            modelos[modeloSeleccionado]->getMalla()->rotarMalla(glm::rotate(glm::radians(gradosRotacion), glm::vec3(0, 0, 1)));
         }
     }
 }
@@ -249,13 +246,13 @@ void PAG::VentanaTransformacionesModelos::selectorEscalado() {
     if(ImGui::Button("Aplicar"))
     {
         if(tipoEscalado[tipoEscaladoActual] == "X"){
-            modelos->data()[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(valorEscalado, 1, 1)));
+            modelos[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(valorEscalado, 1, 1)));
         }else if(tipoEscalado[tipoEscaladoActual] == "Y"){
-            modelos->data()[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(1, valorEscalado, 1)));
+            modelos[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(1, valorEscalado, 1)));
         }else if(tipoEscalado[tipoEscaladoActual] == "Z"){
-            modelos->data()[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(1, 1, valorEscalado)));
+            modelos[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(1, 1, valorEscalado)));
         }else if(tipoEscalado[tipoEscaladoActual] == "Uniforme"){
-            modelos->data()[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(valorEscalado, valorEscalado, valorEscalado)));
+            modelos[modeloSeleccionado]->getMalla()->escalarMalla(glm::scale(glm::vec3(valorEscalado, valorEscalado, valorEscalado)));
         }
     }
 }

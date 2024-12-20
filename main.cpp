@@ -388,6 +388,11 @@ int main()
                 instanciaGUI.mostrarShaderActivo();
             }
 
+            if(instanciaRenderer.getShaderProgram() != nullptr)
+            {
+                instanciaGUI.asociarModelos(instanciaRenderer.getShaderProgram()->getModelos());
+            }
+
             if(modo == PAG::ALAMBRE){
                 instanciaRenderer.activarModoAlambre();
             }else if(modo == PAG::SOLIDO){

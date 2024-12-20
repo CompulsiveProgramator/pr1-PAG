@@ -44,7 +44,7 @@ namespace PAG{
         void enlazarSP(GLuint handler, std::string filename);
 
         void agregarModelo(std::string localizacion);
-        std::vector<Modelo*>* getModelos();
+        std::vector<Modelo*>& getModelos();
         void eliminarModelo(unsigned int posicion);
         void setModoVisualizacion(ModosVisualizacion modo);
 

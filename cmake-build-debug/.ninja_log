@@ -490,3 +490,15 @@
 488	1738	7564133532394173	Pr1.exe	8da871d43cebd3a
 13	505	7564134181558081	CMakeFiles/Pr1.dir/ventanas-gui/VentanaSeleccionShaderProgram.cpp.obj	ad2cc832349cb0eb
 506	1754	7564134186485345	Pr1.exe	8da871d43cebd3a
+13	2764	7564138126008070	CMakeFiles/Pr1.dir/main.cpp.obj	abd375bd5d1ffdcb
+2765	4000	7564138153532803	Pr1.exe	8da871d43cebd3a
+12	2625	7564139996993435	CMakeFiles/Pr1.dir/main.cpp.obj	abd375bd5d1ffdcb
+2626	3851	7564140023127919	Pr1.exe	8da871d43cebd3a
+12	1177	7564142216856160	CMakeFiles/Pr1.dir/utilities/ShaderProgram.cpp.obj	67b0b4d32d9f697
+1178	2458	7564142228506263	Pr1.exe	8da871d43cebd3a
+22	1456	7564144919708058	CMakeFiles/Pr1.dir/utilities/Renderer.cpp.obj	c4e3159bf1163ecc
+31	1835	7564144919803023	CMakeFiles/Pr1.dir/utilities/ShaderProgram.cpp.obj	67b0b4d32d9f697
+37	3525	7564144919863944	CMakeFiles/Pr1.dir/ventanas-gui/VentanaTransformacionesModelos.cpp.obj	b1cc2ddfe078e947
+15	3847	7564144919644798	CMakeFiles/Pr1.dir/main.cpp.obj	abd375bd5d1ffdcb
+13	2954	7564145202555149	CMakeFiles/Pr1.dir/utilities/GUI.cpp.obj	1b84c13074628f7b
+2955	4217	7564145231973695	Pr1.exe	8da871d43cebd3a

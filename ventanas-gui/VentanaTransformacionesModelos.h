@@ -11,7 +11,7 @@
 namespace PAG{
     class VentanaTransformacionesModelos: public Ventana{
     private:
-        std::vector<Modelo*> *modelos; ///Un vector con los modelos activos en escena
+        std::vector<Modelo*> modelos; ///Un vector con los modelos activos en escena
         unsigned int modeloSeleccionado = 0; ///La posicion relativa en el vector de arriba, del modelo seleccionado para aplicar una transformacion
         bool eliminarModelo = false;
 
@@ -23,7 +23,7 @@ namespace PAG{
     public:
         VentanaTransformacionesModelos();
         void refrescarVentana() override;
-        void agregarModelos(std::vector<Modelo*> *_modelos);
+        void agregarModelos(std::vector<Modelo*> &_modelos);
         bool getEliminarModelo();
         unsigned int getModeloSeleccionado();
     };

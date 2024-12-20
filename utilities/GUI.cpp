@@ -126,7 +126,7 @@ std::string PAG::GUI::getLocalizacionArchivo() {
     return ventanaSelectorModelo.getLocalizacionFichero();
 }
 
-void PAG::GUI::asociarModelos(std::vector<Modelo*> *modelos) {
+void PAG::GUI::asociarModelos(std::vector<Modelo*> &modelos) {
     this->ventanaTransformacionesModelos.agregarModelos(modelos);
 }
 

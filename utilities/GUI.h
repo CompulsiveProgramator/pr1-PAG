@@ -50,7 +50,7 @@ namespace PAG
         void setColor(GLfloat *color);
         void asociarCamara(Camara *camara);
         std::string getLocalizacionArchivo();
-        void asociarModelos(std::vector<Modelo*> *modelos);
+        void asociarModelos(std::vector<Modelo*> &modelos);
         bool getSeguirRaton();
         bool getEliminarModelo();
         unsigned int getPosicionModeloEliminar();
