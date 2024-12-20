@@ -54,6 +54,7 @@ namespace PAG
         bool getSeguirRaton();
         bool getEliminarModelo();
         unsigned int getPosicionModeloEliminar();
+        void mostrarShaderActivo();
     };
 }
 

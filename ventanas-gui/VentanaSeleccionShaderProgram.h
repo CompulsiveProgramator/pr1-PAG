@@ -14,11 +14,13 @@ namespace PAG{
     private:
         std::string nombreShaderProgram;
         bool botonPulsado;
+        bool mostrarNombreShader;
     public:
         VentanaSeleccionShaderProgram();
         void refrescarVentana() override;
         const std::string &getNombreShaderProgram() const;
         bool isBotonPulsado() const;
+        void mostrarShaderActivo();
     };
 }
 

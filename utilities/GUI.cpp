@@ -145,3 +145,10 @@ bool PAG::GUI::getEliminarModelo() {
 unsigned int PAG::GUI::getPosicionModeloEliminar() {
     return this->ventanaTransformacionesModelos.getModeloSeleccionado();
 }
+
+/**
+ * Metodo para mostrar el shader activo
+ */
+void PAG::GUI::mostrarShaderActivo() {
+    ventanaSeleccionShaderProgram.mostrarShaderActivo();
+}

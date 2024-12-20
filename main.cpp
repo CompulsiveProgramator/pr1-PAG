@@ -382,8 +382,10 @@ int main()
             instanciaGUI.refrescar(); //La GUI se dibuja lo ultimo, porque es lo que mas arriba está ;)
             //Para ver si se crea un Shader Program nuevo
             if(instanciaGUI.getBotonPulsado()){
-                instanciaRenderer.crearShaderProgram(instanciaGUI.getNombreShaderProgram());
+                std::string nombreShaderProgram = instanciaGUI.getNombreShaderProgram();
+                instanciaRenderer.crearShaderProgram(nombreShaderProgram);
                 instanciaGUI.asociarModelos(instanciaRenderer.getShaderProgram()->getModelos());
+                instanciaGUI.mostrarShaderActivo();
             }
 
             if(modo == PAG::ALAMBRE){

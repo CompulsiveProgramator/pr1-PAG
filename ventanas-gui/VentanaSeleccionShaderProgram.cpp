@@ -7,7 +7,7 @@
 /**
  * Constructor por defecto de la clase
  */
-PAG::VentanaSeleccionShaderProgram::VentanaSeleccionShaderProgram():botonPulsado(false), nombreShaderProgram() {
+PAG::VentanaSeleccionShaderProgram::VentanaSeleccionShaderProgram():botonPulsado(false), nombreShaderProgram(), mostrarNombreShader(false) {
 
 }
 
@@ -21,6 +21,11 @@ void PAG::VentanaSeleccionShaderProgram::refrescarVentana() {
     ImGui::Text("Formato 'pag0x'");
     ImGui::InputText("##", &nombreShaderProgram, ImGuiInputTextFlags_AutoSelectAll);
     botonPulsado = ImGui::Button("Load");
+    if(mostrarNombreShader)
+    {
+        std::string mensaje = "El shader program " + nombreShaderProgram + " está activo";
+        ImGui::Text(mensaje.c_str());
+    }
     ImGui::End();
 }
 
@@ -30,4 +35,8 @@ const std::string &PAG::VentanaSeleccionShaderProgram::getNombreShaderProgram() 
 
 bool PAG::VentanaSeleccionShaderProgram::isBotonPulsado() const {
     return botonPulsado;
+}
+
+void PAG::VentanaSeleccionShaderProgram::mostrarShaderActivo() {
+    mostrarNombreShader = true;
 }
